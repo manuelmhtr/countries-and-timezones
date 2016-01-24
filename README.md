@@ -16,17 +16,45 @@ A country is defined by the following parameters:
 
 * *id:* The country [ISO code](https://es.wikipedia.org/wiki/ISO_3166-1).
 * *name:* Name in english.
-* *name:* Name in english.
 * *timezones:* An array of ids of the timezones available in the country.
+
+```
+{ id: 'MX',
+  name: 'Mexico',
+  timezones: [
+    'America/Mexico_City',
+    'America/Cancun',
+    'America/Merida',
+    'America/Monterrey',
+    'America/Matamoros',
+    'America/Mazatlan',
+    'America/Chihuahua',
+    'America/Ojinaga',
+    'America/Hermosillo',
+    'America/Tijuana',
+    'America/Santa_Isabel',
+    'America/Bahia_Banderas'
+  ] 
+}
+```
 
 ### Timezone
 
 A timezone is defined by the following parameters:
 
-* *id:* The country [ISO code](https://es.wikipedia.org/wiki/ISO_3166-1).
-* *name:* Name in english.
-* *name:* Name in english.
-* *timezones:* An array of ids of the timezones available in the country.
+* **name:** The name of the timezone.
+* **utcOffset:** UTC offset in minutes.
+* **offsetStr:** UTC offset in hours (human readable string).
+* **countries:** An array of ids of the countries that use this timezone.
+
+
+```
+{ name: 'Asia/Dubai',
+  utcOffset: 240,
+  offsetStr: '+04:00',
+  countries: [ 'AE', 'OM' ]
+  }
+```
 
 ## API
 
@@ -34,18 +62,29 @@ A timezone is defined by the following parameters:
 
 Contains and object with the raw data used in this library.
 
-*Example*
+**Example**
 
 ```
 var rawData = countriesAndTimezones.raw;
 console.log(rawData);
+
+/*
+Prints:
+
+{
+  countries: [...],
+  timezones: [...]
+}
+
+*/
+
 ```
 
 ### getAllCountries
 
 Returns an object with the data of all countries.
 
-*Example*
+**Example**
 
 ```
 var countries = countriesAndTimezones.getAllCountries();
@@ -78,7 +117,7 @@ Prints:
 
 Returns an object with the data of all timezones.
 
-*Example*
+**Example**
 
 ```
 var timezones = countriesAndTimezones.getAllTimezones();
@@ -113,7 +152,7 @@ Prints:
 
 Returns an array with the timezones of a country given its id.
 
-*Example*
+**Example**
 
 ```
 var mxTimezones = countriesAndTimezones.getTimezonesForCountry('MX');
@@ -142,11 +181,11 @@ Prints:
 
 ```
 
-### getTimezonesForCountry
+### getCountriesForTimezone
 
-Returns an array with the timezones of a country given its id.
+Returns an array with the country that use a timezone given its id.
 
-*Example*
+**Example**
 
 ```
 var nyTimezone = countriesAndTimezones.getCountriesForTimezone('America/New_York');
