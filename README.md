@@ -1,4 +1,6 @@
 # countries-and-timezones
+![](https://img.shields.io/wercker/ci/wercker/docs.svg?style=flat)
+![](https://img.shields.io/dub/l/vibe-d.svg?style=flat)
 
 This is a minimalistic library to work with countries and timezones data.
 
@@ -14,12 +16,13 @@ npm install --save countries-and-timezones
 
 A country is defined by the following parameters:
 
-* *id:* The country [ISO code](https://es.wikipedia.org/wiki/ISO_3166-1).
-* *name:* Name in english.
-* *timezones:* An array of ids of the timezones available in the country.
+* **id:** The country [ISO code](https://es.wikipedia.org/wiki/ISO_3166-1).
+* **name:** Name in english.
+* **timezones:** An array of ids of the timezones available in the country.
 
-```
-{ id: 'MX',
+```javascript
+{
+  id: 'MX',
   name: 'Mexico',
   timezones: [
     'America/Mexico_City',
@@ -48,24 +51,27 @@ A timezone is defined by the following parameters:
 * **countries:** An array of ids of the countries that use this timezone.
 
 
-```
-{ name: 'Asia/Dubai',
+```javascript
+{
+  name: 'Asia/Dubai',
   utcOffset: 240,
   offsetStr: '+04:00',
   countries: [ 'AE', 'OM' ]
-  }
+}
 ```
 
 ## API
 
-### raw
+### .raw
 
 Contains and object with the raw data used in this library.
 
 **Example**
 
-```
-var rawData = countriesAndTimezones.raw;
+```javascript
+const ct = require('countries-and-timezones');
+
+const rawData = ct.raw;
 console.log(rawData);
 
 /*
@@ -80,14 +86,16 @@ Prints:
 
 ```
 
-### getAllCountries
+### .getAllCountries()
 
 Returns an object with the data of all countries.
 
 **Example**
 
-```
-var countries = countriesAndTimezones.getAllCountries();
+```javascript
+const ct = require('countries-and-timezones');
+
+const countries = ct.getAllCountries();
 console.log(countries);
 
 /*
@@ -113,14 +121,16 @@ Prints:
 */
 ```
 
-### getAllTimezones
+### .getAllTimezones()
 
 Returns an object with the data of all timezones.
 
 **Example**
 
-```
-var timezones = countriesAndTimezones.getAllTimezones();
+```javascript
+const ct = require('countries-and-timezones');
+
+const timezones = ct.getAllTimezones();
 console.log(timezones);
 
 /*
@@ -148,14 +158,16 @@ Prints:
 
 ```
 
-### getTimezonesForCountry
+### .getTimezonesForCountry()
 
 Returns an array with the timezones of a country given its id.
 
 **Example**
 
-```
-var mxTimezones = countriesAndTimezones.getTimezonesForCountry('MX');
+```javascript
+const ct = require('countries-and-timezones');
+
+const mxTimezones = ct.getTimezonesForCountry('MX');
 console.log(mxTimezones);
 
 /*
@@ -181,14 +193,16 @@ Prints:
 
 ```
 
-### getCountriesForTimezone
+### .getCountriesForTimezone()
 
 Returns an array with the country that use a timezone given its id.
 
 **Example**
 
-```
-var nyTimezone = countriesAndTimezones.getCountriesForTimezone('America/New_York');
+```javascript
+const ct = require('countries-and-timezones');
+
+const nyTimezone = ct.getCountriesForTimezone('America/New_York');
 console.log(nyTimezone);
 
 /*
@@ -212,3 +226,7 @@ Prints:
 */
 
 ```
+
+## License
+
+MIT
