@@ -1,6 +1,7 @@
 # countries-and-timezones
-![](https://img.shields.io/wercker/ci/wercker/docs.svg?style=flat)
-![](https://img.shields.io/dub/l/vibe-d.svg?style=flat)
+![](https://img.shields.io/badge/build-passing-green?style=flat)
+![](https://img.shields.io/npm/dm/countries-and-timezones)
+![](https://img.shields.io/dub/l/vibe-d?color=blue?style=flat)
 
 This is a minimalistic library to work with countries and timezones data.
 
@@ -226,6 +227,16 @@ Prints:
 */
 
 ```
+
+## Working on something more complex?
+
+Meet [Spott](https://spott.dev):
+- **Search any city, country or administrative division** in the world. By full strings or autocompletion. 
+- Find a place by an IP address.
+- Access to more than 240,000 geographical places. In more than 10 languages.
+
+[![Spott API for cities, countries and administrative divisions](https://spott-assets.s3.amazonaws.com/marketing/banner-720px.png)](https://spott.dev)
+
 
 ## License
 
