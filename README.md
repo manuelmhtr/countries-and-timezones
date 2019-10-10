@@ -17,27 +17,30 @@ npm install --save countries-and-timezones
 
 A country is defined by the following parameters:
 
-* **id:** The country [ISO code](https://es.wikipedia.org/wiki/ISO_3166-1).
-* **name:** Name in english.
-* **timezones:** An array of ids of the timezones available in the country.
+| Parameter | Type | Description |
+| --------- | ---- | ----------- |
+|`id`|String|The country [ISO 3166-1 code](https://es.wikipedia.org/wiki/ISO_3166-1).|
+|`name`|String|Preferred name of the country.|
+|`timezones`|Array[String]|The list of timezones used in the country.|
 
 ```javascript
 {
   id: 'MX',
   name: 'Mexico',
   timezones: [
-    'America/Mexico_City',
+    'America/Bahia_Banderas',
     'America/Cancun',
-    'America/Merida',
-    'America/Monterrey',
+    'America/Chihuahua',
+    'America/Ensenada',
+    'America/Hermosillo',
     'America/Matamoros',
     'America/Mazatlan',
-    'America/Chihuahua',
+    'America/Merida',
+    'America/Mexico_City',
+    'America/Monterrey',
     'America/Ojinaga',
-    'America/Hermosillo',
-    'America/Tijuana',
     'America/Santa_Isabel',
-    'America/Bahia_Banderas'
+    'America/Tijuana'
   ] 
 }
 ```
@@ -46,45 +49,83 @@ A country is defined by the following parameters:
 
 A timezone is defined by the following parameters:
 
-* **name:** The name of the timezone.
-* **utcOffset:** UTC offset in minutes.
-* **offsetStr:** UTC offset in hours (human readable string).
-* **countries:** An array of ids of the countries that use this timezone.
-
+| Parameter | Type | Description |
+| --------- | ---- | ----------- |
+|`name`|String|The name of the timezone, from [tz database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).|
+|`country`|String|The [ISO 3166-1 code](https://es.wikipedia.org/wiki/ISO_3166-1) of the country where it's used. `Etc/*`, `GMT` and `UTC` timezones don't have and associated country.|
+|`utcOffset`|Number|The difference in **minutes** between the timezone and [UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time).|
+|`utcOffsetStr`|String|The difference in hours and minutes between the timezone and [UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), expressed as string with format: `±[hh]:[mm]`.|
+|`dstOffset`|Number|The difference in **minutes** between the timezone and [UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) during daylight saving time ([DST](https://en.wikipedia.org/wiki/Daylight_saving_time)). When `utcOffset` and `dstOffset` are the same, means that the timezone does not observe a daylight saving time.|
+|`dstOffsetStr`|String|The difference in hours and minutes between the timezone and [UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) during daylight saving time ([DST](https://en.wikipedia.org/wiki/Daylight_saving_time), expressed as string with format: `±[hh]:[mm]`.|
+|`aliasOf`|String|The `name` of a primary timezone in case this is an alias. `null` means this is a primary timezone.|
 
 ```javascript
 {
-  name: 'Asia/Dubai',
-  utcOffset: 240,
-  offsetStr: '+04:00',
-  countries: [ 'AE', 'OM' ]
+  name: 'Asia/Tel_Aviv',
+  country: 'IL',
+  utcOffset: 120,
+  utcOffsetStr: '+02:00',
+  dstOffset: 180,
+  dstOffsetStr: '+03:00',
+  aliasOf: 'Asia/Jerusalem'
 }
 ```
 
 ## API
 
-### .raw
+### .getCountry(id)
 
-Contains and object with the raw data used in this library.
+Returns a country referenced by its `id`.
 
 **Example**
 
 ```javascript
 const ct = require('countries-and-timezones');
 
-const rawData = ct.raw;
-console.log(rawData);
+const country = ct.getCountry('DE');
+console.log(country);
 
 /*
 Prints:
 
 {
-  countries: [...],
-  timezones: [...]
+  id: 'DE',
+  name: 'Germany',
+  timezones: [
+    'Europe/Berlin',
+    'Europe/Busingen'
+  ]
 }
 
 */
+```
 
+### .getTimezone(name)
+
+Returns a timezone referenced by its `name`.
+
+**Example**
+
+```javascript
+const ct = require('countries-and-timezones');
+
+const timezone = ct.getTimezone('America/Los_Angeles');
+console.log(timezone);
+
+/*
+Prints:
+
+{
+  name: 'America/Los_Angeles',
+  country: 'US',
+  utcOffset: -480,
+  utcOffsetStr: '-08:00',
+  dstOffset: -420,
+  dstOffsetStr: '-07:00',
+  aliasOf: null
+}
+
+*/
 ```
 
 ### .getAllCountries()
@@ -102,22 +143,29 @@ console.log(countries);
 /*
 Prints:
 
-{ AD: { id: 'AD', name: 'Andorra', timezones: [ 'Europe/Andorra' ] },
-  AE: 
-   { id: 'AE',
-     name: 'United Arab Emirates',
-     timezones: [ 'Asia/Dubai' ] },
-  AF: { id: 'AF', name: 'Afghanistan', timezones: [ 'Asia/Kabul' ] },
-  AG: 
-   { id: 'AG',
-     name: 'Antigua & Barbuda',
-     timezones: [ 'America/Port_of_Spain' ] },
-  AI: 
-   { id: 'AI',
-     name: 'Anguilla',
-     timezones: [ 'America/Port_of_Spain' ] },
-
-...
+{
+  AD: {
+    id: 'AD',
+    name: 'Andorra',
+    timezones: [ 'Europe/Andorra' ]
+  },
+  AE: {
+    id: 'AE',
+    name: 'United Arab Emirates',
+    timezones: [ 'Asia/Dubai' ]
+  },
+  AF: {
+    id: 'AF',
+    name: 'Afghanistan',
+    timezones: [ 'Asia/Kabul' ]
+  },
+  AG: {
+    id: 'AG',
+    name: 'Antigua and Barbuda',
+    timezones: [ 'America/Antigua' ]
+  },
+  ...
+}
 
 */
 ```
@@ -137,31 +185,43 @@ console.log(timezones);
 /*
 Prints:
 
-{ 'Europe/Andorra': 
-   { name: 'Europe/Andorra',
-     utcOffset: 60,
-     offsetStr: '+01:00',
-     countries: [ 'AD' ] },
-  'Asia/Dubai': 
-   { name: 'Asia/Dubai',
-     utcOffset: 240,
-     offsetStr: '+04:00',
-     countries: [ 'AE', 'OM' ] },
-  'Asia/Kabul': 
-   { name: 'Asia/Kabul',
-     utcOffset: 270,
-     offsetStr: '+04:30',
-     countries: [ 'AF' ] },
-
-...
+{
+  'America/Los_Angeles': {
+    name: 'America/Los_Angeles',
+    country: 'US',
+    utcOffset: -480,
+    utcOffsetStr: '-08:00',
+    dstOffset: -420,
+    dstOffsetStr: '-07:00',
+    aliasOf: null
+  },
+  'Africa/Abidjan': {
+    name: 'Africa/Abidjan',
+    country: 'CI',
+    utcOffset: 0,
+    utcOffsetStr: '+00:00',
+    dstOffset: 0,
+    dstOffsetStr: '+00:00',
+    aliasOf: null
+  },
+  'Africa/Accra': {
+    name: 'Africa/Accra',
+    country: 'GH',
+    utcOffset: 0,
+    utcOffsetStr: '+00:00',
+    dstOffset: 0,
+    dstOffsetStr: '+00:00',
+    aliasOf: null
+  },
+  ...
+}
 
 */
-
 ```
 
-### .getTimezonesForCountry()
+### .getTimezonesForCountry(id)
 
-Returns an array with the timezones of a country given its id.
+Returns an array with all the timezones of a country given its `id`.
 
 **Example**
 
@@ -174,29 +234,43 @@ console.log(mxTimezones);
 /*
 Prints:
 
-[ { name: 'America/Mexico_City',
+[
+  {
+    name: 'America/Bahia_Banderas',
+    country: 'MX',
     utcOffset: -360,
-    offsetStr: '-06:00',
-    countries: [ 'MX' ] },
-  { name: 'America/Cancun',
+    utcOffsetStr: '-06:00',
+    dstOffset: -300,
+    dstOffsetStr: '-05:00',
+    aliasOf: null
+  },
+  {
+    name: 'America/Cancun',
+    country: 'MX',
     utcOffset: -300,
-    offsetStr: '-05:00',
-    countries: [ 'MX' ] },
-  { name: 'America/Merida',
-    utcOffset: -360,
-    offsetStr: '-06:00',
-    countries: [ 'MX' ] },
-  { name: 'America/Monterrey',
-
-...
+    utcOffsetStr: '-05:00',
+    dstOffset: -300,
+    dstOffsetStr: '-05:00',
+    aliasOf: null
+  },
+  {
+    name: 'America/Chihuahua',
+    country: 'MX',
+    utcOffset: -420,
+    utcOffsetStr: '-07:00',
+    dstOffset: -360,
+    dstOffsetStr: '-06:00',
+    aliasOf: null
+  },
+  ...
+}
 
 */
-
 ```
 
-### .getCountriesForTimezone()
+### .getCountryForTimezone(name)
 
-Returns an array with the country that use a timezone given its id.
+Returns the country that uses a timezone given its `name`.
 
 **Example**
 
@@ -209,20 +283,11 @@ console.log(nyTimezone);
 /*
 Prints:
 
-[ { id: 'US',
-    name: 'United States',
-    timezones: 
-     [ 'America/New_York',
-       'America/Detroit',
-       'America/Kentucky/Louisville',
-       'America/Kentucky/Monticello',
-       'America/Indiana/Indianapolis',
-       'America/Indiana/Vincennes',
-       'America/Indiana/Winamac',
-       'America/Indiana/Marengo',
-       'America/Indiana/Petersburg',
-
-...
+{
+  id: 'JP',
+  name: 'Japan',
+  timezones: [ 'Asia/Tokyo' ]
+}
 
 */
 

@@ -1,0 +1,1 @@
+--ui bdd --timeout 1000 --full-trace --recursive --exit --bail

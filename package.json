@@ -1,10 +1,10 @@
 {
   "name": "countries-and-timezones",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "description": "Minimalistic library to work with countries and timezones data.",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha -r test/index.js test/unit"
   },
   "repository": {
     "type": "git",
@@ -23,5 +23,11 @@
   "bugs": {
     "url": "https://github.com/manuelmhtr/countries-and-timezones/issues"
   },
-  "homepage": "https://github.com/manuelmhtr/countries-and-timezones#readme"
+  "homepage": "https://github.com/manuelmhtr/countries-and-timezones#readme",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.2.1",
+    "proxyquire": "^2.1.3",
+    "sinon": "^7.5.0"
+  }
 }
