@@ -228,8 +228,8 @@ Returns an array with all the timezones of a country given its `id`.
 ```javascript
 const ct = require('countries-and-timezones');
 
-const mxTimezones = ct.getTimezonesForCountry('MX');
-console.log(mxTimezones);
+const timezones = ct.getTimezonesForCountry('MX');
+console.log(timezones);
 
 /*
 Prints:
@@ -277,8 +277,8 @@ Returns the country that uses a timezone given its `name`.
 ```javascript
 const ct = require('countries-and-timezones');
 
-const nyTimezone = ct.getCountriesForTimezone('America/New_York');
-console.log(nyTimezone);
+const timezone = ct.getCountryForTimezone('Asia/Tokyo');
+console.log(timezone);
 
 /*
 Prints:
