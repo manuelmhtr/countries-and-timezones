@@ -10,17 +10,17 @@ let memoizedTimezones = 0;
 
 function getAllCountries() {
   if (totalCountries !== memoizedCountries) Object.keys(data.countries).forEach(getCountry);
-  return countries;
+  return { ...countries };
 }
 
 function getAllTimezones() {
   if (totalTimezones !== memoizedTimezones) Object.keys(data.timezones).forEach(getTimezone);
-  return timezones;
+  return { ...timezones };
 }
 
 function getCountry(id) {
   if (!countries[id]) memoizeCountry(buildCountry(data, id));
-  return countries[id] || null;
+  return countries[id] ? { ...countries[id] } : null;
 }
 
 function memoizeCountry(country) {
@@ -31,7 +31,7 @@ function memoizeCountry(country) {
 
 function getTimezone(name) {
   if (!timezones[name]) memoizeTimezone(buildTimezone(data, name));
-  return timezones[name] || null;
+  return timezones[name] ? { ...timezones[name] } : null;
 }
 
 function memoizeTimezone(timezone) {
