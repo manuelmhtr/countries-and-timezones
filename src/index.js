@@ -1,4 +1,4 @@
-const data = require('./data');
+const data = require('./data.json');
 const buildCountry = require('./build-country');
 const buildTimezone = require('./build-timezone');
 const totalCountries = Object.keys(data.countries).length;

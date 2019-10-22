@@ -1,6 +1,6 @@
 const sinon = require('sinon');
 const proxyquire = require('proxyquire');
-const data = require('../../src/data');
+const data = require('../../src/data.json');
 const totalCountries = Object.keys(data.countries).length;
 const buildCountryMock = sinon.spy(function(data, id) {
   return { id };

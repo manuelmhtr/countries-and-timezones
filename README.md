@@ -298,7 +298,7 @@ Prints:
 Meet [Spott](https://spott.dev):
 - **Search any city, country or administrative division** in the world. By full strings or autocompletion. 
 - Find a place by an IP address.
-- Access to more than 240,000 geographical places. In more than 10 languages.
+- Access to more than 240,000 geographical places. In more than 20 languages.
 
 [![Spott API for cities, countries and administrative divisions](https://spott-assets.s3.amazonaws.com/marketing/banner-720px.png)](https://spott.dev)
 
