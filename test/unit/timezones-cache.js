@@ -1,6 +1,6 @@
 const sinon = require('sinon');
 const proxyquire = require('proxyquire');
-const data = require('../../src/data');
+const data = require('../../src/data.json');
 const totalTimezones = Object.keys(data.timezones).length;
 const buildTimezoneMock = sinon.spy(function(data, name) {
   return { name };

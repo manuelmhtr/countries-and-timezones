@@ -1,6 +1,6 @@
 {
   "name": "countries-and-timezones",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "Minimalistic library to work with countries and timezones data.",
   "main": "src/index.js",
   "scripts": {
@@ -10,13 +10,18 @@
     "type": "git",
     "url": "git+https://github.com/manuelmhtr/countries-and-timezones.git"
   },
+  "engines": {
+    "node": ">=8.x",
+    "npm": ">=5.x"
+  },
   "keywords": [
     "Countries",
     "Timezones",
     "Country",
     "Timezone",
     "Time",
-    "Date"
+    "Date",
+    "DST"
   ],
   "author": "Manuel de la Torre",
   "license": "MIT",

@@ -1,4 +1,4 @@
-const data = require('../../src/data');
+const data = require('../../src/data.json');
 const ct = require('../../src');
 
 const COUNTRIES_WITHOUT_TZ = ['BV', 'HM'];
