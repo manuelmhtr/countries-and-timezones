@@ -293,6 +293,13 @@ Prints:
 
 ```
 
+
+## Related projects
+
+* [countries-db](https://www.npmjs.com/package/countries-db)
+* [location-by-ip](https://www.npmjs.com/package/location-by-ip)
+
+
 ## Working on something more complex?
 
 Meet [Spott](https://spott.dev):
