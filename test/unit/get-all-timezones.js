@@ -1,5 +1,5 @@
-const data = require('../../src/data.json');
-const ct = require('../../src');
+const data = require('../../src-es5/data.json');
+const ct = require('../../src-es5');
 
 const TZ_WITHOUT_COUNTRIES = ['GMT', 'UTC'];
 
