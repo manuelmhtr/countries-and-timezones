@@ -1,6 +1,12 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.1.0] - 2020-03-31
+### Added
+- [#15](https://github.com/manuelmhtr/countries-and-timezones/pull/15) Babel and ES5 support (Steven Vachon)
+- [#16](https://github.com/manuelmhtr/countries-and-timezones/pull/16) CI Action (Steven Vachon)
+
+
 ## [2.0.0] - 2019-10-10
 ### Added
 - `getTimezone` method.
