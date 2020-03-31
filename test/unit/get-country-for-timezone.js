@@ -1,4 +1,4 @@
-const ct = require('../../src');
+const ct = require('../../src-es5');
 
 const US = {
   id: 'US',

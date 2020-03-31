@@ -1,6 +1,6 @@
 const sinon = require('sinon');
 const proxyquire = require('proxyquire');
-const data = require('../../src/data.json');
+const data = require('../../src-es5/data.json');
 const totalTimezones = Object.keys(data.timezones).length;
 const buildTimezoneMock = sinon.spy(function(data, name) {
   return { name };
@@ -12,7 +12,7 @@ describe('Timezones cache', () => {
   beforeEach(() => {
     buildTimezoneMock.resetHistory();
 
-    ct = proxyquire('../../src', {
+    ct = proxyquire('../../src-es5', {
       './build-timezone': buildTimezoneMock
     });
   });
