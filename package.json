@@ -3,6 +3,10 @@
   "version": "2.0.5",
   "description": "Minimalistic library to work with countries and timezones data.",
   "main": "src/index.js",
+  "files": [
+    "src",
+    "yarn.lock"
+  ],
   "scripts": {
     "test": "mocha -r test/index.js test/unit"
   },
