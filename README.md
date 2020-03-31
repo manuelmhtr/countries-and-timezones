@@ -3,7 +3,7 @@
 ![](https://img.shields.io/npm/dm/countries-and-timezones)
 ![](https://img.shields.io/dub/l/vibe-d?color=blue?style=flat)
 
-This is a minimalistic library to work with countries and timezones data.
+> A minimalistic library to work with countries and timezones data.
 
 ## Install
 
@@ -41,7 +41,7 @@ A country is defined by the following parameters:
     'America/Ojinaga',
     'America/Santa_Isabel',
     'America/Tijuana'
-  ] 
+  ]
 }
 ```
 
@@ -73,7 +73,7 @@ A timezone is defined by the following parameters:
 
 ## API
 
-### .getCountry(id)
+### `.getCountry(id)`
 
 Returns a country referenced by its `id`.
 
@@ -100,7 +100,7 @@ Prints:
 */
 ```
 
-### .getTimezone(name)
+### `.getTimezone(name)`
 
 Returns a timezone referenced by its `name`.
 
@@ -128,7 +128,7 @@ Prints:
 */
 ```
 
-### .getAllCountries()
+### `.getAllCountries()`
 
 Returns an object with the data of all countries.
 
@@ -170,7 +170,7 @@ Prints:
 */
 ```
 
-### .getAllTimezones()
+### `.getAllTimezones()`
 
 Returns an object with the data of all timezones.
 
@@ -219,7 +219,7 @@ Prints:
 */
 ```
 
-### .getTimezonesForCountry(id)
+### `.getTimezonesForCountry(id)`
 
 Returns an array with all the timezones of a country given its `id`.
 
@@ -268,7 +268,7 @@ Prints:
 */
 ```
 
-### .getCountryForTimezone(name)
+### `.getCountryForTimezone(name)`
 
 Returns the country that uses a timezone given its `name`.
 
@@ -303,7 +303,7 @@ Prints:
 ## Working on something more complex?
 
 Meet [Spott](https://spott.dev):
-- **Search any city, country or administrative division** in the world. By full strings or autocompletion. 
+- **Search any city, country or administrative division** in the world. By full strings or autocompletion.
 - Find a place by an IP address.
 - Access to more than 240,000 geographical places. In more than 20 languages.
 
