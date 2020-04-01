@@ -1,6 +1,6 @@
 const sinon = require('sinon');
 const proxyquire = require('proxyquire');
-const data = require('../../src-es5/data.json');
+const data = require('../../dist/data.json');
 const totalCountries = Object.keys(data.countries).length;
 const buildCountryMock = sinon.spy(function(data, id) {
   return { id };
@@ -12,7 +12,7 @@ describe('Countries cache', () => {
   beforeEach(() => {
     buildCountryMock.resetHistory();
 
-    ct = proxyquire('../../src-es5', {
+    ct = proxyquire('../../dist', {
       './build-country': buildCountryMock
     });
   });

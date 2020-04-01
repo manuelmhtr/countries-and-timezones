@@ -1,4 +1,4 @@
-const ct = require('../../src-es5');
+const ct = require('../../dist');
 
 const TEST_CASES = {
   'America/Mexico_City': {

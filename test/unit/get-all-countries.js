@@ -1,5 +1,5 @@
-const data = require('../../src-es5/data.json');
-const ct = require('../../src-es5');
+const data = require('../../dist/data.json');
+const ct = require('../../dist');
 
 const COUNTRIES_WITHOUT_TZ = ['BV', 'HM'];
 
