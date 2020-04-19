@@ -3,6 +3,15 @@ const ct = require('../../dist');
 const TEST_CASES = {
   KR: [
     {
+      name: 'ROK',
+      country: 'KR',
+      utcOffset: 540,
+      utcOffsetStr: '+09:00',
+      dstOffset: 540,
+      dstOffsetStr: '+09:00',
+      aliasOf: 'Asia/Seoul'
+    },
+    {
       name: 'Asia/Seoul',
       country: 'KR',
       utcOffset: 540,
@@ -14,6 +23,15 @@ const TEST_CASES = {
   ],
   IS: [
     {
+      name: 'Iceland',
+      country: 'IS',
+      utcOffset: 0,
+      utcOffsetStr: '+00:00',
+      dstOffset: 0,
+      dstOffsetStr: '+00:00',
+      aliasOf: 'Atlantic/Reykjavik'
+    },
+    {
       name: 'Atlantic/Reykjavik',
       country: 'IS',
       utcOffset: 0,
@@ -23,16 +41,8 @@ const TEST_CASES = {
       aliasOf: null
     }
   ],
-  DE: [
-    {
-      name: 'Europe/Berlin',
-      country: 'DE',
-      utcOffset: 60,
-      utcOffsetStr: '+01:00',
-      dstOffset: 120,
-      dstOffsetStr: '+02:00',
-      aliasOf: null
-    },
+  DE: 
+  [
     {
       name: 'Europe/Busingen',
       country: 'DE',
@@ -41,6 +51,15 @@ const TEST_CASES = {
       dstOffset: 120,
       dstOffsetStr: '+02:00',
       aliasOf: 'Europe/Zurich'
+    },
+    {
+      name: 'Europe/Berlin',
+      country: 'DE',
+      utcOffset: 60,
+      utcOffsetStr: '+01:00',
+      dstOffset: 120,
+      dstOffsetStr: '+02:00',
+      aliasOf: null
     }
   ]
 };

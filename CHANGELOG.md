@@ -1,6 +1,13 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.2.0] - 2020-04-18
+### Added
+- Updated 18 existing timezones.
+- Added 89 new timezones.
+- Complying with 2019c INANA Timezones database.
+
+
 ## [2.1.0] - 2020-03-31
 ### Added
 - [#15](https://github.com/manuelmhtr/countries-and-timezones/pull/15) Babel and ES5 support (Steven Vachon)

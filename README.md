@@ -3,7 +3,7 @@
 ![](https://img.shields.io/npm/dm/countries-and-timezones)
 ![](https://img.shields.io/dub/l/vibe-d?color=blue?style=flat)
 
-> A minimalistic library to work with countries and timezones data.
+> A minimalistic library to work with countries and timezones data. Updated with the [IANA timezones database](https://www.iana.org/time-zones).
 
 ## Install
 
@@ -28,19 +28,22 @@ A country is defined by the following parameters:
   id: 'MX',
   name: 'Mexico',
   timezones: [
+    'Mexico/BajaSur',
+    'Mexico/General',
+    'America/Ensenada',
+    'America/Santa_Isabel',
+    'Mexico/BajaNorte',
     'America/Bahia_Banderas',
     'America/Cancun',
     'America/Chihuahua',
-    'America/Ensenada',
+    'America/Tijuana',
     'America/Hermosillo',
     'America/Matamoros',
     'America/Mazatlan',
     'America/Merida',
     'America/Mexico_City',
     'America/Monterrey',
-    'America/Ojinaga',
-    'America/Santa_Isabel',
-    'America/Tijuana'
+    'America/Ojinaga'
   ]
 }
 ```
@@ -91,10 +94,7 @@ Prints:
 {
   id: 'DE',
   name: 'Germany',
-  timezones: [
-    'Europe/Berlin',
-    'Europe/Busingen'
-  ]
+  timezones: [ 'Europe/Busingen', 'Europe/Berlin' ]
 }
 
 */
@@ -186,32 +186,32 @@ console.log(timezones);
 Prints:
 
 {
-  'America/Los_Angeles': {
-    name: 'America/Los_Angeles',
-    country: 'US',
-    utcOffset: -480,
-    utcOffsetStr: '-08:00',
-    dstOffset: -420,
-    dstOffsetStr: '-07:00',
-    aliasOf: null
-  },
-  'Africa/Abidjan': {
-    name: 'Africa/Abidjan',
-    country: 'CI',
+  'Africa/Bamako': {
+    name: 'Africa/Bamako',
+    country: 'ML',
     utcOffset: 0,
     utcOffsetStr: '+00:00',
     dstOffset: 0,
     dstOffsetStr: '+00:00',
-    aliasOf: null
+    aliasOf: 'Africa/Abidjan'
   },
-  'Africa/Accra': {
-    name: 'Africa/Accra',
-    country: 'GH',
+  'Africa/Banjul': {
+    name: 'Africa/Banjul',
+    country: 'GM',
     utcOffset: 0,
     utcOffsetStr: '+00:00',
     dstOffset: 0,
     dstOffsetStr: '+00:00',
-    aliasOf: null
+    aliasOf: 'Africa/Abidjan'
+  },
+  'Africa/Conakry': {
+    name: 'Africa/Conakry',
+    country: 'GN',
+    utcOffset: 0,
+    utcOffsetStr: '+00:00',
+    dstOffset: 0,
+    dstOffsetStr: '+00:00',
+    aliasOf: 'Africa/Abidjan'
   },
   ...
 }
@@ -236,31 +236,31 @@ Prints:
 
 [
   {
-    name: 'America/Bahia_Banderas',
-    country: 'MX',
-    utcOffset: -360,
-    utcOffsetStr: '-06:00',
-    dstOffset: -300,
-    dstOffsetStr: '-05:00',
-    aliasOf: null
-  },
-  {
-    name: 'America/Cancun',
-    country: 'MX',
-    utcOffset: -300,
-    utcOffsetStr: '-05:00',
-    dstOffset: -300,
-    dstOffsetStr: '-05:00',
-    aliasOf: null
-  },
-  {
-    name: 'America/Chihuahua',
+    name: 'Mexico/BajaSur',
     country: 'MX',
     utcOffset: -420,
     utcOffsetStr: '-07:00',
     dstOffset: -360,
     dstOffsetStr: '-06:00',
-    aliasOf: null
+    aliasOf: 'America/Mazatlan'
+  },
+  {
+    name: 'Mexico/General',
+    country: 'MX',
+    utcOffset: -360,
+    utcOffsetStr: '-06:00',
+    dstOffset: -300,
+    dstOffsetStr: '-05:00',
+    aliasOf: 'America/Mexico_City'
+  },
+  {
+    name: 'America/Ensenada',
+    country: 'MX',
+    utcOffset: -480,
+    utcOffsetStr: '-08:00',
+    dstOffset: -420,
+    dstOffsetStr: '-07:00',
+    aliasOf: 'America/Tijuana'
   },
   ...
 }
@@ -296,8 +296,8 @@ Prints:
 
 ## Related projects
 
-* [countries-db](https://www.npmjs.com/package/countries-db)
-* [location-by-ip](https://www.npmjs.com/package/location-by-ip)
+* [countries-db](https://www.npmjs.com/package/countries-db): Minimalistic lib withcountries data.
+* [location-by-ip](https://www.npmjs.com/package/location-by-ip): Get the location of any IP address.
 
 
 ## Working on something more complex?

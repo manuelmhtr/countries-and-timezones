@@ -1,7 +1,10 @@
 const data = require('../../dist/data.json');
 const ct = require('../../dist');
 
-const TZ_WITHOUT_COUNTRIES = ['GMT', 'UTC'];
+const TZ_WITHOUT_COUNTRIES = [
+  'GMT', 'UTC', 'UCT', 'CET', 'CST6CDT', 'EET', 'EST', 'EST5EDT', 'HST', 'MET',
+  'MST', 'MST7MDT', 'PST8PDT', 'WET', 'Greenwich', 'Universal', 'Zulu'
+];
 
 describe('.getAllTimezones', () => {
   it('should return an object containing full timezones data', () => {
@@ -33,7 +36,9 @@ function expectTimezone(timezone, aliasTz) {
 }
 
 function shouldHaveCountry(name) {
-  return !name.includes('Etc/') && !TZ_WITHOUT_COUNTRIES.includes(name);
+  return !name.includes('Etc/')
+    && !name.includes('GMT')
+    && !TZ_WITHOUT_COUNTRIES.includes(name);
 }
 
 function expectAlias(timezone, aliasTz) {

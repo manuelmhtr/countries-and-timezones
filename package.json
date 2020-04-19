@@ -1,6 +1,6 @@
 {
   "name": "countries-and-timezones",
-  "version": "2.1.1",
+  "version": "2.2.0",
   "description": "Minimalistic library to work with countries and timezones data.",
   "main": "dist/index.js",
   "files": [
@@ -26,7 +26,9 @@
     "Timezone",
     "Time",
     "Date",
-    "DST"
+    "DST",
+    "IANA",
+    "ICANN"
   ],
   "author": "Manuel de la Torre",
   "license": "MIT",
