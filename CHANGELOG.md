@@ -1,6 +1,16 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+
+## [2.3.0] - 2020-08-25
+### Added
+- Support for `<script/>` tag.
+
+### Changed
+- Added 1 new timezone ("America/Nuuk").
+- Updated with 2020a INANA Timezones database.
+
+
 ## [2.2.0] - 2020-04-18
 ### Added
 - Updated 18 existing timezones.

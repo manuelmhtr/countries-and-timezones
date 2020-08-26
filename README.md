@@ -1,78 +1,38 @@
 # countries-and-timezones
-![](https://img.shields.io/badge/build-passing-green?style=flat)
+![](https://img.shields.io/github/workflow/status/manuelmhtr/countries-and-timezones/tests?style=flat)
 ![](https://img.shields.io/npm/dm/countries-and-timezones)
-![](https://img.shields.io/dub/l/vibe-d?color=blue?style=flat)
+![](https://img.shields.io/badge/license-MIT-blue?style=flat)
 
 > A minimalistic library to work with countries and timezones data. Updated with the [IANA timezones database](https://www.iana.org/time-zones).
 
-## Install
+## Usage
 
-```
+### NodeJS
+
+Install with npm or yarn:
+
+```bash
 npm install --save countries-and-timezones
 ```
 
-## Data models
+### Browser
 
-### Country
+Add the following script to your project (only ~9kb):
 
-A country is defined by the following parameters:
+```html
+<!-- Latest version -->
+<script src="https://cdn.jsdelivr.net/gh/manuelmhtr/countries-and-timezones/dist/index.js" type="text/javascript"></script>
 
-| Parameter | Type | Description |
-| --------- | ---- | ----------- |
-|`id`|String|The country [ISO 3166-1 code](https://es.wikipedia.org/wiki/ISO_3166-1).|
-|`name`|String|Preferred name of the country.|
-|`timezones`|Array[String]|The list of timezones used in the country.|
+<!-- Or specify a version -->
+<script src="https://cdn.jsdelivr.net/gh/manuelmhtr/countries-and-timezones@v2.3.0/dist/index.js" type="text/javascript"></script>
 
-```javascript
-{
-  id: 'MX',
-  name: 'Mexico',
-  timezones: [
-    'Mexico/BajaSur',
-    'Mexico/General',
-    'America/Ensenada',
-    'America/Santa_Isabel',
-    'Mexico/BajaNorte',
-    'America/Bahia_Banderas',
-    'America/Cancun',
-    'America/Chihuahua',
-    'America/Tijuana',
-    'America/Hermosillo',
-    'America/Matamoros',
-    'America/Mazatlan',
-    'America/Merida',
-    'America/Mexico_City',
-    'America/Monterrey',
-    'America/Ojinaga'
-  ]
-}
+<!-- This will export a variable named "ct": -->
+<script type="text/javascript">
+  var data = ct.getCountry('MX');
+  console.log(data);
+</script>
 ```
 
-### Timezone
-
-A timezone is defined by the following parameters:
-
-| Parameter | Type | Description |
-| --------- | ---- | ----------- |
-|`name`|String|The name of the timezone, from [tz database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).|
-|`country`|String|The [ISO 3166-1 code](https://es.wikipedia.org/wiki/ISO_3166-1) of the country where it's used. `Etc/*`, `GMT` and `UTC` timezones don't have and associated country.|
-|`utcOffset`|Number|The difference in **minutes** between the timezone and [UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time).|
-|`utcOffsetStr`|String|The difference in hours and minutes between the timezone and [UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), expressed as string with format: `±[hh]:[mm]`.|
-|`dstOffset`|Number|The difference in **minutes** between the timezone and [UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) during daylight saving time ([DST](https://en.wikipedia.org/wiki/Daylight_saving_time)). When `utcOffset` and `dstOffset` are the same, means that the timezone does not observe a daylight saving time.|
-|`dstOffsetStr`|String|The difference in hours and minutes between the timezone and [UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) during daylight saving time ([DST](https://en.wikipedia.org/wiki/Daylight_saving_time), expressed as string with format: `±[hh]:[mm]`.|
-|`aliasOf`|String|The `name` of a primary timezone in case this is an alias. `null` means this is a primary timezone.|
-
-```javascript
-{
-  name: 'Asia/Tel_Aviv',
-  country: 'IL',
-  utcOffset: 120,
-  utcOffsetStr: '+02:00',
-  dstOffset: 180,
-  dstOffsetStr: '+03:00',
-  aliasOf: 'Asia/Jerusalem'
-}
-```
 
 ## API
 
@@ -291,6 +251,70 @@ Prints:
 
 */
 
+```
+
+
+## Data models
+
+### Country
+
+A country is defined by the following parameters:
+
+| Parameter | Type | Description |
+| --------- | ---- | ----------- |
+|`id`|String|The country [ISO 3166-1 code](https://es.wikipedia.org/wiki/ISO_3166-1).|
+|`name`|String|Preferred name of the country.|
+|`timezones`|Array[String]|The list of timezones used in the country.|
+
+```javascript
+{
+  id: 'MX',
+  name: 'Mexico',
+  timezones: [
+    'Mexico/BajaSur',
+    'Mexico/General',
+    'America/Ensenada',
+    'America/Santa_Isabel',
+    'Mexico/BajaNorte',
+    'America/Bahia_Banderas',
+    'America/Cancun',
+    'America/Chihuahua',
+    'America/Tijuana',
+    'America/Hermosillo',
+    'America/Matamoros',
+    'America/Mazatlan',
+    'America/Merida',
+    'America/Mexico_City',
+    'America/Monterrey',
+    'America/Ojinaga'
+  ]
+}
+```
+
+### Timezone
+
+A timezone is defined by the following parameters:
+
+| Parameter | Type | Description |
+| --------- | ---- | ----------- |
+|`name`|String|The name of the timezone, from [tz database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).|
+|`country`|String|The [ISO 3166-1 code](https://es.wikipedia.org/wiki/ISO_3166-1) of the country where it's used. `Etc/*`, `GMT` and `UTC` timezones don't have and associated country.|
+|`utcOffset`|Number|The difference in **minutes** between the timezone and [UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time).|
+|`utcOffsetStr`|String|The difference in hours and minutes between the timezone and [UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), expressed as string with format: `±[hh]:[mm]`.|
+|`dstOffset`|Number|The difference in **minutes** between the timezone and [UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) during daylight saving time ([DST](https://en.wikipedia.org/wiki/Daylight_saving_time)). When `utcOffset` and `dstOffset` are the same, means that the timezone does not observe a daylight saving time.|
+|`dstOffsetStr`|String|The difference in hours and minutes between the timezone and [UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) during daylight saving time ([DST](https://en.wikipedia.org/wiki/Daylight_saving_time), expressed as string with format: `±[hh]:[mm]`.|
+|`aliasOf`|String|The `name` of a primary timezone in case this is an alias. `null` means this is a primary timezone.|
+
+```javascript
+{
+  name: 'Asia/Tel_Aviv',
+  country: 'IL',
+  utcOffset: 120,
+  utcOffsetStr: '+02:00',
+  dstOffset: 180,
+  dstOffsetStr: '+03:00',
+  aliasOf: 'Asia/Jerusalem'
+}
 ```
 
 
