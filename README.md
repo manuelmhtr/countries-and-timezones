@@ -21,7 +21,7 @@ Add the following script to your project (only ~9kb):
 
 ```html
 <!-- Latest version -->
-<script src="https://cdn.jsdelivr.net/gh/manuelmhtr/countries-and-timezones/dist/index.js" type="text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/gh/manuelmhtr/countries-and-timezones@latest/dist/index.js" type="text/javascript"></script>
 
 <!-- Or specify a version -->
 <script src="https://cdn.jsdelivr.net/gh/manuelmhtr/countries-and-timezones@v2.3.0/dist/index.js" type="text/javascript"></script>

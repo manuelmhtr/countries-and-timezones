@@ -1,6 +1,6 @@
 {
   "name": "countries-and-timezones",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "description": "Minimalistic library to work with countries and timezones data.",
   "main": "dist/index.js",
   "files": [
