@@ -1,4 +1,4 @@
-name: tests
+name: Purge CDN cache
 
 on:
   push:
