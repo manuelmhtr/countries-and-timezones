@@ -24,7 +24,7 @@ Add the following script to your project (only ~9kb):
 <script src="https://cdn.jsdelivr.net/gh/manuelmhtr/countries-and-timezones@latest/dist/index.js" type="text/javascript"></script>
 
 <!-- Or specify a version -->
-<script src="https://cdn.jsdelivr.net/gh/manuelmhtr/countries-and-timezones@v2.3.0/dist/index.js" type="text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/gh/manuelmhtr/countries-and-timezones@v2.4.0/dist/index.js" type="text/javascript"></script>
 
 <!-- This will export a variable named "ct": -->
 <script type="text/javascript">
@@ -320,9 +320,15 @@ A timezone is defined by the following parameters:
 
 ## Related projects
 
-* [countries-db](https://www.npmjs.com/package/countries-db): Minimalistic lib withcountries data.
+* [countries-db](https://www.npmjs.com/package/countries-db): Minimalistic lib with countries data.
 * [location-by-ip](https://www.npmjs.com/package/location-by-ip): Get the location of any IP address.
 
+## Help
+
+This project is maintained by a single person, considering supporting by:
+
+* Sharing your [feedback](mailto:manuelmhtr@gmail.com).
+* Becoming a [sponsor](https://github.com/sponsors/manuelmhtr).
 
 ## Working on something more complex?
 

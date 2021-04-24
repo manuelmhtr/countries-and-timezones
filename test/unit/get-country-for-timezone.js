@@ -19,7 +19,6 @@ const US = {
     "US/Indiana-Starke",
     "America/Louisville",
     "US/Pacific",
-    "US/Pacific-New",
     "US/Eastern",
     "US/Arizona",
     "Pacific/Johnston",

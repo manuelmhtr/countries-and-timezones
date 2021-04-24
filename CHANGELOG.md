@@ -2,6 +2,14 @@
 All notable changes to this project will be documented in this file.
 
 
+## [2.4.0] - 2021-04-24
+### Changed
+- Updated with 2021a INANA Timezones database.
+
+### Removed
+- `US/Pacific-New` timezone.
+
+
 ## [2.3.0] - 2020-08-25
 ### Added
 - Support for `<script/>` tag.

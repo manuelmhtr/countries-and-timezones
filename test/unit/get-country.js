@@ -42,7 +42,6 @@ const TEST_CASES = {
       "US/Indiana-Starke",
       "America/Louisville",
       "US/Pacific",
-      "US/Pacific-New",
       "US/Eastern",
       "US/Arizona",
       "Pacific/Johnston",
