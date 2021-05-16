@@ -3,6 +3,7 @@
   "version": "2.4.0",
   "description": "Minimalistic library to work with countries and timezones data.",
   "main": "dist/index.js",
+  "module": "dist/index.esm.js",
   "files": [
     "dist",
     "yarn.lock"
