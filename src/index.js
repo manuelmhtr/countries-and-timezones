@@ -20,8 +20,10 @@ function getAllTimezones() {
 }
 
 function getCountry(id) {
-  if (!countries[id]) memoizeCountry(buildCountry(data, id));
   const idISO3 = dataIso2ToIso3[id]
+  if (!countries[id]) {
+    memoizeCountry(buildCountry(data, id, idISO3));
+  }
   return countries[id] ? { idISO3, ...countries[id] } : null;
 }
 

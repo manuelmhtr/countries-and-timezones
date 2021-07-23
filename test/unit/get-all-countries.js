@@ -16,6 +16,7 @@ describe('.getAllCountries', () => {
 
 function expectCountry(country) {
   expect(country.id).to.be.a('string');
+  expect(country.idISO3).to.be.a('string');
   expect(country.name).to.be.a('string');
   expect(country.timezones).to.be.an('array');
   expect(country.id.length).to.be.equal(2);

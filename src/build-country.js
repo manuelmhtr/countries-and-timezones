@@ -1,6 +1,6 @@
 let timezonesMap;
 
-function buildCountry(data, id) {
+function buildCountry(data, id, idISO3) {
   const name = data.countries[id];
   if (!name) return null;
 
@@ -9,6 +9,7 @@ function buildCountry(data, id) {
 
   return {
     id,
+    idISO3,
     name,
     timezones
   };
@@ -22,7 +23,7 @@ function getTimezonesMap(data) {
 function buildTimezonesMap(data) {
   return Object.keys(data.timezones).reduce((result, id) => {
     const tz = data.timezones[id];
-    const {c, a} = tz;
+    const { c, a } = tz;
     const aliasTz = data.timezones[a] || {};
     const country = c || aliasTz.c;
 
