@@ -1,4 +1,5 @@
 const data = require('./data.json');
+const dataIso2ToIso3 = require('./data-map-iso2-to-iso3.json');
 const buildCountry = require('./build-country');
 const buildTimezone = require('./build-timezone');
 const totalCountries = Object.keys(data.countries).length;
@@ -20,7 +21,8 @@ function getAllTimezones() {
 
 function getCountry(id) {
   if (!countries[id]) memoizeCountry(buildCountry(data, id));
-  return countries[id] ? { ...countries[id] } : null;
+  const idISO3 = dataIso2ToIso3[id]
+  return countries[id] ? { idISO3, ...countries[id] } : null;
 }
 
 function memoizeCountry(country) {
@@ -49,7 +51,7 @@ function getCountryForTimezone(tzName) {
 function getTimezonesForCountry(countryId) {
   const country = getCountry(countryId);
   if (!country) return null;
-  const {timezones = []} = country;
+  const { timezones = [] } = country;
   return timezones.map(getTimezone);
 }
 

@@ -3,6 +3,7 @@ const ct = require('../../dist');
 const TEST_CASES = {
   MX: {
     id: 'MX',
+    idISO3: 'MEX',
     name: 'Mexico',
     timezones: [
       "Mexico/BajaSur",
@@ -25,6 +26,7 @@ const TEST_CASES = {
   },
   US: {
     id: 'US',
+    idISO3: 'USA',
     name: 'United States of America',
     timezones: [
       "America/Atka",
@@ -79,6 +81,7 @@ const TEST_CASES = {
   },
   KR: {
     id: 'KR',
+    idISO3: "KOR",
     name: 'South Korea',
     timezones: [
       'ROK',
