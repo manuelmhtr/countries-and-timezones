@@ -40,10 +40,10 @@ function memoizeTimezone(timezone) {
   memoizedTimezones = Object.keys(timezone).length;
 }
 
-function getCountryForTimezone(tzName) {
+function getCountriesForTimezone(tzName) {
   const timezone = getTimezone(tzName) || {};
-  const country = timezone.country;
-  return country ? getCountry(country) : null;
+  const countries = timezone.countries || [];
+  return countries.map(getCountry);
 }
 
 function getTimezonesForCountry(countryId) {
@@ -53,11 +53,9 @@ function getTimezonesForCountry(countryId) {
   return timezones.map(getTimezone);
 }
 
-module.exports = {
-  getAllCountries,
-  getAllTimezones,
-  getCountry,
-  getTimezone,
-  getCountryForTimezone,
-  getTimezonesForCountry
-};
+exports.getAllCountries = getAllCountries;
+exports.getAllTimezones = getAllTimezones;
+exports.getCountry = getCountry;
+exports.getTimezone = getTimezone;
+exports.getCountriesForTimezone = getCountriesForTimezone;
+exports.getTimezonesForCountry = getTimezonesForCountry;

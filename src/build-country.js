@@ -24,12 +24,14 @@ function buildTimezonesMap(data) {
     const tz = data.timezones[id];
     const {c, a} = tz;
     const aliasTz = data.timezones[a] || {};
-    const country = c || aliasTz.c;
+    const countries = c || aliasTz.c;
 
-    if (!country) return result;
+    if (!countries) return result;
 
-    if (!result[country]) result[country] = [];
-    result[country].push(id);
+    countries.forEach((country) => {
+      if (!result[country]) result[country] = [];
+      result[country].push(id);
+    });
 
     return result;
   }, {});

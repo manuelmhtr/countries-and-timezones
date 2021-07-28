@@ -4,7 +4,7 @@ const TEST_CASES = {
   KR: [
     {
       name: 'ROK',
-      country: 'KR',
+      countries: ['KR'],
       utcOffset: 540,
       utcOffsetStr: '+09:00',
       dstOffset: 540,
@@ -13,7 +13,7 @@ const TEST_CASES = {
     },
     {
       name: 'Asia/Seoul',
-      country: 'KR',
+      countries: ['KR'],
       utcOffset: 540,
       utcOffsetStr: '+09:00',
       dstOffset: 540,
@@ -24,7 +24,7 @@ const TEST_CASES = {
   IS: [
     {
       name: 'Iceland',
-      country: 'IS',
+      countries: ['IS'],
       utcOffset: 0,
       utcOffsetStr: '+00:00',
       dstOffset: 0,
@@ -33,7 +33,7 @@ const TEST_CASES = {
     },
     {
       name: 'Atlantic/Reykjavik',
-      country: 'IS',
+      countries: ['IS'],
       utcOffset: 0,
       utcOffsetStr: '+00:00',
       dstOffset: 0,
@@ -41,11 +41,11 @@ const TEST_CASES = {
       aliasOf: null
     }
   ],
-  DE: 
+  DE:
   [
     {
       name: 'Europe/Busingen',
-      country: 'DE',
+      countries: ['DE'],
       utcOffset: 60,
       utcOffsetStr: '+01:00',
       dstOffset: 120,
@@ -54,7 +54,16 @@ const TEST_CASES = {
     },
     {
       name: 'Europe/Berlin',
-      country: 'DE',
+      countries: ['DE'],
+      utcOffset: 60,
+      utcOffsetStr: '+01:00',
+      dstOffset: 120,
+      dstOffsetStr: '+02:00',
+      aliasOf: null
+    },
+    {
+      name: 'Europe/Zurich',
+      countries: ['CH', 'DE', 'LI'],
       utcOffset: 60,
       utcOffsetStr: '+01:00',
       dstOffset: 120,
@@ -71,11 +80,6 @@ describe('.getTimezonesForCountry', () => {
       const expectedResult = TEST_CASES[testCase];
       expect(result).to.be.eql(expectedResult);
     });
-  });
-
-  it('should return empty array for country without timezones', () => {
-    const result = ct.getTimezonesForCountry('BV');
-    expect(result).to.be.eql([]);
   });
 
   it('should return null for not existent country', () => {

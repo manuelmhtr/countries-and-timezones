@@ -24,7 +24,7 @@ Add the following script to your project (only ~9kb):
 <script src="https://cdn.jsdelivr.net/gh/manuelmhtr/countries-and-timezones@latest/dist/index.js" type="text/javascript"></script>
 
 <!-- Or specify a version -->
-<script src="https://cdn.jsdelivr.net/gh/manuelmhtr/countries-and-timezones@v2.4.0/dist/index.js" type="text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/gh/manuelmhtr/countries-and-timezones@v3.0.0/dist/index.js" type="text/javascript"></script>
 
 <!-- This will export a variable named "ct": -->
 <script type="text/javascript">
@@ -77,7 +77,7 @@ Prints:
 
 {
   name: 'America/Los_Angeles',
-  country: 'US',
+  countries: [ 'US' ],
   utcOffset: -480,
   utcOffsetStr: '-08:00',
   dstOffset: -420,
@@ -148,7 +148,7 @@ Prints:
 {
   'Africa/Bamako': {
     name: 'Africa/Bamako',
-    country: 'ML',
+    countries: [ 'ML' ],
     utcOffset: 0,
     utcOffsetStr: '+00:00',
     dstOffset: 0,
@@ -157,7 +157,7 @@ Prints:
   },
   'Africa/Banjul': {
     name: 'Africa/Banjul',
-    country: 'GM',
+    countries: [ 'GM' ],
     utcOffset: 0,
     utcOffsetStr: '+00:00',
     dstOffset: 0,
@@ -166,7 +166,7 @@ Prints:
   },
   'Africa/Conakry': {
     name: 'Africa/Conakry',
-    country: 'GN',
+    countries: [ 'GN' ],
     utcOffset: 0,
     utcOffsetStr: '+00:00',
     dstOffset: 0,
@@ -197,7 +197,7 @@ Prints:
 [
   {
     name: 'Mexico/BajaSur',
-    country: 'MX',
+    countries: [ 'MX' ],
     utcOffset: -420,
     utcOffsetStr: '-07:00',
     dstOffset: -360,
@@ -206,7 +206,7 @@ Prints:
   },
   {
     name: 'Mexico/General',
-    country: 'MX',
+    countries: [ 'MX' ],
     utcOffset: -360,
     utcOffsetStr: '-06:00',
     dstOffset: -300,
@@ -215,7 +215,7 @@ Prints:
   },
   {
     name: 'America/Ensenada',
-    country: 'MX',
+    countries: [ 'MX' ],
     utcOffset: -480,
     utcOffsetStr: '-08:00',
     dstOffset: -420,
@@ -228,26 +228,47 @@ Prints:
 */
 ```
 
-### `.getCountryForTimezone(name)`
+### `.getCountriesForTimezone(name)`
 
-Returns the country that uses a timezone given its `name`.
+Returns a list of the countries that uses a timezone given its `name`. When a timezone has multiple countries **the first element is more relevant** due to its geographical location.
 
 **Example**
 
 ```javascript
 const ct = require('countries-and-timezones');
 
-const timezone = ct.getCountryForTimezone('Asia/Tokyo');
+const timezone = ct.getCountriesForTimezone('Asia/Tokyo');
 console.log(timezone);
 
 /*
 Prints:
 
-{
-  id: 'JP',
-  name: 'Japan',
-  timezones: [ 'Asia/Tokyo' ]
-}
+[
+  {
+    "id": "CH",
+    "name": "Switzerland",
+    "timezones": [
+      "Europe/Zurich"
+    ]
+  },
+  {
+    "id": "DE",
+    "name": "Germany",
+    "timezones": [
+      "Europe/Busingen",
+      "Europe/Berlin",
+      "Europe/Zurich"
+    ]
+  },
+  {
+    "id": "LI",
+    "name": "Liechtenstein",
+    "timezones": [
+      "Europe/Vaduz",
+      "Europe/Zurich"
+    ]
+  }
+]
 
 */
 
@@ -298,7 +319,7 @@ A timezone is defined by the following parameters:
 | Parameter | Type | Description |
 | --------- | ---- | ----------- |
 |`name`|String|The name of the timezone, from [tz database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).|
-|`country`|String|The [ISO 3166-1 code](https://es.wikipedia.org/wiki/ISO_3166-1) of the country where it's used. `Etc/*`, `GMT` and `UTC` timezones don't have and associated country.|
+|`countries`|[String]|A list of [ISO 3166-1 codes](https://es.wikipedia.org/wiki/ISO_3166-1) of the countries where it's used. `Etc/*`, `GMT` and `UTC` timezones don't have associated countries.|
 |`utcOffset`|Number|The difference in **minutes** between the timezone and [UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time).|
 |`utcOffsetStr`|String|The difference in hours and minutes between the timezone and [UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), expressed as string with format: `±[hh]:[mm]`.|
 |`dstOffset`|Number|The difference in **minutes** between the timezone and [UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) during daylight saving time ([DST](https://en.wikipedia.org/wiki/Daylight_saving_time)). When `utcOffset` and `dstOffset` are the same, means that the timezone does not observe a daylight saving time.|
@@ -308,7 +329,7 @@ A timezone is defined by the following parameters:
 ```javascript
 {
   name: 'Asia/Tel_Aviv',
-  country: 'IL',
+  countries: [ 'IL' ],
   utcOffset: 120,
   utcOffsetStr: '+02:00',
   dstOffset: 180,

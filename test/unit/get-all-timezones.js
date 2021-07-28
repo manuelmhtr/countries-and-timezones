@@ -30,8 +30,12 @@ function expectTimezone(timezone, aliasTz) {
   expect(timezone.dstOffsetStr).to.match(/^(\+|\-)\d{2}:\d{2}$/);
   if (aliasTz) expectAlias(timezone, aliasTz);
   if (shouldHaveCountry(timezone.name)) {
-    expect(timezone.country).to.be.a('string');
-    expect(timezone.country.length).to.be.equal(2);
+    expect(timezone.countries).to.be.an('array');
+    expect(timezone.countries.length > 0).to.be.equal(true);
+    timezone.countries.forEach((country) => {
+      expect(country).to.be.a('string');
+      expect(country.length).to.be.equal(2);
+    });
   }
 }
 

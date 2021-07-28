@@ -9,13 +9,13 @@ function buildTimezone(data, name) {
     ...data.timezones[name]
   };
 
-  const country = tz.c || null;
+  const countries = tz.c || [];
   const utcOffset = tz.u;
   const dstOffset = Number.isInteger(tz.d) ? tz.d : utcOffset;
 
   return {
     name,
-    country,
+    countries,
     utcOffset,
     utcOffsetStr: getOffsetStr(utcOffset),
     dstOffset,

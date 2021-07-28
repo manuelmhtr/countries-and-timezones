@@ -3,7 +3,7 @@ const ct = require('../../dist');
 const TEST_CASES = {
   'America/Mexico_City': {
     name: 'America/Mexico_City',
-    country: 'MX',
+    countries: ['MX'],
     utcOffset: -360,
     utcOffsetStr: '-06:00',
     dstOffset: -300,
@@ -12,7 +12,7 @@ const TEST_CASES = {
   },
   'Indian/Comoro': {
     name: 'Indian/Comoro',
-    country: 'KM',
+    countries: ['KM'],
     utcOffset: 180,
     utcOffsetStr: '+03:00',
     dstOffset: 180,
@@ -21,7 +21,7 @@ const TEST_CASES = {
   },
   'UTC': {
     name: 'UTC',
-    country: null,
+    countries: [],
     utcOffset: 0,
     utcOffsetStr: '+00:00',
     dstOffset: 0,
@@ -30,7 +30,7 @@ const TEST_CASES = {
   },
   'Asia/Tel_Aviv': {
     name: 'Asia/Tel_Aviv',
-    country: 'IL',
+    countries: ['IL'],
     utcOffset: 120,
     utcOffsetStr: '+02:00',
     dstOffset: 180,

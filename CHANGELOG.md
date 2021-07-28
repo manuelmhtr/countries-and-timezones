@@ -1,6 +1,23 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [3.0.0] - 2021-07-28
+### Added
+- [#32](https://github.com/manuelmhtr/countries-and-timezones/pull/32) Added support for ESM named exports
+
+### Changed
+- Timezones might now be related with multiple countries.
+
+### Removed
+- Removed deprecated timezones: `America/Fort_Wayne`, `America/Godthab`, `America/Indianapolis`, `Asia/Rangoon`, `Singapore`, `US/East-Indiana`, `W-SU`.
+
+### Breaking changes
+- `getCountryForTimezone` method was renamed to `getCountriesForTimezone` since now timezones might be related with multiple countries. The first country in the list is more relevant due to its geographical location.
+- The timezone property `country` was renamed to `countries` and is a list of strings rather than a single string.
+
+## [2.5.0] - 2021-07-18
+### Added
+- [#27](https://github.com/manuelmhtr/countries-and-timezones/pull/27) Added ESM Build (by [Sachin Singh](https://github.com/scssyworks))
 
 ## [2.4.0] - 2021-04-24
 ### Changed
@@ -28,8 +45,8 @@ All notable changes to this project will be documented in this file.
 
 ## [2.1.0] - 2020-03-31
 ### Added
-- [#15](https://github.com/manuelmhtr/countries-and-timezones/pull/15) Babel and ES5 support (Steven Vachon)
-- [#16](https://github.com/manuelmhtr/countries-and-timezones/pull/16) CI Action (Steven Vachon)
+- [#15](https://github.com/manuelmhtr/countries-and-timezones/pull/15) Babel and ES5 support (by [Steven Vachon](https://github.com/stevenvachon))
+- [#16](https://github.com/manuelmhtr/countries-and-timezones/pull/16) CI Action (by [Steven Vachon](https://github.com/stevenvachon))
 
 
 ## [2.0.0] - 2019-10-10

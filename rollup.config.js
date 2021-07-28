@@ -3,7 +3,6 @@ import commonjs from '@rollup/plugin-commonjs';
 import json from '@rollup/plugin-json';
 import { uglify } from 'rollup-plugin-uglify';
 
-const input = 'src/index.js';
 const plugins = [
   commonjs(),
   json(),
@@ -16,23 +15,14 @@ const plugins = [
 
 export default [
   {
-    input,
+    input: 'src/index.js',
     output: {
+      name: 'ct',
       file: 'dist/index.js',
       format: 'umd',
-      name: 'ct',
+      exports: 'named',
       sourcemap: true,
     },
-    plugins,
-  },
-  {
-    input,
-    output: {
-      file: 'dist/index.esm.js',
-      format: 'es',
-      name: 'ct',
-      sourcemap: true,
-    },
-    plugins,
+    plugins
   },
 ];

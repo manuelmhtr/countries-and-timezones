@@ -13,8 +13,6 @@ const US = {
     "US/Mountain",
     "US/Michigan",
     "America/Indiana/Indianapolis",
-    "America/Indianapolis",
-    "US/East-Indiana",
     "America/Knox_IN",
     "US/Indiana-Starke",
     "America/Louisville",
@@ -29,7 +27,6 @@ const US = {
     'America/Chicago',
     'America/Denver',
     'America/Detroit',
-    'America/Fort_Wayne',
     'America/Indiana/Knox',
     'America/Indiana/Marengo',
     'America/Indiana/Petersburg',
@@ -55,58 +52,80 @@ const US = {
   ]
 };
 
-const TEST_CASES = {
-  'America/Mexico_City': {
-    id: 'MX',
-    name: 'Mexico',
-    timezones: [
-      "Mexico/BajaSur",
-      "Mexico/General",
-      "America/Ensenada",
-      "America/Santa_Isabel",
-      "Mexico/BajaNorte",
-      'America/Bahia_Banderas',
-      'America/Cancun',
-      'America/Chihuahua',
-      'America/Tijuana',
-      'America/Hermosillo',
-      'America/Matamoros',
-      'America/Mazatlan',
-      'America/Merida',
-      'America/Mexico_City',
-      'America/Monterrey',
-      'America/Ojinaga'
-    ]
-  },
-  'America/Anchorage': US,
-  'America/Los_Angeles': US,
-  'America/North_Dakota/New_Salem': US,
-  'Asia/Seoul': {
-    id: 'KR',
-    name: 'South Korea',
-    timezones: [
-      'ROK',
-      'Asia/Seoul'
-    ]
-  }
+const MX = {
+  id: 'MX',
+  name: 'Mexico',
+  timezones: [
+    "Mexico/BajaSur",
+    "Mexico/General",
+    "America/Ensenada",
+    "America/Santa_Isabel",
+    "Mexico/BajaNorte",
+    'America/Bahia_Banderas',
+    'America/Cancun',
+    'America/Chihuahua',
+    'America/Tijuana',
+    'America/Hermosillo',
+    'America/Matamoros',
+    'America/Mazatlan',
+    'America/Merida',
+    'America/Mexico_City',
+    'America/Monterrey',
+    'America/Ojinaga'
+  ]
 };
 
-describe('.getCountryForTimezone', () => {
+const CH = {
+  id: 'CH',
+  name: 'Switzerland',
+  timezones: [
+    'Europe/Zurich',
+  ]
+};
+
+const DE = {
+  id: 'DE',
+  name: 'Germany',
+  timezones: [
+    'Europe/Busingen',
+    'Europe/Berlin',
+    'Europe/Zurich'
+  ]
+};
+
+const LI = {
+  id: 'LI',
+  name: 'Liechtenstein',
+  timezones: [
+    'Europe/Vaduz',
+    'Europe/Zurich'
+  ]
+};
+
+const TEST_CASES = {
+  'America/Mexico_City': [MX],
+  'America/Anchorage': [US],
+  'America/Los_Angeles': [US],
+  'America/North_Dakota/New_Salem': [US],
+  'Europe/Zurich': [CH, DE, LI]
+};
+
+describe('.getCountriesForTimezone', () => {
   Object.keys(TEST_CASES).forEach(testCase => {
     it(`should return correct country for timezone "${testCase}"`, () => {
-      const result = ct.getCountryForTimezone(testCase);
+      const result = ct.getCountriesForTimezone(testCase);
       const expectedResult = TEST_CASES[testCase];
       expect(result).to.be.eql(expectedResult);
     });
   });
 
   it('should return null for timezone without country', () => {
-    const result = ct.getCountryForTimezone('UTC');
-    expect(result).to.be.eql(null);
+    const result = ct.getCountriesForTimezone('UTC');
+    expect(result).to.be.eql([]);
   });
 
   it('should return null for not existent timezone', () => {
-    const result = ct.getCountryForTimezone('NOT_EXISTENT_TZ');
-    expect(result).to.be.eql(null);
+    const result = ct.getCountriesForTimezone('NOT_EXISTENT_TZ');
+    expect(result).to.be.eql([]);
   });
 });
