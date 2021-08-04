@@ -5,11 +5,14 @@
   "main": "./dist/index.js",
   "module": "./esm/index.js",
   "exports": {
-    "require": "./dist/index.js",
-    "import": "./esm/index.js"
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./esm/index.js",
+    }
   },
   "files": [
     "dist",
+    "esm",
     "yarn.lock"
   ],
   "scripts": {
