@@ -3,7 +3,7 @@
 ![](https://img.shields.io/npm/dm/countries-and-timezones)
 ![](https://img.shields.io/badge/license-MIT-blue?style=flat)
 
-> A minimalistic library to work with countries and timezones data. Updated with the [IANA timezones database](https://www.iana.org/time-zones).
+> Minimalistic library to work with countries and timezones data. Updated with the [IANA timezones database](https://www.iana.org/time-zones).
 
 ## Usage
 
@@ -24,7 +24,7 @@ Add the following script to your project (only ~9kb):
 <script src="https://cdn.jsdelivr.net/gh/manuelmhtr/countries-and-timezones@latest/dist/index.js" type="text/javascript"></script>
 
 <!-- Or specify a version -->
-<script src="https://cdn.jsdelivr.net/gh/manuelmhtr/countries-and-timezones@v3.0.1/dist/index.js" type="text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/gh/manuelmhtr/countries-and-timezones@v3.1.0/dist/index.js" type="text/javascript"></script>
 
 <!-- This will export a variable named "ct": -->
 <script type="text/javascript">
@@ -237,7 +237,7 @@ Returns a list of the countries that uses a timezone given its `name`. When a ti
 ```javascript
 const ct = require('countries-and-timezones');
 
-const timezone = ct.getCountriesForTimezone('Asia/Tokyo');
+const timezone = ct.getCountriesForTimezone('Europe/Zurich');
 console.log(timezone);
 
 /*
@@ -269,6 +269,33 @@ Prints:
     ]
   }
 ]
+
+*/
+
+```
+
+### `.getCountryForTimezone(name)`
+
+Returns a the most relevant country (due to its geographical location) that uses a timezone given its `name`.
+
+**Example**
+
+```javascript
+const ct = require('countries-and-timezones');
+
+const timezone = ct.getCountryForTimezone('Europe/Zurich');
+console.log(timezone);
+
+/*
+Prints:
+
+{
+  "id": "CH",
+  "name": "Switzerland",
+  "timezones": [
+    "Europe/Zurich"
+  ]
+}
 
 */
 
@@ -344,12 +371,11 @@ A timezone is defined by the following parameters:
 * [countries-db](https://www.npmjs.com/package/countries-db): Minimalistic lib with countries data.
 * [location-by-ip](https://www.npmjs.com/package/location-by-ip): Get the location of any IP address.
 
-## Help
 
-This project is maintained by a single person, considering supporting by:
+## Sponsors
 
-* Sharing your [feedback](mailto:manuelmhtr@gmail.com).
-* Becoming a [sponsor](https://github.com/sponsors/manuelmhtr).
+You / your company could be [the first](https://github.com/sponsors/manuelmhtr).
+
 
 ## Working on something more complex?
 

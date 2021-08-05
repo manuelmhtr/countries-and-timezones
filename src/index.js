@@ -46,6 +46,11 @@ function getCountriesForTimezone(tzName) {
   return countries.map(getCountry);
 }
 
+function getCountryForTimezone(tzName) {
+  const [main] = getCountriesForTimezone(tzName);
+  return main || null;
+}
+
 function getTimezonesForCountry(countryId) {
   const country = getCountry(countryId);
   if (!country) return null;
@@ -58,4 +63,5 @@ exports.getAllTimezones = getAllTimezones;
 exports.getCountry = getCountry;
 exports.getTimezone = getTimezone;
 exports.getCountriesForTimezone = getCountriesForTimezone;
+exports.getCountryForTimezone = getCountryForTimezone;
 exports.getTimezonesForCountry = getTimezonesForCountry;

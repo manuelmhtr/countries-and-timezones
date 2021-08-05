@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [3.1.0] - 2021-08-04
+### Added
+- Restores `getCountryForTimezone` method to keep compatibility with version 2.
+- Adds `esm` path to package.json `files` (by [Simon VDB](https://github.com/Jarrku))
+
 ## [3.0.0] - 2021-07-28
 ### Added
 - [#32](https://github.com/manuelmhtr/countries-and-timezones/pull/32) Added support for ESM named exports
