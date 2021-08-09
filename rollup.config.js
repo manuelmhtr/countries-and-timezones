@@ -42,9 +42,9 @@ export default [
         format: 'es',
         sourcemap: true,
         plugins: [terser()],
-      }
+      },
     ],
-    plugins
+    plugins,
   },
   {
     input: 'types/index.d.ts',
@@ -52,6 +52,9 @@ export default [
       file: 'esm/types.d.ts',
       format: 'es',
     },
-    plugins: [dts(), json({ preferConst: true, compact: true })],
-  }
+    plugins: [
+      dts(),
+      json({ preferConst: true, compact: true }),
+    ],
+  },
 ];

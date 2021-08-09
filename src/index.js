@@ -1,6 +1,6 @@
+import data from './data.json';
 import buildCountry from './build-country';
 import buildTimezone from './build-timezone';
-import data from './data.json';
 
 const totalCountries = Object.keys(data.countries).length;
 const totalTimezones = Object.keys(data.timezones).length;
@@ -43,8 +43,8 @@ function memoizeTimezone(timezone) {
 
 export function getCountriesForTimezone(tzName) {
   const timezone = getTimezone(tzName) || {};
-  const countries = timezone.countries || [];
-  return countries.map(getCountry);
+  const values = timezone.countries || [];
+  return values.map(getCountry);
 }
 
 export function getCountryForTimezone(tzName) {
@@ -55,6 +55,6 @@ export function getCountryForTimezone(tzName) {
 export function getTimezonesForCountry(countryId) {
   const country = getCountry(countryId);
   if (!country) return null;
-  const {timezones = []} = country;
-  return timezones.map(getTimezone);
+  const values = country.timezones || [];
+  return values.map(getTimezone);
 }

@@ -1,6 +1,13 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [3.2.1] - 2021-08-17
+### Fixed
+- Correct ESM build config ([#36](https://github.com/manuelmhtr/countries-and-timezones/pull/36) by [Kyle Herock](https://github.com/kherock))
+
+### Added
+- Eslint config
+
 ## [3.2.0] - 2021-08-10
 ### Added
 - Add TypeScript definitions ([#37](https://github.com/manuelmhtr/countries-and-timezones/pull/37) by [benj-dobs](https://github.com/benj-dobs))

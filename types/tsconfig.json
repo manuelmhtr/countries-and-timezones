@@ -11,5 +11,8 @@
     "noEmit": true,
     "resolveJsonModule": true,
     "esModuleInterop": true
-  }
+  },
+  "include": [
+    "src/**/*"
+  ]
 }
