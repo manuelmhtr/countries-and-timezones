@@ -1,4 +1,5 @@
 process.env.NODE_ENV = 'test';
+
 module.exports = {
   file: ['test/setup.js'],
   require: '@babel/register',

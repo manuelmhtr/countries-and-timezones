@@ -116,76 +116,6 @@
     throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
   }
 
-  var timezonesMap;
-  function buildCountry(data, id) {
-    var name = data.countries[id];
-    if (!name) return null;
-    var tzMap = getTimezonesMap(data);
-    var timezones = tzMap[id] || [];
-    return {
-      id: id,
-      name: name,
-      timezones: timezones
-    };
-  }
-
-  function getTimezonesMap(data) {
-    if (!timezonesMap) timezonesMap = buildTimezonesMap(data);
-    return timezonesMap;
-  }
-
-  function buildTimezonesMap(data) {
-    return Object.keys(data.timezones).reduce(function (result, id) {
-      var tz = data.timezones[id];
-      var c = tz.c,
-          a = tz.a;
-      var aliasTz = data.timezones[a] || {};
-      var countries = c || aliasTz.c;
-      if (!countries) return result;
-      countries.forEach(function (country) {
-        if (!result[country]) result[country] = [];
-        result[country].push(id);
-      });
-      return result;
-    }, {});
-  }
-
-  function buildTimezone(data, name) {
-    var timezone = data.timezones[name];
-    if (!timezone) return null;
-    var _timezone$a = timezone.a,
-        aliasOf = _timezone$a === void 0 ? null : _timezone$a;
-    var aliasTz = aliasOf ? data.timezones[aliasOf] : {};
-
-    var tz = _objectSpread2(_objectSpread2({}, aliasTz), data.timezones[name]);
-
-    var countries = tz.c || [];
-    var utcOffset = tz.u;
-    var dstOffset = Number.isInteger(tz.d) ? tz.d : utcOffset;
-    return {
-      name: name,
-      countries: countries,
-      utcOffset: utcOffset,
-      utcOffsetStr: getOffsetStr(utcOffset),
-      dstOffset: dstOffset,
-      dstOffsetStr: getOffsetStr(dstOffset),
-      aliasOf: aliasOf
-    };
-  }
-
-  function getOffsetStr(offset) {
-    var hours = Math.floor(offset / 60);
-    var min = offset % 60;
-    var sign = offset < 0 ? '-' : '+';
-    return "".concat(sign).concat(getNumStr(hours), ":").concat(getNumStr(min));
-  }
-
-  function getNumStr(input) {
-    var num = Math.abs(input);
-    var prefix = num < 10 ? '0' : '';
-    return "".concat(prefix).concat(num);
-  }
-
   var countries$1 = {
   	AD: "Andorra",
   	AE: "United Arab Emirates",
@@ -3662,6 +3592,76 @@
   	timezones: timezones$1
   };
 
+  var timezonesMap;
+  function buildCountry(data, id) {
+    var name = data.countries[id];
+    if (!name) return null;
+    var tzMap = getTimezonesMap(data);
+    var timezones = tzMap[id] || [];
+    return {
+      id: id,
+      name: name,
+      timezones: timezones
+    };
+  }
+
+  function getTimezonesMap(data) {
+    if (!timezonesMap) timezonesMap = buildTimezonesMap(data);
+    return timezonesMap;
+  }
+
+  function buildTimezonesMap(data) {
+    return Object.keys(data.timezones).reduce(function (result, id) {
+      var tz = data.timezones[id];
+      var c = tz.c,
+          a = tz.a;
+      var aliasTz = data.timezones[a] || {};
+      var countries = c || aliasTz.c;
+      if (!countries) return result;
+      countries.forEach(function (country) {
+        if (!result[country]) Object.assign(result, _defineProperty({}, country, []));
+        result[country].push(id);
+      });
+      return result;
+    }, {});
+  }
+
+  function buildTimezone(data, name) {
+    var timezone = data.timezones[name];
+    if (!timezone) return null;
+    var _timezone$a = timezone.a,
+        aliasOf = _timezone$a === void 0 ? null : _timezone$a;
+    var aliasTz = aliasOf ? data.timezones[aliasOf] : {};
+
+    var tz = _objectSpread2(_objectSpread2({}, aliasTz), data.timezones[name]);
+
+    var countries = tz.c || [];
+    var utcOffset = tz.u;
+    var dstOffset = Number.isInteger(tz.d) ? tz.d : utcOffset;
+    return {
+      name: name,
+      countries: countries,
+      utcOffset: utcOffset,
+      utcOffsetStr: getOffsetStr(utcOffset),
+      dstOffset: dstOffset,
+      dstOffsetStr: getOffsetStr(dstOffset),
+      aliasOf: aliasOf
+    };
+  }
+
+  function getOffsetStr(offset) {
+    var hours = Math.floor(offset / 60);
+    var min = offset % 60;
+    var sign = offset < 0 ? '-' : '+';
+    return "".concat(sign).concat(getNumStr(hours), ":").concat(getNumStr(min));
+  }
+
+  function getNumStr(input) {
+    var num = Math.abs(input);
+    var prefix = num < 10 ? '0' : '';
+    return "".concat(prefix).concat(num);
+  }
+
   var totalCountries = Object.keys(data.countries).length;
   var totalTimezones = Object.keys(data.timezones).length;
   var countries = {};
@@ -3700,8 +3700,8 @@
 
   function getCountriesForTimezone(tzName) {
     var timezone = getTimezone(tzName) || {};
-    var countries = timezone.countries || [];
-    return countries.map(getCountry);
+    var values = timezone.countries || [];
+    return values.map(getCountry);
   }
   function getCountryForTimezone(tzName) {
     var _getCountriesForTimez = getCountriesForTimezone(tzName),
@@ -3713,9 +3713,8 @@
   function getTimezonesForCountry(countryId) {
     var country = getCountry(countryId);
     if (!country) return null;
-    var _country$timezones = country.timezones,
-        timezones = _country$timezones === void 0 ? [] : _country$timezones;
-    return timezones.map(getTimezone);
+    var values = country.timezones || [];
+    return values.map(getTimezone);
   }
 
   exports.getAllCountries = getAllCountries;

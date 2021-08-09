@@ -1,0 +1,23 @@
+{
+  "extends": "airbnb-base",
+  "env": {
+    "node": true,
+    "jest/globals": true
+  },
+  "plugins": [
+    "jest"
+  ],
+  "parserOptions": {
+    "sourceType": "module"
+  },
+  "globals": {
+    "Promise": "readonly"
+  },
+  "ignorePatterns": [
+    "dist/**",
+    "esm/**"
+  ],
+  "rules": {
+    "no-use-before-define": ["error", { "functions": false }]
+  }
+}
