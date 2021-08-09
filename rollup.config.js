@@ -2,6 +2,7 @@ import babel from '@rollup/plugin-babel';
 import commonjs from '@rollup/plugin-commonjs';
 import json from '@rollup/plugin-json';
 import { uglify } from 'rollup-plugin-uglify';
+import dts from 'rollup-plugin-dts';
 
 const plugins = [
   commonjs(),
@@ -23,6 +24,14 @@ export default [
       exports: 'named',
       sourcemap: true,
     },
-    plugins
+    plugins,
+  },
+  {
+    input: 'types/index.d.ts',
+    output: {
+      file: 'dist/types.d.ts',
+      format: 'esm',
+    },
+    plugins: [dts(), json({ preferConst: true, compact: true })],
   },
 ];
