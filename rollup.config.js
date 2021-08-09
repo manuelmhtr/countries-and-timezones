@@ -1,7 +1,7 @@
 import babel from '@rollup/plugin-babel';
 import commonjs from '@rollup/plugin-commonjs';
 import json from '@rollup/plugin-json';
-import { uglify } from 'rollup-plugin-uglify';
+import { terser } from 'rollup-plugin-terser';
 import dts from 'rollup-plugin-dts';
 
 const plugins = [
@@ -11,7 +11,6 @@ const plugins = [
     babelHelpers: 'bundled',
     presets: ['@babel/env'],
   }),
-  uglify(),
 ];
 
 export default [
@@ -26,9 +25,23 @@ export default [
         sourcemap: true,
       },
       {
+        name: 'ct',
+        file: 'dist/index.min.js',
+        format: 'umd',
+        exports: 'named',
+        sourcemap: true,
+        plugins: [terser()],
+      },
+      {
         file: 'esm/index.js',
         format: 'es',
         sourcemap: true,
+      },
+      {
+        file: 'esm/index.min.js',
+        format: 'es',
+        sourcemap: true,
+        plugins: [terser()],
       }
     ],
     plugins
