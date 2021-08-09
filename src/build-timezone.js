@@ -1,4 +1,4 @@
-function buildTimezone(data, name) {
+export default function buildTimezone(data, name) {
   const timezone = data.timezones[name];
   if (!timezone) return null;
 
@@ -37,5 +37,3 @@ function getNumStr(input) {
   const prefix = num < 10 ? '0' : '';
   return `${prefix}${num}`;
 }
-
-module.exports = buildTimezone;

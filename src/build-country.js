@@ -1,6 +1,6 @@
 let timezonesMap;
 
-function buildCountry(data, id) {
+export default function buildCountry(data, id) {
   const name = data.countries[id];
   if (!name) return null;
 
@@ -36,5 +36,3 @@ function buildTimezonesMap(data) {
     return result;
   }, {});
 }
-
-module.exports = buildCountry;

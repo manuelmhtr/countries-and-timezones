@@ -17,14 +17,21 @@ const plugins = [
 export default [
   {
     input: 'src/index.js',
-    output: {
-      name: 'ct',
-      file: 'dist/index.js',
-      format: 'umd',
-      exports: 'named',
-      sourcemap: true,
-    },
-    plugins,
+    output: [
+      {
+        name: 'ct',
+        file: 'dist/index.js',
+        format: 'umd',
+        exports: 'named',
+        sourcemap: true,
+      },
+      {
+        file: 'esm/index.js',
+        format: 'es',
+        sourcemap: true,
+      }
+    ],
+    plugins
   },
   {
     input: 'types/index.d.ts',
@@ -33,5 +40,5 @@ export default [
       format: 'esm',
     },
     plugins: [dts(), json({ preferConst: true, compact: true })],
-  },
+  }
 ];
