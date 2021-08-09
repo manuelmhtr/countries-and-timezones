@@ -1,4 +1,4 @@
-import ct from '../src/index.js';
+import ct from '../dist/index.js';
 
 export default ct;
 export const getAllCountries = ct.getAllCountries;
