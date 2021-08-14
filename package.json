@@ -4,16 +4,15 @@
   "description": "Minimalistic library to work with countries and timezones data.",
   "main": "./dist/index.js",
   "module": "./esm/index.js",
+  "types": "./esm/types.d.ts",
   "exports": {
     "require": "./dist/index.js",
     "import": "./esm/index.js"
   },
   "files": [
     "dist",
-    "esm",
-    "yarn.lock"
+    "esm"
   ],
-  "types": "dist/types.d.ts",
   "scripts": {
     "build": "./node_modules/rollup/dist/bin/rollup -c",
     "dtslint": "dtslint types",

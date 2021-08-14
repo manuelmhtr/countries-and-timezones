@@ -1,9 +1,7 @@
-import data from '../src/data.json';
+import { countries, timezones } from '../src/data.json'
 
-export {};
-
-export type CountryCode = keyof typeof data['countries'];
-export type TimezoneName = keyof typeof data['timezones'];
+export type CountryCode = keyof typeof countries;
+export type TimezoneName = keyof typeof timezones;
 
 export interface Country {
   id: CountryCode;
