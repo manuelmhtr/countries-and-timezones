@@ -19,33 +19,24 @@ interface Timezone {
   aliasOf: string | null;
 }
 
-type nullish = null | undefined;
-
 declare function getCountry(id: CountryCode): Country;
-declare function getCountry(id: nullish): null;
-declare function getCountry(id: string | nullish): Country | null;
+declare function getCountry(id: string): Country | null;
 
 declare function getTimezone(name: TimezoneName): Timezone;
-declare function getTimezone(name: nullish): null;
-declare function getTimezone(name: string | nullish): Timezone | null;
+declare function getTimezone(name: string): Timezone | null;
 
-declare function getAllCountries(): { [id in CountryCode]: Country };
+declare function getAllCountries(): Record<CountryCode, Country>;
 
-declare function getAllTimezones(): { [name in TimezoneName]: Timezone };
+declare function getAllTimezones(): Record<TimezoneName, Timezone>;
 
 declare function getTimezonesForCountry(id: CountryCode): Timezone[];
-declare function getTimezonesForCountry(id: nullish): null;
-declare function getTimezonesForCountry(id: string | nullish): Timezone[] | null;
+declare function getTimezonesForCountry(id: string): Timezone[] | null;
 
 declare function getCountriesForTimezone(name: TimezoneName): Country[];
 declare function getCountriesForTimezone(name: string): Country[];
-declare function getCountriesForTimezone(name: nullish): null;
-declare function getCountriesForTimezone(
-  name: string | nullish
-): Country[] | null;
+declare function getCountriesForTimezone(name: string): Country[] | null;
 
 declare function getCountryForTimezone(name: TimezoneName): Country;
-declare function getCountryForTimezone(name: nullish): null;
-declare function getCountryForTimezone(name: string | nullish): Country | null;
+declare function getCountryForTimezone(name: string): Country | null;
 
 export { Country, CountryCode, Timezone, TimezoneName, getAllCountries, getAllTimezones, getCountriesForTimezone, getCountry, getCountryForTimezone, getTimezone, getTimezonesForCountry };

@@ -1,4 +1,4 @@
-import { countries, timezones } from '../src/data.json'
+import { countries, timezones } from '../src/data.json';
 
 export type CountryCode = keyof typeof countries;
 export type TimezoneName = keyof typeof timezones;
@@ -19,31 +19,22 @@ export interface Timezone {
   aliasOf: string | null;
 }
 
-type nullish = null | undefined;
-
 export function getCountry(id: CountryCode): Country;
-export function getCountry(id: nullish): null;
-export function getCountry(id: string | nullish): Country | null;
+export function getCountry(id: string): Country | null;
 
 export function getTimezone(name: TimezoneName): Timezone;
-export function getTimezone(name: nullish): null;
-export function getTimezone(name: string | nullish): Timezone | null;
+export function getTimezone(name: string): Timezone | null;
 
-export function getAllCountries(): { [id in CountryCode]: Country };
+export function getAllCountries(): Record<CountryCode, Country>;
 
-export function getAllTimezones(): { [name in TimezoneName]: Timezone };
+export function getAllTimezones(): Record<TimezoneName, Timezone>;
 
 export function getTimezonesForCountry(id: CountryCode): Timezone[];
-export function getTimezonesForCountry(id: nullish): null;
-export function getTimezonesForCountry(id: string | nullish): Timezone[] | null;
+export function getTimezonesForCountry(id: string): Timezone[] | null;
 
 export function getCountriesForTimezone(name: TimezoneName): Country[];
 export function getCountriesForTimezone(name: string): Country[];
-export function getCountriesForTimezone(name: nullish): null;
-export function getCountriesForTimezone(
-  name: string | nullish
-): Country[] | null;
+export function getCountriesForTimezone(name: string): Country[] | null;
 
 export function getCountryForTimezone(name: TimezoneName): Country;
-export function getCountryForTimezone(name: nullish): null;
-export function getCountryForTimezone(name: string | nullish): Country | null;
+export function getCountryForTimezone(name: string): Country | null;
