@@ -1,5 +1,5 @@
-const data = require('../../src/data.json');
-const ct = require('../../dist');
+import * as ct from '../../src';
+import data from '../../src/data.json';
 
 describe('.getAllCountries', () => {
   it('should return an object containing full countries data', () => {
