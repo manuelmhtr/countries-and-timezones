@@ -1,4 +1,4 @@
-const ct = require('../../dist');
+import * as ct from '../../src';
 
 const US = {
   id: 'US',

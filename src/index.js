@@ -1,6 +1,7 @@
-const data = require('./data.json');
-const buildCountry = require('./build-country');
-const buildTimezone = require('./build-timezone');
+import data from './data.json';
+import buildCountry from './build-country';
+import buildTimezone from './build-timezone';
+
 const totalCountries = Object.keys(data.countries).length;
 const totalTimezones = Object.keys(data.timezones).length;
 const countries = {};
@@ -8,17 +9,17 @@ const timezones = {};
 let memoizedCountries = 0;
 let memoizedTimezones = 0;
 
-function getAllCountries() {
+export function getAllCountries() {
   if (totalCountries !== memoizedCountries) Object.keys(data.countries).forEach(getCountry);
   return { ...countries };
 }
 
-function getAllTimezones() {
+export function getAllTimezones() {
   if (totalTimezones !== memoizedTimezones) Object.keys(data.timezones).forEach(getTimezone);
   return { ...timezones };
 }
 
-function getCountry(id) {
+export function getCountry(id) {
   if (!countries[id]) memoizeCountry(buildCountry(data, id));
   return countries[id] ? { ...countries[id] } : null;
 }
@@ -29,7 +30,7 @@ function memoizeCountry(country) {
   memoizedCountries = Object.keys(countries).length;
 }
 
-function getTimezone(name) {
+export function getTimezone(name) {
   if (!timezones[name]) memoizeTimezone(buildTimezone(data, name));
   return timezones[name] ? { ...timezones[name] } : null;
 }
@@ -40,28 +41,30 @@ function memoizeTimezone(timezone) {
   memoizedTimezones = Object.keys(timezone).length;
 }
 
-function getCountriesForTimezone(tzName) {
+export function getCountriesForTimezone(tzName) {
   const timezone = getTimezone(tzName) || {};
-  const countries = timezone.countries || [];
-  return countries.map(getCountry);
+  const values = timezone.countries || [];
+  return values.map(getCountry);
 }
 
-function getCountryForTimezone(tzName) {
+export function getCountryForTimezone(tzName) {
   const [main] = getCountriesForTimezone(tzName);
   return main || null;
 }
 
-function getTimezonesForCountry(countryId) {
+export function getTimezonesForCountry(countryId) {
   const country = getCountry(countryId);
   if (!country) return null;
-  const {timezones = []} = country;
-  return timezones.map(getTimezone);
+  const values = country.timezones || [];
+  return values.map(getTimezone);
 }
 
-exports.getAllCountries = getAllCountries;
-exports.getAllTimezones = getAllTimezones;
-exports.getCountry = getCountry;
-exports.getTimezone = getTimezone;
-exports.getCountriesForTimezone = getCountriesForTimezone;
-exports.getCountryForTimezone = getCountryForTimezone;
-exports.getTimezonesForCountry = getTimezonesForCountry;
+export default {
+  getCountry,
+  getTimezone,
+  getAllCountries,
+  getAllTimezones,
+  getTimezonesForCountry,
+  getCountriesForTimezone,
+  getCountryForTimezone,
+};

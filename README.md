@@ -21,10 +21,10 @@ Add the following script to your project (only ~9kb):
 
 ```html
 <!-- Latest version -->
-<script src="https://cdn.jsdelivr.net/gh/manuelmhtr/countries-and-timezones@latest/dist/index.js" type="text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/gh/manuelmhtr/countries-and-timezones@latest/dist/index.min.js" type="text/javascript"></script>
 
 <!-- Or specify a version -->
-<script src="https://cdn.jsdelivr.net/gh/manuelmhtr/countries-and-timezones@v3.2.0/dist/index.js" type="text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/gh/manuelmhtr/countries-and-timezones@v3.2.1/dist/index.min.js" type="text/javascript"></script>
 
 <!-- This will export a variable named "ct": -->
 <script type="text/javascript">

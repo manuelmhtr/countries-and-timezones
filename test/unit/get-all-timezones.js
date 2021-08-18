@@ -1,5 +1,5 @@
-const data = require('../../src/data.json');
-const ct = require('../../dist');
+import * as ct from '../../src';
+import data from '../../src/data.json';
 
 const TZ_WITHOUT_COUNTRIES = [
   'GMT', 'UTC', 'UCT', 'CET', 'CST6CDT', 'EET', 'EST', 'EST5EDT', 'HST', 'MET',

@@ -1,56 +1,59 @@
-const sinon = require('sinon');
-const proxyquire = require('proxyquire');
-const data = require('../../src/data.json');
-const totalCountries = Object.keys(data.countries).length;
-const buildCountryMock = sinon.spy(function(data, id) {
-  return { id };
-});
+import sinon from 'sinon';
+import proxyquire from 'proxyquire';
+import buildCountry from '../../src/build-country';
+import { countries } from '../../src/data.json';
+
+const totalCountries = Object.keys(countries).length;
 
 describe('Countries cache', () => {
+  const buildCountrySpy = sinon.spy(buildCountry);
   let ct;
 
   beforeEach(() => {
-    buildCountryMock.resetHistory();
+    buildCountrySpy.resetHistory();
 
     ct = proxyquire('../../src', {
-      './build-country': buildCountryMock
+      './build-country': {
+        __esModule: true,
+        default: buildCountrySpy,
+      }
     });
   });
 
   it('should call "buildCountry" once when requesting a single country', () => {
     ct.getCountry('MX');
-    expect(buildCountryMock.callCount).to.be.equal(1);
+    expect(buildCountrySpy.callCount).to.be.equal(1);
   });
 
   it('should call "buildCountry" once when requesting the same country multiple times', () => {
     ct.getCountry('MX');
     ct.getCountry('MX');
-    expect(buildCountryMock.callCount).to.be.equal(1);
+    expect(buildCountrySpy.callCount).to.be.equal(1);
   });
 
   it('should call "buildCountry" method once for each country when requesting all', () => {
     ct.getAllCountries();
-    expect(buildCountryMock.callCount).to.be.equal(totalCountries);
+    expect(buildCountrySpy.callCount).to.be.equal(totalCountries);
   });
 
   it('should cache all countries to minimize "buildCountry" calls', () => {
     ct.getAllCountries();
     ct.getAllCountries();
-    expect(buildCountryMock.callCount).to.be.equal(totalCountries);
+    expect(buildCountrySpy.callCount).to.be.equal(totalCountries);
   });
 
   it('should cache countries incrementally', () => {
     ct.getCountry('MX');
-    expect(buildCountryMock.callCount).to.be.equal(1);
+    expect(buildCountrySpy.callCount).to.be.equal(1);
     ct.getCountry('MX');
-    expect(buildCountryMock.callCount).to.be.equal(1);
+    expect(buildCountrySpy.callCount).to.be.equal(1);
     ct.getCountry('US');
-    expect(buildCountryMock.callCount).to.be.equal(2);
+    expect(buildCountrySpy.callCount).to.be.equal(2);
     ct.getAllCountries();
-    expect(buildCountryMock.callCount).to.be.equal(totalCountries);
+    expect(buildCountrySpy.callCount).to.be.equal(totalCountries);
     ct.getCountry('MX');
-    expect(buildCountryMock.callCount).to.be.equal(totalCountries);
+    expect(buildCountrySpy.callCount).to.be.equal(totalCountries);
     ct.getAllCountries();
-    expect(buildCountryMock.callCount).to.be.equal(totalCountries);
+    expect(buildCountrySpy.callCount).to.be.equal(totalCountries);
   });
 });

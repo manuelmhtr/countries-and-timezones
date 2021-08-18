@@ -1,15 +1,18 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
-    "lib": ["es6"],
-    "noImplicitAny": true,
-    "noImplicitThis": true,
-    "strictNullChecks": true,
-    "strictFunctionTypes": true,
-    "noEmit": true,
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "lib": ["ES2019"],
     "baseUrl": ".",
-    "paths": { "countries-and-timezones": ["."] },
+    "paths": {
+      "countries-and-timezones": ["."]
+    },
+    "strict": true,
+    "noEmit": true,
     "resolveJsonModule": true,
     "esModuleInterop": true
-  }
+  },
+  "include": [
+    "src/**/*"
+  ]
 }
