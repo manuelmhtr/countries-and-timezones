@@ -1,17 +1,12 @@
-import { countries, timezones } from '../src/data.json';
-
-export type CountryCode = keyof typeof countries;
-export type TimezoneName = keyof typeof timezones;
-
 export interface Country {
-  id: CountryCode;
+  id: string;
   name: string;
-  timezones: TimezoneName[];
+  timezones: string[];
 }
 
 export interface Timezone {
   name: string;
-  countries: CountryCode[];
+  countries: string[];
   utcOffset: number;
   utcOffsetStr: string;
   dstOffset: number;
@@ -19,22 +14,16 @@ export interface Timezone {
   aliasOf: string | null;
 }
 
-export function getCountry(id: CountryCode): Country;
 export function getCountry(id: string): Country | null;
 
-export function getTimezone(name: TimezoneName): Timezone;
 export function getTimezone(name: string): Timezone | null;
 
-export function getAllCountries(): Record<CountryCode, Country>;
+export function getAllCountries(): Record<string, Country>;
 
-export function getAllTimezones(): Record<TimezoneName, Timezone>;
+export function getAllTimezones(): Record<string, Timezone>;
 
-export function getTimezonesForCountry(id: CountryCode): Timezone[];
 export function getTimezonesForCountry(id: string): Timezone[] | null;
 
-export function getCountriesForTimezone(name: TimezoneName): Country[];
 export function getCountriesForTimezone(name: string): Country[];
-export function getCountriesForTimezone(name: string): Country[] | null;
 
-export function getCountryForTimezone(name: TimezoneName): Country;
 export function getCountryForTimezone(name: string): Country | null;
