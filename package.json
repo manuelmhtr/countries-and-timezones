@@ -14,7 +14,7 @@
     "esm"
   ],
   "scripts": {
-    "build": "rollup -c",
+    "build": "rollup -c && sh .fixTypes.sh",
     "prepack": "yarn run build",
     "test:unit": "mocha",
     "test:types": "dtslint types",
