@@ -1,6 +1,13 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [3.2.3] - 2021-09-28
+### Fixed
+- Constant declarations on Types ([#41](https://github.com/manuelmhtr/countries-and-timezones/issues/41))
+
+### Added
+- Eslint config
+
 ## [3.2.1] - 2021-08-17
 ### Fixed
 - Correct ESM build config ([#36](https://github.com/manuelmhtr/countries-and-timezones/pull/36) by [Kyle Herock](https://github.com/kherock))

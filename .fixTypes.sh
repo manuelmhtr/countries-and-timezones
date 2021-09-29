@@ -5,5 +5,5 @@
 # "countries" and "timezones" constants.
 #
 # This script should be removed once the problem has been resolved in the plugin.
-sed -i '' 's/^const countries/declare const countries/' ./esm/types.d.ts
-sed -i '' 's/;const timezones/;\ndeclare const timezones/' ./esm/types.d.ts
+sed -i '' 's/^const countries=/declare const countries:/' ./esm/types.d.ts
+sed -i '' 's/;const timezones=/;\ndeclare const timezones:/' ./esm/types.d.ts

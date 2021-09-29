@@ -372,9 +372,9 @@ A timezone is defined by the following parameters:
 * [location-by-ip](https://www.npmjs.com/package/location-by-ip): Get the location of any IP address.
 
 
-## Sponsors
+## Support
 
-You / your company could be [the first](https://github.com/sponsors/manuelmhtr).
+Consider supporting this project by [buying me a beer](https://github.com/sponsors/manuelmhtr) 🍺
 
 
 ## Working on something more complex?
