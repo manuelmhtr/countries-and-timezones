@@ -2,32 +2,30 @@ import data from './data.json';
 import buildCountry from './build-country';
 import buildTimezone from './build-timezone';
 
-const totalCountries = Object.keys(data.countries).length;
 const totalTimezones = Object.keys(data.timezones).length;
 const countries = {};
 const timezones = {};
-let memoizedCountries = 0;
 let memoizedTimezones = 0;
 
-export function getAllCountries() {
-  if (totalCountries !== memoizedCountries) Object.keys(data.countries).forEach(getCountry);
-  return { ...countries };
+export function getAllCountries(options = {}) {
+  return Object.keys(data.countries).reduce((prev, id) => {
+    return Object.assign(prev, { [id]: getCountry(id, options) });
+  }, {});
 }
 
-export function getAllTimezones() {
+export function getAllTimezones(options = {}) {
   if (totalTimezones !== memoizedTimezones) Object.keys(data.timezones).forEach(getTimezone);
-  return { ...timezones };
+  return deliverTimezones(timezones, options);
 }
 
-export function getCountry(id) {
+export function getCountry(id, options = {}) {
   if (!countries[id]) memoizeCountry(buildCountry(data, id));
-  return countries[id] ? { ...countries[id] } : null;
+  return deliverCountry(countries[id], options);
 }
 
 function memoizeCountry(country) {
   if (!country) return;
   countries[country.id] = country;
-  memoizedCountries = Object.keys(countries).length;
 }
 
 export function getTimezone(name) {
@@ -41,22 +39,39 @@ function memoizeTimezone(timezone) {
   memoizedTimezones = Object.keys(timezone).length;
 }
 
-export function getCountriesForTimezone(tzName) {
+export function getCountriesForTimezone(tzName, options = {}) {
   const timezone = getTimezone(tzName) || {};
   const values = timezone.countries || [];
-  return values.map(getCountry);
+  return values.map((c) => getCountry(c, options));
 }
 
-export function getCountryForTimezone(tzName) {
-  const [main] = getCountriesForTimezone(tzName);
+export function getCountryForTimezone(tzName, options = {}) {
+  const [main] = getCountriesForTimezone(tzName, options);
   return main || null;
 }
 
-export function getTimezonesForCountry(countryId) {
-  const country = getCountry(countryId);
+export function getTimezonesForCountry(countryId, options = {}) {
+  const country = getCountry(countryId, options);
   if (!country) return null;
   const values = country.timezones || [];
   return values.map(getTimezone);
+}
+
+function deliverTimezones(tzs, options) {
+  const { deprecated } = options || {};
+  if (deprecated === true) return tzs;
+  return Object.keys(tzs).reduce((prev, key) => {
+    if (!tzs[key].deprecated) Object.assign(prev, { [key]: tzs[key] });
+    return prev;
+  }, {});
+}
+
+function deliverCountry(country, options) {
+  if (!country) return null;
+  const { deprecated } = options || {};
+  const { allTimezones, ...other } = country;
+  const tz = deprecated ? country.allTimezones : country.timezones;
+  return { ...other, timezones: tz };
 }
 
 export default {

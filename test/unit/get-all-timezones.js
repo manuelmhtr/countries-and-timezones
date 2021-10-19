@@ -1,17 +1,33 @@
 import * as ct from '../../src';
 import data from '../../src/data.json';
+import { countDeprecatedTimezones } from '../utils';
 
+const TOTAL_TIMEZONES = Object.keys(data.timezones).length;
+const DEPRECATED_TIMEZONES = countDeprecatedTimezones(data.timezones);
 const TZ_WITHOUT_COUNTRIES = [
-  'GMT', 'UTC', 'UCT', 'CET', 'CST6CDT', 'EET', 'EST', 'EST5EDT', 'HST', 'MET',
-  'MST', 'MST7MDT', 'PST8PDT', 'WET', 'Greenwich', 'Universal', 'Zulu'
+  'GMT', 'UTC', 'UCT', 'CET', 'CST6CDT', 'EET', 'EST', 'EST5EDT', 'Factory', 'HST',
+  'MET', 'MST', 'MST7MDT', 'PST8PDT', 'WET', 'Greenwich', 'Universal', 'Zulu'
 ];
 
 describe('.getAllTimezones', () => {
-  it('should return an object containing full timezones data', () => {
-    const expectedLength = Object.keys(data.timezones).length;
+  it('should return an object containing current timezones data', () => {
+    const expectedLength = TOTAL_TIMEZONES - DEPRECATED_TIMEZONES;
     const timezones = ct.getAllTimezones();
     expect(timezones).to.be.an('object');
     expect(Object.keys(timezones).length).to.be.equal(expectedLength);
+    expect(countDeprecatedTimezones(timezones)).to.be.equal(0);
+
+    Object.values(timezones).forEach(timezone => {
+      const aliasTz = timezone.aliasOf ? timezones[timezone.aliasOf] : null;
+      expectTimezone(timezone, aliasTz);
+    });
+  });
+
+  it('should return an object containing full timezones data, even deprecated ones', () => {
+    const timezones = ct.getAllTimezones({ deprecated: true });
+    expect(timezones).to.be.an('object');
+    expect(Object.keys(timezones).length).to.be.equal(TOTAL_TIMEZONES);
+    expect(countDeprecatedTimezones(timezones)).to.be.equal(DEPRECATED_TIMEZONES);
 
     Object.values(timezones).forEach(timezone => {
       const aliasTz = timezone.aliasOf ? timezones[timezone.aliasOf] : null;

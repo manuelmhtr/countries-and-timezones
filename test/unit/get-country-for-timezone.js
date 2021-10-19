@@ -83,38 +83,26 @@ const CH = {
   ]
 };
 
-const DE = {
-  id: 'DE',
-  name: 'Germany',
-  timezones: [
-    'Europe/Busingen',
-    'Europe/Berlin',
-    'Europe/Zurich'
-  ]
-};
-
-const LI = {
-  id: 'LI',
-  name: 'Liechtenstein',
-  timezones: [
-    'Europe/Vaduz',
-    'Europe/Zurich'
-  ]
-};
-
 const TEST_CASES = {
-  'America/Mexico_City': MX,
-  'America/Anchorage': US,
-  'America/Los_Angeles': US,
-  'America/North_Dakota/New_Salem': US,
-  'Europe/Zurich': CH
+  'America/Mexico_City': 'MX',
+  'America/Anchorage': 'US',
+  'America/Los_Angeles': 'US',
+  'America/North_Dakota/New_Salem': 'US',
+  'Europe/Zurich': 'CH',
 };
 
 describe('.getCountryForTimezone', () => {
   Object.keys(TEST_CASES).forEach(testCase => {
-    it(`should return correct country for timezone "${testCase}"`, () => {
+    it(`returns the correct country for timezone "${testCase}"`, () => {
       const result = ct.getCountryForTimezone(testCase);
-      const expectedResult = TEST_CASES[testCase];
+      const expectedResult = ct.getCountry(TEST_CASES[testCase]);
+      expect(result).to.be.eql(expectedResult);
+    });
+
+    it(`includes deprecated timezones in the country for "${testCase}" with deprecated option`, () => {
+      const options = { deprecated: true };
+      const result = ct.getCountryForTimezone(testCase, options);
+      const expectedResult = ct.getCountry(TEST_CASES[testCase], options);
       expect(result).to.be.eql(expectedResult);
     });
   });

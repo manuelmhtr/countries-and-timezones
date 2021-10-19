@@ -24,7 +24,7 @@ Add the following script to your project (only ~9kb):
 <script src="https://cdn.jsdelivr.net/gh/manuelmhtr/countries-and-timezones@latest/dist/index.min.js" type="text/javascript"></script>
 
 <!-- Or specify a version -->
-<script src="https://cdn.jsdelivr.net/gh/manuelmhtr/countries-and-timezones@v3.2.1/dist/index.min.js" type="text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/gh/manuelmhtr/countries-and-timezones@v3.3.0/dist/index.min.js" type="text/javascript"></script>
 
 <!-- This will export a variable named "ct": -->
 <script type="text/javascript">
@@ -36,9 +36,11 @@ Add the following script to your project (only ~9kb):
 
 ## API
 
-### `.getCountry(id)`
+### `.getCountry(id, options = {})`
 
 Returns a country referenced by its `id`.
+
+Accepts a parameter with [`options`](#options).
 
 **Example**
 
@@ -54,7 +56,7 @@ Prints:
 {
   id: 'DE',
   name: 'Germany',
-  timezones: [ 'Europe/Busingen', 'Europe/Berlin' ]
+  timezones: [ 'Europe/Berlin', 'Europe/Zurich' ]
 }
 
 */
@@ -88,9 +90,11 @@ Prints:
 */
 ```
 
-### `.getAllCountries()`
+### `.getAllCountries(options = {})`
 
 Returns an object with the data of all countries.
+
+Accepts a parameter with [`options`](#options).
 
 **Example**
 
@@ -122,7 +126,7 @@ Prints:
   AG: {
     id: 'AG',
     name: 'Antigua and Barbuda',
-    timezones: [ 'America/Antigua' ]
+    timezones: [ 'America/Puerto_Rico' ]
   },
   ...
 }
@@ -130,9 +134,11 @@ Prints:
 */
 ```
 
-### `.getAllTimezones()`
+### `.getAllTimezones(options = {})`
 
 Returns an object with the data of all timezones.
+
+Accepts a parameter with [`options`](#options).
 
 **Example**
 
@@ -146,32 +152,41 @@ console.log(timezones);
 Prints:
 
 {
-  'Africa/Bamako': {
-    name: 'Africa/Bamako',
-    countries: [ 'ML' ],
-    utcOffset: 0,
-    utcOffsetStr: '+00:00',
-    dstOffset: 0,
-    dstOffsetStr: '+00:00',
-    aliasOf: 'Africa/Abidjan'
+  "Africa/Abidjan": {
+    "name": "Africa/Abidjan",
+    "countries": [
+      "CI", "BF", "GH",
+      "GM", "GN", "ML",
+      "MR", "SH", "SL",
+      "SN", "TG"
+    ],
+    "utcOffset": 0,
+    "utcOffsetStr": "+00:00",
+    "dstOffset": 0,
+    "dstOffsetStr": "+00:00",
+    "aliasOf": null
   },
-  'Africa/Banjul': {
-    name: 'Africa/Banjul',
-    countries: [ 'GM' ],
-    utcOffset: 0,
-    utcOffsetStr: '+00:00',
-    dstOffset: 0,
-    dstOffsetStr: '+00:00',
-    aliasOf: 'Africa/Abidjan'
+  "Africa/Algiers": {
+    "name": "Africa/Algiers",
+    "countries": [
+      "DZ"
+    ],
+    "utcOffset": 60,
+    "utcOffsetStr": "+01:00",
+    "dstOffset": 60,
+    "dstOffsetStr": "+01:00",
+    "aliasOf": null
   },
-  'Africa/Conakry': {
-    name: 'Africa/Conakry',
-    countries: [ 'GN' ],
-    utcOffset: 0,
-    utcOffsetStr: '+00:00',
-    dstOffset: 0,
-    dstOffsetStr: '+00:00',
-    aliasOf: 'Africa/Abidjan'
+  "Africa/Bissau": {
+    "name": "Africa/Bissau",
+    "countries": [
+      "GW"
+    ],
+    "utcOffset": 0,
+    "utcOffsetStr": "+00:00",
+    "dstOffset": 0,
+    "dstOffsetStr": "+00:00",
+    "aliasOf": null
   },
   ...
 }
@@ -179,9 +194,11 @@ Prints:
 */
 ```
 
-### `.getTimezonesForCountry(id)`
+### `.getTimezonesForCountry(id, options = {})`
 
 Returns an array with all the timezones of a country given its `id`.
+
+Accepts a parameter with [`options`](#options).
 
 **Example**
 
@@ -196,31 +213,31 @@ Prints:
 
 [
   {
-    name: 'Mexico/BajaSur',
-    countries: [ 'MX' ],
-    utcOffset: -420,
-    utcOffsetStr: '-07:00',
-    dstOffset: -360,
-    dstOffsetStr: '-06:00',
-    aliasOf: 'America/Mazatlan'
+    "name": "America/Bahia_Banderas",
+    "countries": [ "MX" ],
+    "utcOffset": -360,
+    "utcOffsetStr": "-06:00",
+    "dstOffset": -300,
+    "dstOffsetStr": "-05:00",
+    "aliasOf": null
   },
   {
-    name: 'Mexico/General',
-    countries: [ 'MX' ],
-    utcOffset: -360,
-    utcOffsetStr: '-06:00',
-    dstOffset: -300,
-    dstOffsetStr: '-05:00',
-    aliasOf: 'America/Mexico_City'
+    "name": "America/Cancun",
+    "countries": [ "MX" ],
+    "utcOffset": -300,
+    "utcOffsetStr": "-05:00",
+    "dstOffset": -300,
+    "dstOffsetStr": "-05:00",
+    "aliasOf": null
   },
   {
-    name: 'America/Ensenada',
-    countries: [ 'MX' ],
-    utcOffset: -480,
-    utcOffsetStr: '-08:00',
-    dstOffset: -420,
-    dstOffsetStr: '-07:00',
-    aliasOf: 'America/Tijuana'
+    "name": "America/Chihuahua",
+    "countries": [ "MX" ],
+    "utcOffset": -420,
+    "utcOffsetStr": "-07:00",
+    "dstOffset": -360,
+    "dstOffsetStr": "-06:00",
+    "aliasOf": null
   },
   ...
 }
@@ -228,9 +245,11 @@ Prints:
 */
 ```
 
-### `.getCountriesForTimezone(name)`
+### `.getCountriesForTimezone(name, options = {})`
 
 Returns a list of the countries that uses a timezone given its `name`. When a timezone has multiple countries **the first element is more relevant** due to its geographical location.
+
+Accepts a parameter with [`options`](#options).
 
 **Example**
 
@@ -255,7 +274,6 @@ Prints:
     "id": "DE",
     "name": "Germany",
     "timezones": [
-      "Europe/Busingen",
       "Europe/Berlin",
       "Europe/Zurich"
     ]
@@ -264,7 +282,6 @@ Prints:
     "id": "LI",
     "name": "Liechtenstein",
     "timezones": [
-      "Europe/Vaduz",
       "Europe/Zurich"
     ]
   }
@@ -274,9 +291,11 @@ Prints:
 
 ```
 
-### `.getCountryForTimezone(name)`
+### `.getCountryForTimezone(name, options = {})`
 
 Returns a the most relevant country (due to its geographical location) that uses a timezone given its `name`.
+
+Accepts a parameter with [`options`](#options).
 
 **Example**
 
@@ -301,6 +320,14 @@ Prints:
 
 ```
 
+### `options`
+
+Available options for functions are:
+
+| Parameter | Type | Description |
+| --------- | ---- | ----------- |
+|`deprecated`|Boolean|Indicates if the result should include deprecated timezones or not. By default no deprecated timezones are included.|
+
 
 ## Data models
 
@@ -319,22 +346,17 @@ A country is defined by the following parameters:
   id: 'MX',
   name: 'Mexico',
   timezones: [
-    'Mexico/BajaSur',
-    'Mexico/General',
-    'America/Ensenada',
-    'America/Santa_Isabel',
-    'Mexico/BajaNorte',
     'America/Bahia_Banderas',
     'America/Cancun',
     'America/Chihuahua',
-    'America/Tijuana',
     'America/Hermosillo',
     'America/Matamoros',
     'America/Mazatlan',
     'America/Merida',
     'America/Mexico_City',
     'America/Monterrey',
-    'America/Ojinaga'
+    'America/Ojinaga',
+    'America/Tijuana'
   ]
 }
 ```
@@ -352,6 +374,7 @@ A timezone is defined by the following parameters:
 |`dstOffset`|Number|The difference in **minutes** between the timezone and [UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) during daylight saving time ([DST](https://en.wikipedia.org/wiki/Daylight_saving_time)). When `utcOffset` and `dstOffset` are the same, means that the timezone does not observe a daylight saving time.|
 |`dstOffsetStr`|String|The difference in hours and minutes between the timezone and [UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) during daylight saving time ([DST](https://en.wikipedia.org/wiki/Daylight_saving_time), expressed as string with format: `±[hh]:[mm]`.|
 |`aliasOf`|String|The `name` of a primary timezone in case this is an alias. `null` means this is a primary timezone.|
+|`deprecated`|Boolean|`true` when the timezone has been deprecated, otherwise this property is not returned.|
 
 ```javascript
 {
@@ -361,7 +384,8 @@ A timezone is defined by the following parameters:
   utcOffsetStr: '+02:00',
   dstOffset: 180,
   dstOffsetStr: '+03:00',
-  aliasOf: 'Asia/Jerusalem'
+  aliasOf: 'Asia/Jerusalem',
+  deprecated: true
 }
 ```
 

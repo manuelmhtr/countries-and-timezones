@@ -4,13 +4,13 @@ export default function buildCountry(data, id) {
   const name = data.countries[id];
   if (!name) return null;
 
-  const tzMap = getTimezonesMap(data);
-  const timezones = tzMap[id] || [];
+  const tzMap = getTimezonesMap(data)[id] || {};
 
   return {
     id,
     name,
-    timezones,
+    timezones: tzMap.current || [],
+    allTimezones: tzMap.all || [],
   };
 }
 
@@ -29,8 +29,9 @@ function buildTimezonesMap(data) {
     if (!countries) return result;
 
     countries.forEach((country) => {
-      if (!result[country]) Object.assign(result, { [country]: [] });
-      result[country].push(id);
+      if (!result[country]) Object.assign(result, { [country]: { current: [], all: [] } });
+      if (tz.r === undefined) result[country].current.push(id);
+      result[country].all.push(id);
     });
 
     return result;

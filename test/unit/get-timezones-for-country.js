@@ -3,15 +3,6 @@ import * as ct from '../../src/index';
 const TEST_CASES = {
   KR: [
     {
-      name: 'ROK',
-      countries: ['KR'],
-      utcOffset: 540,
-      utcOffsetStr: '+09:00',
-      dstOffset: 540,
-      dstOffsetStr: '+09:00',
-      aliasOf: 'Asia/Seoul'
-    },
-    {
       name: 'Asia/Seoul',
       countries: ['KR'],
       utcOffset: 540,
@@ -19,18 +10,9 @@ const TEST_CASES = {
       dstOffset: 540,
       dstOffsetStr: '+09:00',
       aliasOf: null
-    }
+    },
   ],
   IS: [
-    {
-      name: 'Iceland',
-      countries: ['IS'],
-      utcOffset: 0,
-      utcOffsetStr: '+00:00',
-      dstOffset: 0,
-      dstOffsetStr: '+00:00',
-      aliasOf: 'Atlantic/Reykjavik'
-    },
     {
       name: 'Atlantic/Reykjavik',
       countries: ['IS'],
@@ -41,17 +23,7 @@ const TEST_CASES = {
       aliasOf: null
     }
   ],
-  DE:
-  [
-    {
-      name: 'Europe/Busingen',
-      countries: ['DE'],
-      utcOffset: 60,
-      utcOffsetStr: '+01:00',
-      dstOffset: 120,
-      dstOffsetStr: '+02:00',
-      aliasOf: 'Europe/Zurich'
-    },
+  DE: [
     {
       name: 'Europe/Berlin',
       countries: ['DE'],
@@ -69,8 +41,47 @@ const TEST_CASES = {
       dstOffset: 120,
       dstOffsetStr: '+02:00',
       aliasOf: null
-    }
+    },
   ]
+};
+
+const DEPRECATED = {
+  KR: [
+    {
+      name: 'ROK',
+      countries: ['KR'],
+      utcOffset: 540,
+      utcOffsetStr: '+09:00',
+      dstOffset: 540,
+      dstOffsetStr: '+09:00',
+      aliasOf: 'Asia/Seoul',
+      deprecated: true,
+    },
+  ],
+  IS: [
+    {
+      name: 'Iceland',
+      countries: ['IS'],
+      utcOffset: 0,
+      utcOffsetStr: '+00:00',
+      dstOffset: 0,
+      dstOffsetStr: '+00:00',
+      aliasOf: 'Atlantic/Reykjavik',
+      deprecated: true,
+    },
+  ],
+  DE: [
+    {
+      name: 'Europe/Busingen',
+      countries: ['DE'],
+      utcOffset: 60,
+      utcOffsetStr: '+01:00',
+      dstOffset: 120,
+      dstOffsetStr: '+02:00',
+      aliasOf: 'Europe/Zurich',
+      deprecated: true,
+    },
+  ],
 };
 
 describe('.getTimezonesForCountry', () => {
@@ -78,6 +89,13 @@ describe('.getTimezonesForCountry', () => {
     it(`should return correct timezones for country "${testCase}"`, () => {
       const result = ct.getTimezonesForCountry(testCase);
       const expectedResult = TEST_CASES[testCase];
+      expect(result).to.be.eql(expectedResult);
+    });
+
+    it(`should return correct timezones for country "${testCase}" with deprecated option`, () => {
+      const result = ct.getTimezonesForCountry(testCase, { deprecated: true });
+      const expectedResult = [...TEST_CASES[testCase], ...DEPRECATED[testCase]]
+        .sort((a, b) => a.name > b.name ? 1 : -1);
       expect(result).to.be.eql(expectedResult);
     });
   });

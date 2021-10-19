@@ -5,51 +5,30 @@ const TEST_CASES = {
     id: 'MX',
     name: 'Mexico',
     timezones: [
-      "Mexico/BajaSur",
-      "Mexico/General",
-      "America/Ensenada",
-      "America/Santa_Isabel",
-      "Mexico/BajaNorte",
       'America/Bahia_Banderas',
       'America/Cancun',
       'America/Chihuahua',
-      'America/Tijuana',
       'America/Hermosillo',
       'America/Matamoros',
       'America/Mazatlan',
       'America/Merida',
       'America/Mexico_City',
       'America/Monterrey',
-      'America/Ojinaga'
+      'America/Ojinaga',
+      'America/Tijuana',
     ]
   },
   US: {
     id: 'US',
     name: 'United States of America',
     timezones: [
-      "America/Atka",
-      "US/Aleutian",
-      "US/Alaska",
-      "US/Central",
-      "America/Shiprock",
-      "Navajo",
-      "US/Mountain",
-      "US/Michigan",
-      "America/Indiana/Indianapolis",
-      "America/Knox_IN",
-      "US/Indiana-Starke",
-      "America/Louisville",
-      "US/Pacific",
-      "US/Eastern",
-      "US/Arizona",
-      "Pacific/Johnston",
-      "US/Hawaii",
       'America/Adak',
       'America/Anchorage',
       'America/Boise',
       'America/Chicago',
       'America/Denver',
       'America/Detroit',
+      "America/Indiana/Indianapolis",
       'America/Indiana/Knox',
       'America/Indiana/Marengo',
       'America/Indiana/Petersburg',
@@ -78,10 +57,42 @@ const TEST_CASES = {
     id: 'KR',
     name: 'South Korea',
     timezones: [
-      'ROK',
       'Asia/Seoul'
     ]
   }
+};
+
+const DEPRECATED = {
+  MX: [
+    "America/Ensenada",
+    "America/Santa_Isabel",
+    "Mexico/BajaNorte",
+    "Mexico/BajaSur",
+    "Mexico/General",
+  ],
+  US: [
+    "America/Atka",
+    "America/Fort_Wayne",
+    "America/Indianapolis",
+    "America/Knox_IN",
+    "America/Louisville",
+    "America/Shiprock",
+    "Navajo",
+    "US/Alaska",
+    "US/Aleutian",
+    "US/Arizona",
+    "US/Central",
+    "US/East-Indiana",
+    "US/Eastern",
+    "US/Hawaii",
+    "US/Indiana-Starke",
+    "US/Michigan",
+    "US/Mountain",
+    "US/Pacific",
+  ],
+  KR: [
+    'ROK',
+  ],
 };
 
 describe('.getCountry', () => {
@@ -89,6 +100,13 @@ describe('.getCountry', () => {
     it(`should return correct data for country "${testCase}"`, () => {
       const result = ct.getCountry(testCase);
       const expectedResult = TEST_CASES[testCase];
+      expect(result).to.be.eql(expectedResult);
+    });
+
+    it(`should return correct data for country "${testCase}" with deprecated option`, () => {
+      const result = ct.getCountry(testCase, { deprecated: true });
+      const expectedResult = TEST_CASES[testCase];
+      expectedResult.timezones = [...expectedResult.timezones, ...DEPRECATED[testCase]].sort();
       expect(result).to.be.eql(expectedResult);
     });
   });

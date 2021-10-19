@@ -1,7 +1,14 @@
 {
-  "extends": "airbnb-base",
+  "extends": [
+    "airbnb",
+    "plugin:jest/recommended"
+  ],
+  "plugins": [
+    "jest"
+  ],
   "env": {
-    "node": true
+    "node": true,
+    "jest/globals": true
   },
   "parserOptions": {
     "sourceType": "module"

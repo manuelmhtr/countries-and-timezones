@@ -13,7 +13,7 @@ export default function buildTimezone(data, name) {
   const utcOffset = tz.u;
   const dstOffset = Number.isInteger(tz.d) ? tz.d : utcOffset;
 
-  return {
+  const result = {
     name,
     countries,
     utcOffset,
@@ -22,6 +22,8 @@ export default function buildTimezone(data, name) {
     dstOffsetStr: getOffsetStr(dstOffset),
     aliasOf,
   };
+  if (timezone.r) result.deprecated = true;
+  return result;
 }
 
 function getOffsetStr(offset) {

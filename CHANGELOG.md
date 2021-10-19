@@ -1,12 +1,18 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [3.3.0] - 2021-10-18
+### Added
+- Added a new parameter `options` to most functions.
+- Added `deprecated` option to return both current and deprecated timezones.
+
+### Changed
+- Updated with 2021c INANA Timezones database.
+- Deprecated timezones are not returned by default (`deprecated` option is required).
+
 ## [3.2.3] - 2021-09-28
 ### Fixed
 - Constant declarations on Types ([#41](https://github.com/manuelmhtr/countries-and-timezones/issues/41))
-
-### Added
-- Eslint config
 
 ## [3.2.1] - 2021-08-17
 ### Fixed

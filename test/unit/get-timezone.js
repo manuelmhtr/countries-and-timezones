@@ -8,7 +8,7 @@ const TEST_CASES = {
     utcOffsetStr: '-06:00',
     dstOffset: -300,
     dstOffsetStr: '-05:00',
-    aliasOf: null
+    aliasOf: null,
   },
   'Indian/Comoro': {
     name: 'Indian/Comoro',
@@ -17,30 +17,32 @@ const TEST_CASES = {
     utcOffsetStr: '+03:00',
     dstOffset: 180,
     dstOffsetStr: '+03:00',
-    aliasOf: 'Africa/Nairobi'
+    aliasOf: 'Africa/Nairobi',
+    deprecated: true,
   },
-  'UTC': {
+  UTC: {
     name: 'UTC',
     countries: [],
     utcOffset: 0,
     utcOffsetStr: '+00:00',
     dstOffset: 0,
     dstOffsetStr: '+00:00',
-    aliasOf: 'Etc/UTC'
+    aliasOf: 'Etc/UTC',
+    deprecated: true,
   },
-  'Asia/Tel_Aviv': {
-    name: 'Asia/Tel_Aviv',
+  'Asia/Jerusalem': {
+    name: 'Asia/Jerusalem',
     countries: ['IL'],
     utcOffset: 120,
     utcOffsetStr: '+02:00',
     dstOffset: 180,
     dstOffsetStr: '+03:00',
-    aliasOf: 'Asia/Jerusalem'
-  }
+    aliasOf: null,
+  },
 };
 
 describe('.getTimezone', () => {
-  Object.keys(TEST_CASES).forEach(testCase => {
+  Object.keys(TEST_CASES).forEach((testCase) => {
     it(`should return correct data for timezone "${testCase}"`, () => {
       const result = ct.getTimezone(testCase);
       const expectedResult = TEST_CASES[testCase];
