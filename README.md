@@ -394,6 +394,7 @@ A timezone is defined by the following parameters:
 
 * [countries-db](https://www.npmjs.com/package/countries-db): Minimalistic lib with countries data.
 * [location-by-ip](https://www.npmjs.com/package/location-by-ip): Get the location of any IP address.
+* [tzdb](Simplified, grouped and always up to date list of time zones, with major cities)
 
 
 ## Support
