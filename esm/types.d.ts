@@ -11,7 +11,7 @@ interface Country {
 }
 
 interface Timezone {
-  name: string;
+  name: TimezoneName;
   countries: CountryCode[];
   utcOffset: number;
   utcOffsetStr: string;
