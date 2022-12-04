@@ -1,6 +1,15 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [3.4.0] - 2021-12-04
+### Changed
+- Updated with 2022c INANA Timezones database.
+- Increased type safety on Timezone.name ([#49](https://github.com/manuelmhtr/countries-and-timezones/pull/49) by [Vicary A.](https://github.com/vicary)).
+- Added `Europe/Kyiv` timezone ([#50](https://github.com/manuelmhtr/countries-and-timezones/pull/50) by [S. M. Ibrahim lavlu](https://github.com/lavluda)).
+
+### Fixed
+- Wrong `utcOffset` for some timezones [#51](https://github.com/manuelmhtr/countries-and-timezones/issues/51).
+
 ## [3.3.0] - 2021-10-18
 ### Added
 - Added a new parameter `options` to most functions.

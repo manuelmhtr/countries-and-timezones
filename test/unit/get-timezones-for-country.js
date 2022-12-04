@@ -14,8 +14,8 @@ const TEST_CASES = {
   ],
   IS: [
     {
-      name: 'Atlantic/Reykjavik',
-      countries: ['IS'],
+      name: 'Africa/Abidjan',
+      countries: ['CI', 'BF', 'GH', 'GM', 'GN', 'IS', 'ML', 'MR', 'SH', 'SL', 'SN', 'TG'],
       utcOffset: 0,
       utcOffsetStr: '+00:00',
       dstOffset: 0,
@@ -26,7 +26,7 @@ const TEST_CASES = {
   DE: [
     {
       name: 'Europe/Berlin',
-      countries: ['DE'],
+      countries: ['DE', 'DK', 'NO', 'SE', 'SJ'],
       utcOffset: 60,
       utcOffsetStr: '+01:00',
       dstOffset: 120,
@@ -60,13 +60,23 @@ const DEPRECATED = {
   ],
   IS: [
     {
+      name: 'Atlantic/Reykjavik',
+      countries: ['IS'],
+      utcOffset: 0,
+      utcOffsetStr: '+00:00',
+      dstOffset: 0,
+      dstOffsetStr: '+00:00',
+      aliasOf: 'Africa/Abidjan',
+      deprecated: true,
+    },
+    {
       name: 'Iceland',
       countries: ['IS'],
       utcOffset: 0,
       utcOffsetStr: '+00:00',
       dstOffset: 0,
       dstOffsetStr: '+00:00',
-      aliasOf: 'Atlantic/Reykjavik',
+      aliasOf: 'Africa/Abidjan',
       deprecated: true,
     },
   ],

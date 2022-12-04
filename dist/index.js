@@ -377,7 +377,7 @@
   	TM: "Turkmenistan",
   	TN: "Tunisia",
   	TO: "Tonga",
-  	TR: "Turkey",
+  	TR: "Türkiye",
   	TT: "Trinidad and Tobago",
   	TV: "Tuvalu",
   	TW: "Taiwan",
@@ -412,6 +412,7 @@
   			"GH",
   			"GM",
   			"GN",
+  			"IS",
   			"ML",
   			"MR",
   			"SH",
@@ -946,7 +947,6 @@
   	},
   	"America/Bahia_Banderas": {
   		u: -360,
-  		d: -300,
   		c: [
   			"MX"
   		]
@@ -1049,6 +1049,12 @@
   		]
   	},
   	"America/Chihuahua": {
+  		u: -360,
+  		c: [
+  			"MX"
+  		]
+  	},
+  	"America/Ciudad_Juarez": {
   		u: -420,
   		d: -360,
   		c: [
@@ -1433,7 +1439,6 @@
   	},
   	"America/Mazatlan": {
   		u: -420,
-  		d: -360,
   		c: [
   			"MX"
   		]
@@ -1451,7 +1456,6 @@
   	},
   	"America/Merida": {
   		u: -360,
-  		d: -300,
   		c: [
   			"MX"
   		]
@@ -1465,7 +1469,6 @@
   	},
   	"America/Mexico_City": {
   		u: -360,
-  		d: -300,
   		c: [
   			"MX"
   		]
@@ -1486,7 +1489,6 @@
   	},
   	"America/Monterrey": {
   		u: -360,
-  		d: -300,
   		c: [
   			"MX"
   		]
@@ -1526,11 +1528,11 @@
   		]
   	},
   	"America/Nipigon": {
-  		u: -300,
-  		d: -240,
+  		a: "America/Toronto",
   		c: [
   			"CA"
-  		]
+  		],
+  		r: 1
   	},
   	"America/Nome": {
   		u: -540,
@@ -1568,14 +1570,13 @@
   	},
   	"America/Nuuk": {
   		u: -180,
-  		d: -120,
   		c: [
   			"GL"
   		]
   	},
   	"America/Ojinaga": {
-  		u: -420,
-  		d: -360,
+  		u: -360,
+  		d: -300,
   		c: [
   			"MX"
   		]
@@ -1589,11 +1590,8 @@
   		]
   	},
   	"America/Pangnirtung": {
-  		u: -300,
-  		d: -240,
-  		c: [
-  			"CA"
-  		]
+  		a: "America/Iqaluit",
+  		r: 1
   	},
   	"America/Paramaribo": {
   		u: -180,
@@ -1664,11 +1662,8 @@
   		]
   	},
   	"America/Rainy_River": {
-  		u: -360,
-  		d: -300,
-  		c: [
-  			"CA"
-  		]
+  		a: "America/Winnipeg",
+  		r: 1
   	},
   	"America/Rankin_Inlet": {
   		u: -360,
@@ -1761,8 +1756,8 @@
   		r: 1
   	},
   	"America/St_Johns": {
-  		u: -150,
-  		d: -90,
+  		u: -210,
+  		d: -150,
   		c: [
   			"CA"
   		]
@@ -1815,11 +1810,11 @@
   		]
   	},
   	"America/Thunder_Bay": {
-  		u: -300,
-  		d: -240,
+  		a: "America/Toronto",
   		c: [
   			"CA"
-  		]
+  		],
+  		r: 1
   	},
   	"America/Tijuana": {
   		u: -480,
@@ -1957,13 +1952,14 @@
   		]
   	},
   	"Antarctica/Vostok": {
-  		u: 360,
+  		a: "Asia/Urumqi",
   		c: [
   			"AQ"
-  		]
+  		],
+  		r: 1
   	},
   	"Arctic/Longyearbyen": {
-  		a: "Europe/Oslo",
+  		a: "Europe/Berlin",
   		c: [
   			"SJ"
   		],
@@ -1983,8 +1979,7 @@
   		]
   	},
   	"Asia/Amman": {
-  		u: 120,
-  		d: 180,
+  		u: 180,
   		c: [
   			"JO"
   		]
@@ -2046,6 +2041,7 @@
   		u: 420,
   		c: [
   			"TH",
+  			"CX",
   			"KH",
   			"LA",
   			"VN"
@@ -2071,10 +2067,11 @@
   		]
   	},
   	"Asia/Brunei": {
-  		u: 480,
+  		a: "Asia/Kuching",
   		c: [
   			"BN"
-  		]
+  		],
+  		r: 1
   	},
   	"Asia/Calcutta": {
   		a: "Asia/Kolkata",
@@ -2111,8 +2108,7 @@
   		r: 1
   	},
   	"Asia/Damascus": {
-  		u: 120,
-  		d: 180,
+  		u: 180,
   		c: [
   			"SY"
   		]
@@ -2133,7 +2129,10 @@
   		u: 240,
   		c: [
   			"AE",
-  			"OM"
+  			"OM",
+  			"RE",
+  			"SC",
+  			"TF"
   		]
   	},
   	"Asia/Dushanbe": {
@@ -2234,6 +2233,9 @@
   	},
   	"Asia/Kashgar": {
   		a: "Asia/Urumqi",
+  		c: [
+  			"CN"
+  		],
   		r: 1
   	},
   	"Asia/Kathmandu": {
@@ -2265,15 +2267,17 @@
   		]
   	},
   	"Asia/Kuala_Lumpur": {
-  		u: 480,
+  		a: "Asia/Singapore",
   		c: [
   			"MY"
-  		]
+  		],
+  		r: 1
   	},
   	"Asia/Kuching": {
   		u: 480,
   		c: [
-  			"MY"
+  			"MY",
+  			"BN"
   		]
   	},
   	"Asia/Kuwait": {
@@ -2389,6 +2393,9 @@
   	},
   	"Asia/Rangoon": {
   		a: "Asia/Yangon",
+  		c: [
+  			"MM"
+  		],
   		r: 1
   	},
   	"Asia/Riyadh": {
@@ -2461,7 +2468,6 @@
   	},
   	"Asia/Tehran": {
   		u: 210,
-  		d: 270,
   		c: [
   			"IR"
   		]
@@ -2509,7 +2515,8 @@
   	"Asia/Urumqi": {
   		u: 360,
   		c: [
-  			"CN"
+  			"CN",
+  			"AQ"
   		]
   	},
   	"Asia/Ust-Nera": {
@@ -2540,7 +2547,8 @@
   	"Asia/Yangon": {
   		u: 390,
   		c: [
-  			"MM"
+  			"MM",
+  			"CC"
   		]
   	},
   	"Asia/Yekaterinburg": {
@@ -2594,7 +2602,7 @@
   		]
   	},
   	"Atlantic/Jan_Mayen": {
-  		a: "Europe/Oslo",
+  		a: "Europe/Berlin",
   		c: [
   			"SJ"
   		],
@@ -2608,10 +2616,11 @@
   		]
   	},
   	"Atlantic/Reykjavik": {
-  		u: 0,
+  		a: "Africa/Abidjan",
   		c: [
   			"IS"
-  		]
+  		],
+  		r: 1
   	},
   	"Atlantic/South_Georgia": {
   		u: -120,
@@ -2955,11 +2964,11 @@
   		r: 1
   	},
   	"Europe/Amsterdam": {
-  		u: 60,
-  		d: 120,
+  		a: "Europe/Brussels",
   		c: [
   			"NL"
-  		]
+  		],
+  		r: 1
   	},
   	"Europe/Andorra": {
   		u: 60,
@@ -3004,7 +3013,11 @@
   		u: 60,
   		d: 120,
   		c: [
-  			"DE"
+  			"DE",
+  			"DK",
+  			"NO",
+  			"SE",
+  			"SJ"
   		]
   	},
   	"Europe/Bratislava": {
@@ -3018,7 +3031,9 @@
   		u: 60,
   		d: 120,
   		c: [
-  			"BE"
+  			"BE",
+  			"LU",
+  			"NL"
   		]
   	},
   	"Europe/Bucharest": {
@@ -3050,11 +3065,11 @@
   		]
   	},
   	"Europe/Copenhagen": {
-  		u: 60,
-  		d: 120,
+  		a: "Europe/Berlin",
   		c: [
   			"DK"
-  		]
+  		],
+  		r: 1
   	},
   	"Europe/Dublin": {
   		u: 60,
@@ -3112,16 +3127,20 @@
   		]
   	},
   	"Europe/Kiev": {
-  		u: 120,
-  		d: 180,
-  		c: [
-  			"UA"
-  		]
+  		a: "Europe/Kyiv",
+  		r: 1
   	},
   	"Europe/Kirov": {
   		u: 180,
   		c: [
   			"RU"
+  		]
+  	},
+  	"Europe/Kyiv": {
+  		u: 120,
+  		d: 180,
+  		c: [
+  			"UA"
   		]
   	},
   	"Europe/Lisbon": {
@@ -3149,11 +3168,11 @@
   		]
   	},
   	"Europe/Luxembourg": {
-  		u: 60,
-  		d: 120,
+  		a: "Europe/Brussels",
   		c: [
   			"LU"
-  		]
+  		],
+  		r: 1
   	},
   	"Europe/Madrid": {
   		u: 60,
@@ -3183,11 +3202,11 @@
   		]
   	},
   	"Europe/Monaco": {
-  		u: 60,
-  		d: 120,
+  		a: "Europe/Paris",
   		c: [
   			"MC"
-  		]
+  		],
+  		r: 1
   	},
   	"Europe/Moscow": {
   		u: 180,
@@ -3200,19 +3219,19 @@
   		r: 1
   	},
   	"Europe/Oslo": {
-  		u: 60,
-  		d: 120,
+  		a: "Europe/Berlin",
   		c: [
   			"NO",
-  			"SJ",
   			"BV"
-  		]
+  		],
+  		r: 1
   	},
   	"Europe/Paris": {
   		u: 60,
   		d: 120,
   		c: [
-  			"FR"
+  			"FR",
+  			"MC"
   		]
   	},
   	"Europe/Podgorica": {
@@ -3294,11 +3313,11 @@
   		]
   	},
   	"Europe/Stockholm": {
-  		u: 60,
-  		d: 120,
+  		a: "Europe/Berlin",
   		c: [
   			"SE"
-  		]
+  		],
+  		r: 1
   	},
   	"Europe/Tallinn": {
   		u: 120,
@@ -3325,11 +3344,8 @@
   		]
   	},
   	"Europe/Uzhgorod": {
-  		u: 120,
-  		d: 180,
-  		c: [
-  			"UA"
-  		]
+  		a: "Europe/Kyiv",
+  		r: 1
   	},
   	"Europe/Vaduz": {
   		a: "Europe/Zurich",
@@ -3380,11 +3396,8 @@
   		r: 1
   	},
   	"Europe/Zaporozhye": {
-  		u: 120,
-  		d: 180,
-  		c: [
-  			"UA"
-  		]
+  		a: "Europe/Kyiv",
+  		r: 1
   	},
   	"Europe/Zurich": {
   		u: 60,
@@ -3440,7 +3453,10 @@
   		r: 1
   	},
   	Iceland: {
-  		a: "Atlantic/Reykjavik",
+  		a: "Africa/Abidjan",
+  		c: [
+  			"IS"
+  		],
   		r: 1
   	},
   	"Indian/Antananarivo": {
@@ -3457,16 +3473,18 @@
   		]
   	},
   	"Indian/Christmas": {
-  		u: 420,
+  		a: "Asia/Bangkok",
   		c: [
   			"CX"
-  		]
+  		],
+  		r: 1
   	},
   	"Indian/Cocos": {
-  		u: 390,
+  		a: "Asia/Yangon",
   		c: [
   			"CC"
-  		]
+  		],
+  		r: 1
   	},
   	"Indian/Comoro": {
   		a: "Africa/Nairobi",
@@ -3476,22 +3494,25 @@
   		r: 1
   	},
   	"Indian/Kerguelen": {
-  		u: 300,
+  		a: "Indian/Maldives",
   		c: [
   			"TF",
   			"HM"
-  		]
+  		],
+  		r: 1
   	},
   	"Indian/Mahe": {
-  		u: 240,
+  		a: "Asia/Dubai",
   		c: [
   			"SC"
-  		]
+  		],
+  		r: 1
   	},
   	"Indian/Maldives": {
   		u: 300,
   		c: [
-  			"MV"
+  			"MV",
+  			"TF"
   		]
   	},
   	"Indian/Mauritius": {
@@ -3508,11 +3529,11 @@
   		r: 1
   	},
   	"Indian/Reunion": {
-  		u: 240,
+  		a: "Asia/Dubai",
   		c: [
-  			"RE",
-  			"TF"
-  		]
+  			"RE"
+  		],
+  		r: 1
   	},
   	Iran: {
   		a: "Asia/Tehran",
@@ -3612,10 +3633,11 @@
   		]
   	},
   	"Pacific/Chuuk": {
-  		u: 600,
+  		a: "Pacific/Port_Moresby",
   		c: [
   			"FM"
-  		]
+  		],
+  		r: 1
   	},
   	"Pacific/Easter": {
   		u: -360,
@@ -3642,16 +3664,16 @@
   	},
   	"Pacific/Fiji": {
   		u: 720,
-  		d: 780,
   		c: [
   			"FJ"
   		]
   	},
   	"Pacific/Funafuti": {
-  		u: 720,
+  		a: "Pacific/Tarawa",
   		c: [
   			"TV"
-  		]
+  		],
+  		r: 1
   	},
   	"Pacific/Galapagos": {
   		u: -360,
@@ -3668,7 +3690,8 @@
   	"Pacific/Guadalcanal": {
   		u: 660,
   		c: [
-  			"SB"
+  			"SB",
+  			"FM"
   		]
   	},
   	"Pacific/Guam": {
@@ -3717,13 +3740,14 @@
   		]
   	},
   	"Pacific/Majuro": {
-  		u: 720,
+  		a: "Pacific/Tarawa",
   		c: [
   			"MH"
-  		]
+  		],
+  		r: 1
   	},
   	"Pacific/Marquesas": {
-  		u: -510,
+  		u: -570,
   		c: [
   			"PF"
   		]
@@ -3780,20 +3804,25 @@
   		]
   	},
   	"Pacific/Pohnpei": {
-  		u: 660,
+  		a: "Pacific/Guadalcanal",
   		c: [
   			"FM"
-  		]
+  		],
+  		r: 1
   	},
   	"Pacific/Ponape": {
-  		a: "Pacific/Pohnpei",
+  		a: "Pacific/Guadalcanal",
+  		c: [
+  			"FM"
+  		],
   		r: 1
   	},
   	"Pacific/Port_Moresby": {
   		u: 600,
   		c: [
   			"PG",
-  			"AQ"
+  			"AQ",
+  			"FM"
   		]
   	},
   	"Pacific/Rarotonga": {
@@ -3812,7 +3841,7 @@
   	"Pacific/Samoa": {
   		a: "Pacific/Pago_Pago",
   		c: [
-  			"WS"
+  			"AS"
   		],
   		r: 1
   	},
@@ -3825,7 +3854,11 @@
   	"Pacific/Tarawa": {
   		u: 720,
   		c: [
-  			"KI"
+  			"KI",
+  			"MH",
+  			"TV",
+  			"UM",
+  			"WF"
   		]
   	},
   	"Pacific/Tongatapu": {
@@ -3835,23 +3868,31 @@
   		]
   	},
   	"Pacific/Truk": {
-  		a: "Pacific/Chuuk",
+  		a: "Pacific/Port_Moresby",
+  		c: [
+  			"FM"
+  		],
   		r: 1
   	},
   	"Pacific/Wake": {
-  		u: 720,
+  		a: "Pacific/Tarawa",
   		c: [
   			"UM"
-  		]
+  		],
+  		r: 1
   	},
   	"Pacific/Wallis": {
-  		u: 720,
+  		a: "Pacific/Tarawa",
   		c: [
   			"WF"
-  		]
+  		],
+  		r: 1
   	},
   	"Pacific/Yap": {
-  		a: "Pacific/Chuuk",
+  		a: "Pacific/Port_Moresby",
+  		c: [
+  			"FM"
+  		],
   		r: 1
   	},
   	Poland: {
@@ -3938,7 +3979,7 @@
   	"US/Samoa": {
   		a: "Pacific/Pago_Pago",
   		c: [
-  			"WS"
+  			"AS"
   		],
   		r: 1
   	},

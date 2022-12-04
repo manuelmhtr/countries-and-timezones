@@ -8,6 +8,7 @@ const TEST_CASES = {
       'America/Bahia_Banderas',
       'America/Cancun',
       'America/Chihuahua',
+      'America/Ciudad_Juarez',
       'America/Hermosillo',
       'America/Matamoros',
       'America/Mazatlan',

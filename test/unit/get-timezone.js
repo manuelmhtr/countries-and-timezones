@@ -6,8 +6,8 @@ const TEST_CASES = {
     countries: ['MX'],
     utcOffset: -360,
     utcOffsetStr: '-06:00',
-    dstOffset: -300,
-    dstOffsetStr: '-05:00',
+    dstOffset: -360,
+    dstOffsetStr: '-06:00',
     aliasOf: null,
   },
   'Indian/Comoro': {
