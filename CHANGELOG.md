@@ -1,7 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [3.4.0] - 2021-12-04
+## [3.4.1] - 2023-01-29
+### Fixed
+- Broken shield on Readme.
+
+## [3.4.0] - 2022-12-04
 ### Changed
 - Updated with 2022c INANA Timezones database.
 - Increased type safety on Timezone.name ([#49](https://github.com/manuelmhtr/countries-and-timezones/pull/49) by [Vicary A.](https://github.com/vicary)).
