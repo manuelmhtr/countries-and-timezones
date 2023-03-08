@@ -1,6 +1,9 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+### Added
+- Kosovo country.
+
 ## [3.4.1] - 2023-01-29
 ### Fixed
 - Broken shield on Readme.

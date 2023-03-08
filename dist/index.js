@@ -397,6 +397,7 @@
   	VU: "Vanuatu",
   	WF: "Wallis and Futuna",
   	WS: "Samoa",
+  	XK: "Kosovo",
   	YE: "Yemen",
   	YT: "Mayotte",
   	ZA: "South Africa",
@@ -3006,7 +3007,8 @@
   			"HR",
   			"ME",
   			"MK",
-  			"SI"
+  			"SI",
+  			"XK"
   		]
   	},
   	"Europe/Berlin": {

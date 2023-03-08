@@ -391,6 +391,7 @@ var countries$1 = {
 	VU: "Vanuatu",
 	WF: "Wallis and Futuna",
 	WS: "Samoa",
+	XK: "Kosovo",
 	YE: "Yemen",
 	YT: "Mayotte",
 	ZA: "South Africa",
@@ -3000,7 +3001,8 @@ var timezones$1 = {
 			"HR",
 			"ME",
 			"MK",
-			"SI"
+			"SI",
+			"XK"
 		]
 	},
 	"Europe/Berlin": {
