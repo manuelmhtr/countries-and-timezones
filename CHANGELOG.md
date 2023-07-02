@@ -1,14 +1,24 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [3.5.0] - 2023-07-02
+### Changed
+- Updated with 2023a IANA Timezones database.
+
+### Added
+- TS Types export ([#57](https://github.com/manuelmhtr/countries-and-timezones/pull/57) by [Haz](https://github.com/diegohaz)).
+
+### Removed
+- Countries: `BV` (Bouvet Island) and `HM` (Heard Island and McDonald Islands) since their are dependent territories, nobody lives there and they don't have official timezones.
+
 ## [3.4.1] - 2023-01-29
 ### Fixed
 - Broken shield on Readme.
 
 ## [3.4.0] - 2022-12-04
 ### Changed
-- Updated with 2022c INANA Timezones database.
-- Increased type safety on Timezone.name ([#49](https://github.com/manuelmhtr/countries-and-timezones/pull/49) by [Vicary A.](https://github.com/vicary)).
+- Updated with 2022c IANA Timezones database.
+- Increased type safety on `Timezone.name` ([#49](https://github.com/manuelmhtr/countries-and-timezones/pull/49) by [Vicary A.](https://github.com/vicary)).
 - Added `Europe/Kyiv` timezone ([#50](https://github.com/manuelmhtr/countries-and-timezones/pull/50) by [S. M. Ibrahim lavlu](https://github.com/lavluda)).
 
 ### Fixed
@@ -20,7 +30,7 @@ All notable changes to this project will be documented in this file.
 - Added `deprecated` option to return both current and deprecated timezones.
 
 ### Changed
-- Updated with 2021c INANA Timezones database.
+- Updated with 2021c IANA Timezones database.
 - Deprecated timezones are not returned by default (`deprecated` option is required).
 
 ## [3.2.3] - 2021-09-28
@@ -63,7 +73,7 @@ All notable changes to this project will be documented in this file.
 
 ## [2.4.0] - 2021-04-24
 ### Changed
-- Updated with 2021a INANA Timezones database.
+- Updated with 2021a IANA Timezones database.
 
 ### Removed
 - `US/Pacific-New` timezone.
@@ -75,14 +85,14 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 - Added 1 new timezone ("America/Nuuk").
-- Updated with 2020a INANA Timezones database.
+- Updated with 2020a IANA Timezones database.
 
 
 ## [2.2.0] - 2020-04-18
 ### Added
 - Updated 18 existing timezones.
 - Added 89 new timezones.
-- Complying with 2019c INANA Timezones database.
+- Complying with 2019c IANA Timezones database.
 
 
 ## [2.1.0] - 2020-03-31
