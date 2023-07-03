@@ -180,7 +180,6 @@ var countries$1 = {
 	BR: "Brazil",
 	BS: "Bahamas",
 	BT: "Bhutan",
-	BV: "Bouvet Island",
 	BW: "Botswana",
 	BY: "Belarus",
 	BZ: "Belize",
@@ -242,7 +241,6 @@ var countries$1 = {
 	GW: "Guinea-Bissau",
 	GY: "Guyana",
 	HK: "Hong Kong",
-	HM: "Heard Island and McDonald Islands",
 	HN: "Honduras",
 	HR: "Croatia",
 	HT: "Haiti",
@@ -499,6 +497,7 @@ var timezones$1 = {
 	},
 	"Africa/Cairo": {
 		u: 120,
+		d: 180,
 		c: [
 			"EG"
 		]
@@ -1563,7 +1562,7 @@ var timezones$1 = {
 		]
 	},
 	"America/Nuuk": {
-		u: -180,
+		u: -120,
 		c: [
 			"GL"
 		]
@@ -1867,11 +1866,8 @@ var timezones$1 = {
 		]
 	},
 	"America/Yellowknife": {
-		u: -420,
-		d: -360,
-		c: [
-			"CA"
-		]
+		a: "America/Edmonton",
+		r: 1
 	},
 	"Antarctica/Casey": {
 		u: 660,
@@ -3215,8 +3211,7 @@ var timezones$1 = {
 	"Europe/Oslo": {
 		a: "Europe/Berlin",
 		c: [
-			"NO",
-			"BV"
+			"NO"
 		],
 		r: 1
 	},
@@ -3490,8 +3485,7 @@ var timezones$1 = {
 	"Indian/Kerguelen": {
 		a: "Indian/Maldives",
 		c: [
-			"TF",
-			"HM"
+			"TF"
 		],
 		r: 1
 	},
@@ -3698,15 +3692,11 @@ var timezones$1 = {
 	"Pacific/Honolulu": {
 		u: -600,
 		c: [
-			"US",
-			"UM"
+			"US"
 		]
 	},
 	"Pacific/Johnston": {
 		a: "Pacific/Honolulu",
-		c: [
-			"UM"
-		],
 		r: 1
 	},
 	"Pacific/Kanton": {
@@ -3949,9 +3939,6 @@ var timezones$1 = {
 	},
 	"US/Hawaii": {
 		a: "Pacific/Honolulu",
-		c: [
-			"US"
-		],
 		r: 1
 	},
 	"US/Indiana-Starke": {

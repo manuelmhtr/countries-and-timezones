@@ -79,6 +79,7 @@ const DEPRECATED = {
     "America/Louisville",
     "America/Shiprock",
     "Navajo",
+    'Pacific/Johnston',
     "US/Alaska",
     "US/Aleutian",
     "US/Arizona",
