@@ -27,7 +27,7 @@ export default function buildTimezone(data, name) {
 }
 
 function getOffsetStr(offset) {
-  const hours = Math.floor(offset / 60);
+  const hours = Math.floor(Math.abs(offset) / 60);
   const min = offset % 60;
   const sign = offset < 0 ? '-' : '+';
 

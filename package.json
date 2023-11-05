@@ -1,14 +1,19 @@
 {
   "name": "countries-and-timezones",
-  "version": "3.5.1",
+  "version": "3.5.2",
   "description": "Minimalistic library to work with countries and timezones data.",
   "main": "./dist/index.js",
   "module": "./esm/index.js",
   "types": "./esm/types.d.ts",
   "exports": {
-    "types": "./esm/types.d.ts",
-    "require": "./dist/index.js",
-    "import": "./esm/index.js"
+    "import": {
+      "types": "./esm/types.d.ts",
+      "default": "./esm/index.js"
+    },
+    "require": {
+      "types": "./dist/types.d.ts",
+      "default": "./dist/index.js"
+    }
   },
   "files": [
     "dist",

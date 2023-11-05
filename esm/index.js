@@ -1,42 +1,53 @@
-function ownKeys(object, enumerableOnly) {
-  var keys = Object.keys(object);
-
+function _iterableToArrayLimit(r, l) {
+  var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"];
+  if (null != t) {
+    var e,
+      n,
+      i,
+      u,
+      a = [],
+      f = !0,
+      o = !1;
+    try {
+      if (i = (t = t.call(r)).next, 0 === l) {
+        if (Object(t) !== t) return;
+        f = !1;
+      } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0);
+    } catch (r) {
+      o = !0, n = r;
+    } finally {
+      try {
+        if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return;
+      } finally {
+        if (o) throw n;
+      }
+    }
+    return a;
+  }
+}
+function ownKeys(e, r) {
+  var t = Object.keys(e);
   if (Object.getOwnPropertySymbols) {
-    var symbols = Object.getOwnPropertySymbols(object);
-
-    if (enumerableOnly) {
-      symbols = symbols.filter(function (sym) {
-        return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-      });
-    }
-
-    keys.push.apply(keys, symbols);
+    var o = Object.getOwnPropertySymbols(e);
+    r && (o = o.filter(function (r) {
+      return Object.getOwnPropertyDescriptor(e, r).enumerable;
+    })), t.push.apply(t, o);
   }
-
-  return keys;
+  return t;
 }
-
-function _objectSpread2(target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i] != null ? arguments[i] : {};
-
-    if (i % 2) {
-      ownKeys(Object(source), true).forEach(function (key) {
-        _defineProperty(target, key, source[key]);
-      });
-    } else if (Object.getOwnPropertyDescriptors) {
-      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
-    } else {
-      ownKeys(Object(source)).forEach(function (key) {
-        Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
-      });
-    }
+function _objectSpread2(e) {
+  for (var r = 1; r < arguments.length; r++) {
+    var t = null != arguments[r] ? arguments[r] : {};
+    r % 2 ? ownKeys(Object(t), !0).forEach(function (r) {
+      _defineProperty(e, r, t[r]);
+    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) {
+      Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r));
+    });
   }
-
-  return target;
+  return e;
 }
-
 function _defineProperty(obj, key, value) {
+  key = _toPropertyKey(key);
   if (key in obj) {
     Object.defineProperty(obj, key, {
       value: value,
@@ -47,35 +58,26 @@ function _defineProperty(obj, key, value) {
   } else {
     obj[key] = value;
   }
-
   return obj;
 }
-
 function _objectWithoutPropertiesLoose(source, excluded) {
   if (source == null) return {};
   var target = {};
   var sourceKeys = Object.keys(source);
   var key, i;
-
   for (i = 0; i < sourceKeys.length; i++) {
     key = sourceKeys[i];
     if (excluded.indexOf(key) >= 0) continue;
     target[key] = source[key];
   }
-
   return target;
 }
-
 function _objectWithoutProperties(source, excluded) {
   if (source == null) return {};
-
   var target = _objectWithoutPropertiesLoose(source, excluded);
-
   var key, i;
-
   if (Object.getOwnPropertySymbols) {
     var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
-
     for (i = 0; i < sourceSymbolKeys.length; i++) {
       key = sourceSymbolKeys[i];
       if (excluded.indexOf(key) >= 0) continue;
@@ -83,48 +85,14 @@ function _objectWithoutProperties(source, excluded) {
       target[key] = source[key];
     }
   }
-
   return target;
 }
-
 function _slicedToArray(arr, i) {
   return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
 }
-
 function _arrayWithHoles(arr) {
   if (Array.isArray(arr)) return arr;
 }
-
-function _iterableToArrayLimit(arr, i) {
-  var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"];
-
-  if (_i == null) return;
-  var _arr = [];
-  var _n = true;
-  var _d = false;
-
-  var _s, _e;
-
-  try {
-    for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) {
-      _arr.push(_s.value);
-
-      if (i && _arr.length === i) break;
-    }
-  } catch (err) {
-    _d = true;
-    _e = err;
-  } finally {
-    try {
-      if (!_n && _i["return"] != null) _i["return"]();
-    } finally {
-      if (_d) throw _e;
-    }
-  }
-
-  return _arr;
-}
-
 function _unsupportedIterableToArray(o, minLen) {
   if (!o) return;
   if (typeof o === "string") return _arrayLikeToArray(o, minLen);
@@ -133,17 +101,27 @@ function _unsupportedIterableToArray(o, minLen) {
   if (n === "Map" || n === "Set") return Array.from(o);
   if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
 }
-
 function _arrayLikeToArray(arr, len) {
   if (len == null || len > arr.length) len = arr.length;
-
   for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i];
-
   return arr2;
 }
-
 function _nonIterableRest() {
   throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+function _toPrimitive(input, hint) {
+  if (typeof input !== "object" || input === null) return input;
+  var prim = input[Symbol.toPrimitive];
+  if (prim !== undefined) {
+    var res = prim.call(input, hint || "default");
+    if (typeof res !== "object") return res;
+    throw new TypeError("@@toPrimitive must return a primitive value.");
+  }
+  return (hint === "string" ? String : Number)(input);
+}
+function _toPropertyKey(arg) {
+  var key = _toPrimitive(arg, "string");
+  return typeof key === "symbol" ? key : String(key);
 }
 
 var countries$1 = {
@@ -4002,17 +3980,15 @@ function buildCountry(data, id) {
     allTimezones: tzMap.all || []
   };
 }
-
 function getTimezonesMap(data) {
   if (!timezonesMap) timezonesMap = buildTimezonesMap(data);
   return timezonesMap;
 }
-
 function buildTimezonesMap(data) {
   return Object.keys(data.timezones).reduce(function (result, id) {
     var tz = data.timezones[id];
     var c = tz.c,
-        a = tz.a;
+      a = tz.a;
     var aliasTz = data.timezones[a] || {};
     var countries = c || aliasTz.c;
     if (!countries) return result;
@@ -4032,11 +4008,9 @@ function buildTimezone(data, name) {
   var timezone = data.timezones[name];
   if (!timezone) return null;
   var _timezone$a = timezone.a,
-      aliasOf = _timezone$a === void 0 ? null : _timezone$a;
+    aliasOf = _timezone$a === void 0 ? null : _timezone$a;
   var aliasTz = aliasOf ? data.timezones[aliasOf] : {};
-
   var tz = _objectSpread2(_objectSpread2({}, aliasTz), data.timezones[name]);
-
   var countries = tz.c || [];
   var utcOffset = tz.u;
   var dstOffset = Number.isInteger(tz.d) ? tz.d : utcOffset;
@@ -4052,14 +4026,12 @@ function buildTimezone(data, name) {
   if (timezone.r) result.deprecated = true;
   return result;
 }
-
 function getOffsetStr(offset) {
-  var hours = Math.floor(offset / 60);
+  var hours = Math.floor(Math.abs(offset) / 60);
   var min = offset % 60;
   var sign = offset < 0 ? '-' : '+';
   return "".concat(sign).concat(getNumStr(hours), ":").concat(getNumStr(min));
 }
-
 function getNumStr(input) {
   var num = Math.abs(input);
   var prefix = num < 10 ? '0' : '';
@@ -4087,23 +4059,19 @@ function getCountry(id) {
   if (!countries[id]) memoizeCountry(buildCountry(data, id));
   return deliverCountry(countries[id], options);
 }
-
 function memoizeCountry(country) {
   if (!country) return;
   countries[country.id] = country;
 }
-
 function getTimezone(name) {
   if (!timezones[name]) memoizeTimezone(buildTimezone(data, name));
   return timezones[name] ? _objectSpread2({}, timezones[name]) : null;
 }
-
 function memoizeTimezone(timezone) {
   if (!timezone) return;
   timezones[timezone.name] = timezone;
   memoizedTimezones = Object.keys(timezone).length;
 }
-
 function getCountriesForTimezone(tzName) {
   var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
   var timezone = getTimezone(tzName) || {};
@@ -4114,11 +4082,9 @@ function getCountriesForTimezone(tzName) {
 }
 function getCountryForTimezone(tzName) {
   var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-
   var _getCountriesForTimez = getCountriesForTimezone(tzName, options),
-      _getCountriesForTimez2 = _slicedToArray(_getCountriesForTimez, 1),
-      main = _getCountriesForTimez2[0];
-
+    _getCountriesForTimez2 = _slicedToArray(_getCountriesForTimez, 1),
+    main = _getCountriesForTimez2[0];
   return main || null;
 }
 function getTimezonesForCountry(countryId) {
@@ -4128,33 +4094,26 @@ function getTimezonesForCountry(countryId) {
   var values = country.timezones || [];
   return values.map(getTimezone);
 }
-
 function deliverTimezones(tzs, options) {
   var _ref = options || {},
-      deprecated = _ref.deprecated;
-
+    deprecated = _ref.deprecated;
   if (deprecated === true) return tzs;
   return Object.keys(tzs).reduce(function (prev, key) {
     if (!tzs[key].deprecated) Object.assign(prev, _defineProperty({}, key, tzs[key]));
     return prev;
   }, {});
 }
-
 function deliverCountry(country, options) {
   if (!country) return null;
-
   var _ref2 = options || {},
-      deprecated = _ref2.deprecated;
-
+    deprecated = _ref2.deprecated;
   country.allTimezones;
-      var other = _objectWithoutProperties(country, _excluded);
-
+    var other = _objectWithoutProperties(country, _excluded);
   var tz = deprecated ? country.allTimezones : country.timezones;
   return _objectSpread2(_objectSpread2({}, other), {}, {
     timezones: tz
   });
 }
-
 var index = {
   getCountry: getCountry,
   getTimezone: getTimezone,

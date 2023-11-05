@@ -48,10 +48,16 @@ export default [
   },
   {
     input: 'types/index.d.ts',
-    output: {
-      file: 'esm/types.d.ts',
-      format: 'es',
-    },
+    output: [
+      {
+        file: 'dist/types.d.ts',
+        format: 'umd',
+      },
+      {
+        file: 'esm/types.d.ts',
+        format: 'es',
+      },
+    ],
     plugins: [
       dts(),
       json({ preferConst: true, compact: true }),

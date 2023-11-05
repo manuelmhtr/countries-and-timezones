@@ -54,4 +54,10 @@ describe('.getTimezone', () => {
     const result = ct.getTimezone('NOT_EXISTENT_TZ');
     expect(result).to.be.eql(null);
   });
+
+  it('calculates utcOffsetStr correctly when is not a module of 60', () => {
+    const result = ct.getTimezone('Pacific/Marquesas');
+    expect(result.utcOffset).to.be.eql(-570);
+    expect(result.utcOffsetStr).to.be.eql('-09:30');
+  });
 });

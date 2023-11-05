@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [3.5.2] - 2023-11-05
+### Fixed
+- [#58](https://github.com/manuelmhtr/countries-and-timezones/issues/58) Missing export for CommonJS.
+- [#60](https://github.com/manuelmhtr/countries-and-timezones/issues/60) Fixed `utcOffsetStr` calculation for negative offsets non-multiple of 60.
+
 ## [3.5.1] - 2023-07-02
 ### Changed
 - Updated with 2023a IANA Timezones database.
@@ -26,7 +31,7 @@ All notable changes to this project will be documented in this file.
 
 ## [3.3.0] - 2021-10-18
 ### Added
-- Added a new parameter `options` to most functions.
+- Added new parameter `options` to most functions.
 - Added `deprecated` option to return both current and deprecated timezones.
 
 ### Changed

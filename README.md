@@ -24,7 +24,7 @@ Add the following script to your project (only ~9kb):
 <script src="https://cdn.jsdelivr.net/gh/manuelmhtr/countries-and-timezones@latest/dist/index.min.js" type="text/javascript"></script>
 
 <!-- Or specify a version -->
-<script src="https://cdn.jsdelivr.net/gh/manuelmhtr/countries-and-timezones@v3.4.0/dist/index.min.js" type="text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/gh/manuelmhtr/countries-and-timezones@v3.5.2/dist/index.min.js" type="text/javascript"></script>
 
 <!-- This will export a variable named "ct": -->
 <script type="text/javascript">
@@ -398,8 +398,7 @@ A timezone is defined by the following parameters:
 
 ## Support
 
-Consider supporting this project by [buying me a beer](https://github.com/sponsors/manuelmhtr) 🍺
-
+Consider [sponsoring this project](https://github.com/sponsors/manuelmhtr).
 
 ## Working on something more complex?
 
