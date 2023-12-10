@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [3.6.0] - 2023-12-10
+### Changed
+- Updated with 2023c IANA Timezones database.
+
 ## [3.5.2] - 2023-11-05
 ### Fixed
 - [#58](https://github.com/manuelmhtr/countries-and-timezones/issues/58) Missing export for CommonJS.

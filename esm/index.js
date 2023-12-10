@@ -1541,6 +1541,7 @@ var timezones$1 = {
 	},
 	"America/Nuuk": {
 		u: -120,
+		d: -60,
 		c: [
 			"GL"
 		]
