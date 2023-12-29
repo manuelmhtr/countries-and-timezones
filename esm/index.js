@@ -3041,8 +3041,8 @@ var timezones$1 = {
 		r: 1
 	},
 	"Europe/Dublin": {
-		u: 60,
-		d: 0,
+		u: 0,
+		d: 60,
 		c: [
 			"IE"
 		]
