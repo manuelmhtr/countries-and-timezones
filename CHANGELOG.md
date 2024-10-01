@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [3.7.0] - 2024-09-30
+### Changed
+- Updated with 2024b IANA Timezones database.
+
 ## [3.6.0] - 2023-12-10
 ### Changed
 - Updated with 2023c IANA Timezones database.
