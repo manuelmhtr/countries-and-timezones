@@ -1703,8 +1703,8 @@ var timezones$1 = {
 		]
 	},
 	"America/Scoresbysund": {
-		u: -60,
-		d: 0,
+		u: -120,
+		d: -60,
 		c: [
 			"GL"
 		]
@@ -1849,7 +1849,7 @@ var timezones$1 = {
 		r: 1
 	},
 	"Antarctica/Casey": {
-		u: 660,
+		u: 480,
 		c: [
 			"AQ"
 		]
@@ -1921,11 +1921,10 @@ var timezones$1 = {
 		]
 	},
 	"Antarctica/Vostok": {
-		a: "Asia/Urumqi",
+		u: 300,
 		c: [
 			"AQ"
-		],
-		r: 1
+		]
 	},
 	"Arctic/Longyearbyen": {
 		a: "Europe/Berlin",
@@ -1942,7 +1941,7 @@ var timezones$1 = {
 		r: 1
 	},
 	"Asia/Almaty": {
-		u: 360,
+		u: 300,
 		c: [
 			"KZ"
 		]
@@ -2053,10 +2052,8 @@ var timezones$1 = {
 		]
 	},
 	"Asia/Choibalsan": {
-		u: 480,
-		c: [
-			"MN"
-		]
+		a: "Asia/Ulaanbaatar",
+		r: 1
 	},
 	"Asia/Chongqing": {
 		a: "Asia/Shanghai",
@@ -2202,9 +2199,6 @@ var timezones$1 = {
 	},
 	"Asia/Kashgar": {
 		a: "Asia/Urumqi",
-		c: [
-			"CN"
-		],
 		r: 1
 	},
 	"Asia/Kathmandu": {
@@ -2349,7 +2343,7 @@ var timezones$1 = {
 		]
 	},
 	"Asia/Qostanay": {
-		u: 360,
+		u: 300,
 		c: [
 			"KZ"
 		]
@@ -2484,8 +2478,7 @@ var timezones$1 = {
 	"Asia/Urumqi": {
 		u: 360,
 		c: [
-			"CN",
-			"AQ"
+			"CN"
 		]
 	},
 	"Asia/Ust-Nera": {
@@ -2747,12 +2740,12 @@ var timezones$1 = {
 		r: 1
 	},
 	CET: {
-		u: 60,
-		d: 120
+		a: "Europe/Brussels",
+		r: 1
 	},
 	CST6CDT: {
-		u: -360,
-		d: -300
+		a: "America/Chicago",
+		r: 1
 	},
 	"Canada/Atlantic": {
 		a: "America/Halifax",
@@ -2802,15 +2795,16 @@ var timezones$1 = {
 		r: 1
 	},
 	EET: {
-		u: 120,
-		d: 180
+		a: "Europe/Athens",
+		r: 1
 	},
 	EST: {
-		u: -300
+		a: "America/Panama",
+		r: 1
 	},
 	EST5EDT: {
-		u: -300,
-		d: -240
+		a: "America/New_York",
+		r: 1
 	},
 	Egypt: {
 		a: "Africa/Cairo",
@@ -3041,8 +3035,8 @@ var timezones$1 = {
 		r: 1
 	},
 	"Europe/Dublin": {
-		u: 60,
-		d: 0,
+		u: 0,
+		d: 60,
 		c: [
 			"IE"
 		]
@@ -3414,7 +3408,8 @@ var timezones$1 = {
 		r: 1
 	},
 	HST: {
-		u: -600
+		a: "Pacific/Honolulu",
+		r: 1
 	},
 	Hongkong: {
 		a: "Asia/Hong_Kong",
@@ -3527,15 +3522,16 @@ var timezones$1 = {
 		r: 1
 	},
 	MET: {
-		u: 60,
-		d: 120
+		a: "Europe/Brussels",
+		r: 1
 	},
 	MST: {
-		u: -420
+		a: "America/Phoenix",
+		r: 1
 	},
 	MST7MDT: {
-		u: -420,
-		d: -360
+		a: "America/Denver",
+		r: 1
 	},
 	"Mexico/BajaNorte": {
 		a: "America/Tijuana",
@@ -3569,8 +3565,8 @@ var timezones$1 = {
 		r: 1
 	},
 	PST8PDT: {
-		u: -480,
-		d: -420
+		a: "America/Los_Angeles",
+		r: 1
 	},
 	"Pacific/Apia": {
 		u: 780,
@@ -3676,6 +3672,9 @@ var timezones$1 = {
 	},
 	"Pacific/Johnston": {
 		a: "Pacific/Honolulu",
+		c: [
+			"UM"
+		],
 		r: 1
 	},
 	"Pacific/Kanton": {
@@ -3956,8 +3955,8 @@ var timezones$1 = {
 		r: 1
 	},
 	WET: {
-		u: 0,
-		d: 60
+		a: "Europe/Lisbon",
+		r: 1
 	},
 	Zulu: {
 		a: "Etc/UTC",
