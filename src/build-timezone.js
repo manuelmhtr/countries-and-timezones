@@ -2,7 +2,7 @@ export default function buildTimezone(data, name) {
   const timezone = data.timezones[name];
   if (!timezone) return null;
 
-  const { a: aliasOf = null } = timezone;
+  const {a: aliasOf = null} = timezone;
   const aliasTz = aliasOf ? data.timezones[aliasOf] : {};
   const tz = {
     ...aliasTz,
@@ -17,25 +17,25 @@ export default function buildTimezone(data, name) {
     name,
     countries,
     utcOffset,
-    utcOffsetStr: getOffsetStr(utcOffset),
+    utcOffsetStr: getOffsetString(utcOffset),
     dstOffset,
-    dstOffsetStr: getOffsetStr(dstOffset),
+    dstOffsetStr: getOffsetString(dstOffset),
     aliasOf,
   };
   if (timezone.r) result.deprecated = true;
   return result;
 }
 
-function getOffsetStr(offset) {
+function getOffsetString(offset) {
   const hours = Math.floor(Math.abs(offset) / 60);
   const min = offset % 60;
   const sign = offset < 0 ? '-' : '+';
 
-  return `${sign}${getNumStr(hours)}:${getNumStr(min)}`;
+  return `${sign}${getNumberString(hours)}:${getNumberString(min)}`;
 }
 
-function getNumStr(input) {
-  const num = Math.abs(input);
-  const prefix = num < 10 ? '0' : '';
-  return `${prefix}${num}`;
+function getNumberString(input) {
+  const number_ = Math.abs(input);
+  const prefix = number_ < 10 ? '0' : '';
+  return `${prefix}${number_}`;
 }

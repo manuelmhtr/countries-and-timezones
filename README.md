@@ -1,7 +1,8 @@
 # countries-and-timezones
-![](https://img.shields.io/github/actions/workflow/status/manuelmhtr/countries-and-timezones/tests.yml?branch=main)
-![](https://img.shields.io/npm/dm/countries-and-timezones)
-![](https://img.shields.io/badge/license-MIT-blue?style=flat)
+
+![GitHub Actions Status](https://img.shields.io/github/actions/workflow/status/manuelmhtr/countries-and-timezones/tests.yml?branch=main)
+![NPM Downloads](https://img.shields.io/npm/dm/countries-and-timezones)
+![License: MIT](https://img.shields.io/badge/license-MIT-blue?style=flat)
 
 > Minimalistic library to work with countries and timezones data. Updated with the [IANA timezones database](https://www.iana.org/time-zones).
 
@@ -21,18 +22,23 @@ Add the following script to your project (only ~9kb):
 
 ```html
 <!-- Latest version -->
-<script src="https://cdn.jsdelivr.net/gh/manuelmhtr/countries-and-timezones@latest/dist/index.min.js" type="text/javascript"></script>
+<script
+  src="https://cdn.jsdelivr.net/gh/manuelmhtr/countries-and-timezones@latest/dist/index.min.js"
+  type="text/javascript"
+></script>
 
 <!-- Or specify a version -->
-<script src="https://cdn.jsdelivr.net/gh/manuelmhtr/countries-and-timezones@v3.7.0/dist/index.min.js" type="text/javascript"></script>
+<script
+  src="https://cdn.jsdelivr.net/gh/manuelmhtr/countries-and-timezones@v3.7.0/dist/index.min.js"
+  type="text/javascript"
+></script>
 
 <!-- This will export a variable named "ct": -->
 <script type="text/javascript">
-  var data = ct.getCountry('MX');
+  var data = ct.getCountry("MX");
   console.log(data);
 </script>
 ```
-
 
 ## API
 
@@ -45,9 +51,9 @@ Accepts a parameter with [`options`](#options).
 **Example**
 
 ```javascript
-const ct = require('countries-and-timezones');
+const ct = require("countries-and-timezones");
 
-const country = ct.getCountry('DE');
+const country = ct.getCountry("DE");
 console.log(country);
 
 /*
@@ -69,9 +75,9 @@ Returns a timezone referenced by its `name`.
 **Example**
 
 ```javascript
-const ct = require('countries-and-timezones');
+const ct = require("countries-and-timezones");
 
-const timezone = ct.getTimezone('America/Los_Angeles');
+const timezone = ct.getTimezone("America/Los_Angeles");
 console.log(timezone);
 
 /*
@@ -99,7 +105,7 @@ Accepts a parameter with [`options`](#options).
 **Example**
 
 ```javascript
-const ct = require('countries-and-timezones');
+const ct = require("countries-and-timezones");
 
 const countries = ct.getAllCountries();
 console.log(countries);
@@ -143,7 +149,7 @@ Accepts a parameter with [`options`](#options).
 **Example**
 
 ```javascript
-const ct = require('countries-and-timezones');
+const ct = require("countries-and-timezones");
 
 const timezones = ct.getAllTimezones();
 console.log(timezones);
@@ -203,9 +209,9 @@ Accepts a parameter with [`options`](#options).
 **Example**
 
 ```javascript
-const ct = require('countries-and-timezones');
+const ct = require("countries-and-timezones");
 
-const timezones = ct.getTimezonesForCountry('MX');
+const timezones = ct.getTimezonesForCountry("MX");
 console.log(timezones);
 
 /*
@@ -254,9 +260,9 @@ Accepts a parameter with [`options`](#options).
 **Example**
 
 ```javascript
-const ct = require('countries-and-timezones');
+const ct = require("countries-and-timezones");
 
-const timezone = ct.getCountriesForTimezone('Europe/Zurich');
+const timezone = ct.getCountriesForTimezone("Europe/Zurich");
 console.log(timezone);
 
 /*
@@ -288,7 +294,6 @@ Prints:
 ]
 
 */
-
 ```
 
 ### `.getCountryForTimezone(name, options = {})`
@@ -300,9 +305,9 @@ Accepts a parameter with [`options`](#options).
 **Example**
 
 ```javascript
-const ct = require('countries-and-timezones');
+const ct = require("countries-and-timezones");
 
-const timezone = ct.getCountryForTimezone('Europe/Zurich');
+const timezone = ct.getCountryForTimezone("Europe/Zurich");
 console.log(timezone);
 
 /*
@@ -317,17 +322,15 @@ Prints:
 }
 
 */
-
 ```
 
 ### `options`
 
 Available options for functions are:
 
-| Parameter | Type | Description |
-| --------- | ---- | ----------- |
-|`deprecated`|Boolean|Indicates if the result should include deprecated timezones or not. By default no deprecated timezones are included.|
-
+| Parameter    | Type    | Description                                                                                                          |
+| ------------ | ------- | -------------------------------------------------------------------------------------------------------------------- |
+| `deprecated` | Boolean | Indicates if the result should include deprecated timezones or not. By default no deprecated timezones are included. |
 
 ## Data models
 
@@ -335,11 +338,11 @@ Available options for functions are:
 
 A country is defined by the following parameters:
 
-| Parameter | Type | Description |
-| --------- | ---- | ----------- |
-|`id`|String|The country [ISO 3166-1 code](https://es.wikipedia.org/wiki/ISO_3166-1).|
-|`name`|String|Preferred name of the country.|
-|`timezones`|Array[String]|The list of timezones used in the country.|
+| Parameter   | Type          | Description                                                              |
+| ----------- | ------------- | ------------------------------------------------------------------------ |
+| `id`        | String        | The country [ISO 3166-1 code](https://es.wikipedia.org/wiki/ISO_3166-1). |
+| `name`      | String        | Preferred name of the country.                                           |
+| `timezones` | Array[String] | The list of timezones used in the country.                               |
 
 ```javascript
 {
@@ -365,16 +368,16 @@ A country is defined by the following parameters:
 
 A timezone is defined by the following parameters:
 
-| Parameter | Type | Description |
-| --------- | ---- | ----------- |
-|`name`|String|The name of the timezone, from [tz database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).|
-|`countries`|[String]|A list of [ISO 3166-1 codes](https://es.wikipedia.org/wiki/ISO_3166-1) of the countries where it's used. `Etc/*`, `GMT` and `UTC` timezones don't have associated countries.|
-|`utcOffset`|Number|The difference in **minutes** between the timezone and [UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time).|
-|`utcOffsetStr`|String|The difference in hours and minutes between the timezone and [UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), expressed as string with format: `±[hh]:[mm]`.|
-|`dstOffset`|Number|The difference in **minutes** between the timezone and [UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) during daylight saving time ([DST](https://en.wikipedia.org/wiki/Daylight_saving_time)). When `utcOffset` and `dstOffset` are the same, means that the timezone does not observe a daylight saving time.|
-|`dstOffsetStr`|String|The difference in hours and minutes between the timezone and [UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) during daylight saving time ([DST](https://en.wikipedia.org/wiki/Daylight_saving_time), expressed as string with format: `±[hh]:[mm]`.|
-|`aliasOf`|String|The `name` of a primary timezone in case this is an alias. `null` means this is a primary timezone.|
-|`deprecated`|Boolean|`true` when the timezone has been deprecated, otherwise this property is not returned.|
+| Parameter      | Type     | Description                                                                                                                                                                                                                                                                                                                     |
+| -------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `name`         | String   | The name of the timezone, from [tz database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).                                                                                                                                                                                                                     |
+| `countries`    | [String] | A list of [ISO 3166-1 codes](https://es.wikipedia.org/wiki/ISO_3166-1) of the countries where it's used. `Etc/*`, `GMT` and `UTC` timezones don't have associated countries.                                                                                                                                                    |
+| `utcOffset`    | Number   | The difference in **minutes** between the timezone and [UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time).                                                                                                                                                                                                         |
+| `utcOffsetStr` | String   | The difference in hours and minutes between the timezone and [UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), expressed as string with format: `±[hh]:[mm]`.                                                                                                                                                    |
+| `dstOffset`    | Number   | The difference in **minutes** between the timezone and [UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) during daylight saving time ([DST](https://en.wikipedia.org/wiki/Daylight_saving_time)). When `utcOffset` and `dstOffset` are the same, means that the timezone does not observe a daylight saving time. |
+| `dstOffsetStr` | String   | The difference in hours and minutes between the timezone and [UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) during daylight saving time ([DST](https://en.wikipedia.org/wiki/Daylight_saving_time), expressed as string with format: `±[hh]:[mm]`.                                                             |
+| `aliasOf`      | String   | The `name` of a primary timezone in case this is an alias. `null` means this is a primary timezone.                                                                                                                                                                                                                             |
+| `deprecated`   | Boolean  | `true` when the timezone has been deprecated, otherwise this property is not returned.                                                                                                                                                                                                                                          |
 
 ```javascript
 {
@@ -389,12 +392,10 @@ A timezone is defined by the following parameters:
 }
 ```
 
-
 ## Related projects
 
-* [countries-db](https://www.npmjs.com/package/countries-db): Minimalistic lib with countries data.
-* [location-by-ip](https://www.npmjs.com/package/location-by-ip): Get the location of any IP address.
-
+- [countries-db](https://www.npmjs.com/package/countries-db): Minimalistic lib with countries data.
+- [location-by-ip](https://www.npmjs.com/package/location-by-ip): Get the location of any IP address.
 
 ## Support
 
@@ -408,7 +409,6 @@ Meet [Spott](https://spott.dev):
 - Access to more than 240,000 geographical places. In more than 20 languages.
 
 [![Spott API for cities, countries and administrative divisions](https://spott-assets.s3.amazonaws.com/marketing/banner-720px.png)](https://spott.dev)
-
 
 ## License
 

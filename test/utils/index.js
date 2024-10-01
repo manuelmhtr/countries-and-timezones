@@ -1,2 +1,2 @@
-export * from './countDeprecatedTimezones';
-export * from './getDeprecatedTimezones';
+export * from './count-deprecated-timezones.js';
+export * from './get-deprecated-timezones.js';

@@ -1,4 +1,4 @@
-import * as ct from '../../src/index';
+import * as ct from '../../src/index.js';
 
 const TEST_CASES = {
   KR: [
@@ -9,19 +9,32 @@ const TEST_CASES = {
       utcOffsetStr: '+09:00',
       dstOffset: 540,
       dstOffsetStr: '+09:00',
-      aliasOf: null
+      aliasOf: null,
     },
   ],
   IS: [
     {
       name: 'Africa/Abidjan',
-      countries: ['CI', 'BF', 'GH', 'GM', 'GN', 'IS', 'ML', 'MR', 'SH', 'SL', 'SN', 'TG'],
+      countries: [
+        'CI',
+        'BF',
+        'GH',
+        'GM',
+        'GN',
+        'IS',
+        'ML',
+        'MR',
+        'SH',
+        'SL',
+        'SN',
+        'TG',
+      ],
       utcOffset: 0,
       utcOffsetStr: '+00:00',
       dstOffset: 0,
       dstOffsetStr: '+00:00',
-      aliasOf: null
-    }
+      aliasOf: null,
+    },
   ],
   DE: [
     {
@@ -31,7 +44,7 @@ const TEST_CASES = {
       utcOffsetStr: '+01:00',
       dstOffset: 120,
       dstOffsetStr: '+02:00',
-      aliasOf: null
+      aliasOf: null,
     },
     {
       name: 'Europe/Zurich',
@@ -40,9 +53,9 @@ const TEST_CASES = {
       utcOffsetStr: '+01:00',
       dstOffset: 120,
       dstOffsetStr: '+02:00',
-      aliasOf: null
+      aliasOf: null,
     },
-  ]
+  ],
 };
 
 const DEPRECATED = {
@@ -95,7 +108,7 @@ const DEPRECATED = {
 };
 
 describe('.getTimezonesForCountry', () => {
-  Object.keys(TEST_CASES).forEach(testCase => {
+  for (const testCase of Object.keys(TEST_CASES)) {
     it(`should return correct timezones for country "${testCase}"`, () => {
       const result = ct.getTimezonesForCountry(testCase);
       const expectedResult = TEST_CASES[testCase];
@@ -103,12 +116,14 @@ describe('.getTimezonesForCountry', () => {
     });
 
     it(`should return correct timezones for country "${testCase}" with deprecated option`, () => {
-      const result = ct.getTimezonesForCountry(testCase, { deprecated: true });
-      const expectedResult = [...TEST_CASES[testCase], ...DEPRECATED[testCase]]
-        .sort((a, b) => a.name > b.name ? 1 : -1);
+      const result = ct.getTimezonesForCountry(testCase, {deprecated: true});
+      const expectedResult = [
+        ...TEST_CASES[testCase],
+        ...DEPRECATED[testCase],
+      ].sort((a, b) => (a.name > b.name ? 1 : -1));
       expect(result).to.be.eql(expectedResult);
     });
-  });
+  }
 
   it('should return null for not existent country', () => {
     const result = ct.getTimezonesForCountry('NOT_EXISTENT_COUNTRY');

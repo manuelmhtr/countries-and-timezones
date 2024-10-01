@@ -15,24 +15,25 @@ export default function buildCountry(data, id) {
 }
 
 function getTimezonesMap(data) {
-  if (!timezonesMap) timezonesMap = buildTimezonesMap(data);
+  timezonesMap ||= buildTimezonesMap(data);
   return timezonesMap;
 }
 
 function buildTimezonesMap(data) {
   return Object.keys(data.timezones).reduce((result, id) => {
     const tz = data.timezones[id];
-    const { c, a } = tz;
+    const {c, a} = tz;
     const aliasTz = data.timezones[a] || {};
     const countries = c || aliasTz.c;
 
     if (!countries) return result;
 
-    countries.forEach((country) => {
-      if (!result[country]) Object.assign(result, { [country]: { current: [], all: [] } });
+    for (const country of countries) {
+      if (!result[country])
+        Object.assign(result, {[country]: {current: [], all: []}});
       if (tz.r === undefined) result[country].current.push(id);
       result[country].all.push(id);
-    });
+    }
 
     return result;
   }, {});

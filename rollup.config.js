@@ -1,7 +1,7 @@
 import babel from '@rollup/plugin-babel';
 import commonjs from '@rollup/plugin-commonjs';
 import json from '@rollup/plugin-json';
-import { terser } from 'rollup-plugin-terser';
+import {terser} from 'rollup-plugin-terser';
 import dts from 'rollup-plugin-dts';
 
 const plugins = [
@@ -13,7 +13,7 @@ const plugins = [
   }),
 ];
 
-export default [
+const config = [
   {
     input: 'src/index.js',
     output: [
@@ -58,9 +58,8 @@ export default [
         format: 'es',
       },
     ],
-    plugins: [
-      dts(),
-      json({ preferConst: true, compact: true }),
-    ],
+    plugins: [dts(), json({preferConst: true, compact: true})],
   },
 ];
+
+export default config;

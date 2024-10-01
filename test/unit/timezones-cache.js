@@ -1,7 +1,7 @@
 import sinon from 'sinon';
 import proxyquire from 'proxyquire';
-import buildTimezone from '../../src/build-timezone';
-import { timezones } from '../../src/data.json';
+import buildTimezone from '../../src/build-timezone.js';
+import {timezones} from '../../src/data.json';
 
 const totalTimezones = Object.keys(timezones).length;
 
@@ -14,8 +14,8 @@ describe('Timezones cache', () => {
     ct = proxyquire('../../src', {
       './build-timezone': {
         __esModule: true,
-        default: buildTimezoneSpy
-      }
+        default: buildTimezoneSpy,
+      },
     });
   });
 

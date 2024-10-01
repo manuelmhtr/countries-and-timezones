@@ -21,8 +21,13 @@
   ],
   "scripts": {
     "build": "rollup -c && sh .fixTypes.sh",
+    "lint:js": "xo --fix",
+    "lint:json": "prettier --write \"**/*.json\"",
+    "lint:md": "markdownlint \"**/*.md\" --fix --dot --ignore-path .gitignore && prettier --write \"**/*.md\"",
+    "lint": "yarn lint:js && yarn lint:json && yarn lint:md",
     "prepack": "yarn run build",
     "release": "release-it",
+    "prepare": "husky",
     "test:unit": "mocha",
     "test:types": "dtslint types",
     "test": "yarn run test:unit && yarn run test:types"
@@ -66,9 +71,11 @@
     "@rollup/plugin-json": "^4.1.0",
     "chai": "^4.3.4",
     "dtslint": "^4.1.3",
-    "eslint": "^7.32.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.24.0",
+    "husky": "^9.1.6",
+    "lint-staged": "^15.2.10",
+    "markdownlint-cli": "^0.42.0",
     "mocha": "^8.3.2",
     "proxyquire": "^2.1.3",
     "release-it": "^17.6.0",
@@ -76,6 +83,7 @@
     "rollup-plugin-dts": "^3.0.2",
     "rollup-plugin-terser": "^7.0.2",
     "sinon": "^10.0.0",
-    "typescript": "^4.3.5"
+    "typescript": "^4.3.5",
+    "xo": "^0.59.3"
   }
 }

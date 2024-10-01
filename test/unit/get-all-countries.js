@@ -1,6 +1,6 @@
 import * as ct from '../../src';
 import data from '../../src/data.json';
-import { getDeprecatedTimezones } from '../utils';
+import {getDeprecatedTimezones} from '../utils';
 
 const DEPRECATED_TIMEZONES = getDeprecatedTimezones(data.timezones);
 
@@ -11,16 +11,18 @@ describe('.getAllCountries', () => {
     expect(countries).to.be.an('object');
     expect(Object.keys(countries).length).to.be.equal(expectedLength);
 
-    Object.values(countries).forEach(expectCountry);
+    for (const country of Object.values(countries)) {
+      expectCountry(country);
+    }
   });
 
   it('does not include any deprecated timezone when "deprecated" options is false', () => {
-    const countries = ct.getAllCountries({ deprecated: false });
+    const countries = ct.getAllCountries({deprecated: false});
     expect(hasDeprecatedTimezones(countries)).to.be.equal(false);
   });
 
   it('includes deprecated timezones when "deprecated" options is true', () => {
-    const countries = ct.getAllCountries({ deprecated: true });
+    const countries = ct.getAllCountries({deprecated: true});
     expect(hasDeprecatedTimezones(countries)).to.be.equal(true);
   });
 });
@@ -34,7 +36,7 @@ function expectCountry(country) {
 }
 
 function hasDeprecatedTimezones(countries) {
-  return Object.values(countries).some(({ timezones }) => {
+  return Object.values(countries).some(({timezones}) => {
     return timezones.some((tz) => DEPRECATED_TIMEZONES[tz]);
   });
 }

@@ -1,4 +1,4 @@
-import * as ct from '../../src/index';
+import * as ct from '../../src/index.js';
 
 const TEST_CASES = {
   MX: {
@@ -17,7 +17,7 @@ const TEST_CASES = {
       'America/Monterrey',
       'America/Ojinaga',
       'America/Tijuana',
-    ]
+    ],
   },
   US: {
     id: 'US',
@@ -29,7 +29,7 @@ const TEST_CASES = {
       'America/Chicago',
       'America/Denver',
       'America/Detroit',
-      "America/Indiana/Indianapolis",
+      'America/Indiana/Indianapolis',
       'America/Indiana/Knox',
       'America/Indiana/Marengo',
       'America/Indiana/Petersburg',
@@ -51,59 +51,58 @@ const TEST_CASES = {
       'America/Phoenix',
       'America/Sitka',
       'America/Yakutat',
-      'Pacific/Honolulu'
-    ]
+      'Pacific/Honolulu',
+    ],
   },
   KR: {
     id: 'KR',
     name: 'South Korea',
-    timezones: [
-      'Asia/Seoul'
-    ]
-  }
+    timezones: ['Asia/Seoul'],
+  },
 };
 
 const DEPRECATED = {
   MX: [
-    "America/Ensenada",
-    "America/Santa_Isabel",
-    "Mexico/BajaNorte",
-    "Mexico/BajaSur",
-    "Mexico/General",
+    'America/Ensenada',
+    'America/Santa_Isabel',
+    'Mexico/BajaNorte',
+    'Mexico/BajaSur',
+    'Mexico/General',
   ],
   US: [
-    "America/Atka",
-    "America/Fort_Wayne",
-    "America/Indianapolis",
-    "America/Knox_IN",
-    "America/Louisville",
-    "America/Shiprock",
-    "CST6CDT",
-    "EST5EDT",
-    "HST",
-    "MST",
-    "MST7MDT",
-    "Navajo",
-    "PST8PDT",
-    "US/Alaska",
-    "US/Aleutian",
-    "US/Arizona",
-    "US/Central",
-    "US/East-Indiana",
-    "US/Eastern",
-    "US/Hawaii",
-    "US/Indiana-Starke",
-    "US/Michigan",
-    "US/Mountain",
-    "US/Pacific",
+    'America/Atka',
+    'America/Fort_Wayne',
+    'America/Indianapolis',
+    'America/Knox_IN',
+    'America/Louisville',
+    'America/Shiprock',
+    'CST6CDT',
+    'EST5EDT',
+    'HST',
+    'MST',
+    'MST7MDT',
+    'Navajo',
+    'PST8PDT',
+    'US/Alaska',
+    'US/Aleutian',
+    'US/Arizona',
+    'US/Central',
+    'US/East-Indiana',
+    'US/Eastern',
+    'US/Hawaii',
+    'US/Indiana-Starke',
+    'US/Michigan',
+    'US/Mountain',
+    'US/Pacific',
   ],
   KR: [
     'ROK',
   ],
+  KR: ['ROK'],
 };
 
 describe('.getCountry', () => {
-  Object.keys(TEST_CASES).forEach(testCase => {
+  for (const testCase of Object.keys(TEST_CASES)) {
     it(`should return correct data for country "${testCase}"`, () => {
       const result = ct.getCountry(testCase);
       const expectedResult = TEST_CASES[testCase];
@@ -111,12 +110,15 @@ describe('.getCountry', () => {
     });
 
     it(`should return correct data for country "${testCase}" with deprecated option`, () => {
-      const result = ct.getCountry(testCase, { deprecated: true });
+      const result = ct.getCountry(testCase, {deprecated: true});
       const expectedResult = TEST_CASES[testCase];
-      expectedResult.timezones = [...expectedResult.timezones, ...DEPRECATED[testCase]].sort();
+      expectedResult.timezones = [
+        ...expectedResult.timezones,
+        ...DEPRECATED[testCase],
+      ].sort();
       expect(result).to.be.eql(expectedResult);
     });
-  });
+  }
 
   it('should return null for not existent country', () => {
     const result = ct.getCountry('NOT_EXISTENT_COUNTRY');

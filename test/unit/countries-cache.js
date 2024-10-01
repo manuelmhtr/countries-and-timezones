@@ -1,7 +1,7 @@
 import sinon from 'sinon';
 import proxyquire from 'proxyquire';
-import buildCountry from '../../src/build-country';
-import { countries } from '../../src/data.json';
+import buildCountry from '../../src/build-country.js';
+import {countries} from '../../src/data.json';
 
 const totalCountries = Object.keys(countries).length;
 
@@ -16,7 +16,7 @@ describe('Countries cache', () => {
       './build-country': {
         __esModule: true,
         default: buildCountrySpy,
-      }
+      },
     });
   });
 

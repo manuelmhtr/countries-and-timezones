@@ -5,8 +5,6 @@
     "unified-signatures": false
   },
   "linterOptions": {
-    "exclude": [
-      "node_modules"
-    ]
+    "exclude": ["node_modules"]
   }
 }

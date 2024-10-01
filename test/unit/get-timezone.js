@@ -1,4 +1,4 @@
-import * as ct from '../../src/index';
+import * as ct from '../../src/index.js';
 
 const TEST_CASES = {
   'America/Mexico_City': {
@@ -42,13 +42,13 @@ const TEST_CASES = {
 };
 
 describe('.getTimezone', () => {
-  Object.keys(TEST_CASES).forEach((testCase) => {
+  for (const testCase of Object.keys(TEST_CASES)) {
     it(`should return correct data for timezone "${testCase}"`, () => {
       const result = ct.getTimezone(testCase);
       const expectedResult = TEST_CASES[testCase];
       expect(result).to.be.eql(expectedResult);
     });
-  });
+  }
 
   it('should return null for not existent timezone', () => {
     const result = ct.getTimezone('NOT_EXISTENT_TZ');
