@@ -91,18 +91,20 @@ const TEST_CASES = {
   'Europe/Zurich': 'CH',
 };
 
+type TestCase = keyof typeof TEST_CASES;
+
 describe('.getCountryForTimezone', () => {
   Object.keys(TEST_CASES).forEach(testCase => {
     it(`returns the correct country for timezone "${testCase}"`, () => {
       const result = ct.getCountryForTimezone(testCase);
-      const expectedResult = ct.getCountry(TEST_CASES[testCase]);
+      const expectedResult = ct.getCountry(TEST_CASES[testCase as TestCase]);
       expect(result).to.be.eql(expectedResult);
     });
 
     it(`includes deprecated timezones in the country for "${testCase}" with deprecated option`, () => {
       const options = { deprecated: true };
       const result = ct.getCountryForTimezone(testCase, options);
-      const expectedResult = ct.getCountry(TEST_CASES[testCase], options);
+      const expectedResult = ct.getCountry(TEST_CASES[testCase as TestCase], options);
       expect(result).to.be.eql(expectedResult);
     });
   });

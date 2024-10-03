@@ -1,8 +1,6 @@
-process.env.NODE_ENV = 'test';
-
 module.exports = {
-  file: ['test/setup.js'],
-  require: '@babel/register',
+  extension: ["ts"],
+  file: ['test/setup.ts'],
   ui: "bdd",
   timeout: 1000,
   fullTrace: true,

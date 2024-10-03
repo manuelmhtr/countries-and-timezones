@@ -4,14 +4,14 @@
   "description": "Minimalistic library to work with countries and timezones data.",
   "main": "./dist/index.js",
   "module": "./esm/index.js",
-  "types": "./esm/types.d.ts",
+  "types": "./esm/index.d.ts",
   "exports": {
     "import": {
-      "types": "./esm/types.d.ts",
+      "types": "./esm/index.d.ts",
       "default": "./esm/index.js"
     },
     "require": {
-      "types": "./dist/types.d.ts",
+      "types": "./dist/index.d.ts",
       "default": "./dist/index.js"
     }
   },
@@ -20,11 +20,11 @@
     "esm"
   ],
   "scripts": {
-    "build": "rollup -c && sh .fixTypes.sh",
-    "prepack": "yarn run build",
-    "test:unit": "mocha",
-    "test:types": "dtslint types",
-    "test": "yarn run test:unit && yarn run test:types"
+    "clean": "rimraf dist/ esm/",
+    "build": "yarn clean && rollup --config rollup.config.ts --configPlugin @rollup/plugin-typescript",
+    "prepack": "yarn build",
+    "test:unit": "mocha --import=tsx",
+    "test": "yarn test:unit"
   },
   "repository": {
     "type": "git",
@@ -55,21 +55,26 @@
     "@babel/cli": "^7.13.16",
     "@babel/core": "^7.13.16",
     "@babel/preset-env": "^7.13.15",
-    "@babel/register": "^7.15.3",
     "@rollup/plugin-babel": "^5.3.0",
     "@rollup/plugin-commonjs": "^18.0.0",
     "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-typescript": "^12.1.0",
+    "@types/chai": "^4.3.4",
+    "@types/mocha": "^10.0.8",
+    "@types/proxyquire": "^1.3.31",
+    "@types/sinon": "^17.0.3",
     "chai": "^4.3.4",
-    "dtslint": "^4.1.3",
     "eslint": "^7.32.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.24.0",
-    "mocha": "^8.3.2",
+    "mocha": "^10.7.3",
     "proxyquire": "^2.1.3",
+    "rimraf": "^6.0.1",
     "rollup": "^2.45.2",
-    "rollup-plugin-dts": "^3.0.2",
     "rollup-plugin-terser": "^7.0.2",
     "sinon": "^10.0.0",
+    "tslib": "^2.7.0",
+    "tsx": "^4.19.1",
     "typescript": "^4.3.5"
   }
 }

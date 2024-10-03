@@ -94,17 +94,20 @@ const DEPRECATED = {
   ],
 };
 
+type TestCase = keyof typeof TEST_CASES;
+type DeprecatedTimezone = keyof typeof DEPRECATED;
+
 describe('.getTimezonesForCountry', () => {
   Object.keys(TEST_CASES).forEach(testCase => {
     it(`should return correct timezones for country "${testCase}"`, () => {
       const result = ct.getTimezonesForCountry(testCase);
-      const expectedResult = TEST_CASES[testCase];
+      const expectedResult = TEST_CASES[testCase as TestCase];
       expect(result).to.be.eql(expectedResult);
     });
 
     it(`should return correct timezones for country "${testCase}" with deprecated option`, () => {
       const result = ct.getTimezonesForCountry(testCase, { deprecated: true });
-      const expectedResult = [...TEST_CASES[testCase], ...DEPRECATED[testCase]]
+      const expectedResult = [...TEST_CASES[testCase as TestCase], ...DEPRECATED[testCase as DeprecatedTimezone]]
         .sort((a, b) => a.name > b.name ? 1 : -1);
       expect(result).to.be.eql(expectedResult);
     });

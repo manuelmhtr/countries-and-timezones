@@ -7,7 +7,7 @@ const totalCountries = Object.keys(countries).length;
 
 describe('Countries cache', () => {
   const buildCountrySpy = sinon.spy(buildCountry);
-  let ct;
+  let ct: typeof import('../../src');
 
   beforeEach(() => {
     buildCountrySpy.resetHistory();

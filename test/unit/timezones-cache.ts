@@ -7,7 +7,7 @@ const totalTimezones = Object.keys(timezones).length;
 
 describe('Timezones cache', () => {
   const buildTimezoneSpy = sinon.spy(buildTimezone);
-  let ct;
+  let ct: typeof import('../../src');
 
   beforeEach(() => {
     buildTimezoneSpy.resetHistory();

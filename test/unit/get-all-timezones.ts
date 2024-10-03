@@ -1,9 +1,10 @@
 import * as ct from '../../src';
 import data from '../../src/data.json';
 import { countDeprecatedTimezones } from '../utils';
+import { CompressedTimezone, Data, StrictTimezoneName, Timezone } from "../../src";
 
 const TOTAL_TIMEZONES = Object.keys(data.timezones).length;
-const DEPRECATED_TIMEZONES = countDeprecatedTimezones(data.timezones);
+const DEPRECATED_TIMEZONES = countDeprecatedTimezones(data.timezones as any as Record<StrictTimezoneName, CompressedTimezone>);
 const TZ_WITHOUT_COUNTRIES = [
   'GMT', 'UTC', 'UCT', 'CET', 'CST6CDT', 'EET', 'EST', 'EST5EDT', 'Factory', 'HST',
   'MET', 'MST', 'MST7MDT', 'PST8PDT', 'WET', 'Greenwich', 'Universal', 'Zulu'
@@ -36,7 +37,7 @@ describe('.getAllTimezones', () => {
   });
 });
 
-function expectTimezone(timezone, aliasTz) {
+function expectTimezone(timezone: Timezone, aliasTz:Timezone | null): void {
   expect(timezone.name).to.be.a('string');
   expect(timezone.utcOffset).to.be.a('number');
   expect(timezone.utcOffsetStr).to.be.a('string');
@@ -55,13 +56,13 @@ function expectTimezone(timezone, aliasTz) {
   }
 }
 
-function shouldHaveCountry(name) {
+function shouldHaveCountry(name: StrictTimezoneName) {
   return !name.includes('Etc/')
     && !name.includes('GMT')
     && !TZ_WITHOUT_COUNTRIES.includes(name);
 }
 
-function expectAlias(timezone, aliasTz) {
+function expectAlias(timezone: Timezone, aliasTz: Timezone): void {
   expect(timezone.aliasOf).to.be.equal(aliasTz.name);
   expect(timezone.utcOffset).to.be.equal(aliasTz.utcOffset);
   expect(timezone.utcOffsetStr).to.be.equal(aliasTz.utcOffsetStr);

@@ -1,4 +1,5 @@
 import * as ct from '../../src/index';
+import { Test } from "mocha";
 
 const TEST_CASES = {
   'America/Mexico_City': {
@@ -41,11 +42,13 @@ const TEST_CASES = {
   },
 };
 
+type TestCase = keyof typeof TEST_CASES;
+
 describe('.getTimezone', () => {
   Object.keys(TEST_CASES).forEach((testCase) => {
     it(`should return correct data for timezone "${testCase}"`, () => {
       const result = ct.getTimezone(testCase);
-      const expectedResult = TEST_CASES[testCase];
+      const expectedResult = TEST_CASES[testCase as TestCase];
       expect(result).to.be.eql(expectedResult);
     });
   });
@@ -56,7 +59,7 @@ describe('.getTimezone', () => {
   });
 
   it('calculates utcOffsetStr correctly when is not a module of 60', () => {
-    const result = ct.getTimezone('Pacific/Marquesas');
+    const result = ct.getTimezone('Pacific/Marquesas')!;
     expect(result.utcOffset).to.be.eql(-570);
     expect(result.utcOffsetStr).to.be.eql('-09:30');
   });

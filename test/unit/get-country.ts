@@ -61,7 +61,7 @@ const TEST_CASES = {
       'Asia/Seoul'
     ]
   }
-};
+} as const;
 
 const DEPRECATED = {
   MX: [
@@ -100,20 +100,26 @@ const DEPRECATED = {
   KR: [
     'ROK',
   ],
-};
+} as const;
+
+type TestCase = keyof typeof TEST_CASES;
+type DeprecatedTimezone = keyof typeof DEPRECATED;
 
 describe('.getCountry', () => {
   Object.keys(TEST_CASES).forEach(testCase => {
     it(`should return correct data for country "${testCase}"`, () => {
       const result = ct.getCountry(testCase);
-      const expectedResult = TEST_CASES[testCase];
+      const expectedResult = TEST_CASES[testCase as TestCase];
       expect(result).to.be.eql(expectedResult);
     });
 
     it(`should return correct data for country "${testCase}" with deprecated option`, () => {
       const result = ct.getCountry(testCase, { deprecated: true });
-      const expectedResult = TEST_CASES[testCase];
-      expectedResult.timezones = [...expectedResult.timezones, ...DEPRECATED[testCase]].sort();
+      const timezone = TEST_CASES[testCase as TestCase]; /* TODO: refine */
+      const expectedResult = {
+        ...timezone,
+        timezones: [...timezone.timezones, ...DEPRECATED[testCase as DeprecatedTimezone]].sort()
+      };
       expect(result).to.be.eql(expectedResult);
     });
   });

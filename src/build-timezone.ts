@@ -1,20 +1,22 @@
-export default function buildTimezone(data, name) {
-  const timezone = data.timezones[name];
+import { CompressedTimezone, Data, StrictTimezoneName, Timezone, TimezoneName } from "./index";
+
+export default function buildTimezone(data: Data, name: TimezoneName): Timezone | null {
+  const timezone = data.timezones[name as StrictTimezoneName] as CompressedTimezone;
   if (!timezone) return null;
 
   const { a: aliasOf = null } = timezone;
   const aliasTz = aliasOf ? data.timezones[aliasOf] : {};
   const tz = {
     ...aliasTz,
-    ...data.timezones[name],
+    ...data.timezones[name as StrictTimezoneName] as CompressedTimezone,
   };
 
   const countries = tz.c || [];
-  const utcOffset = tz.u;
-  const dstOffset = Number.isInteger(tz.d) ? tz.d : utcOffset;
+  const utcOffset = tz.u! /* TODO: refine */;
+  const dstOffset = Number.isInteger(tz.d) ? tz.d! /* TODO: refine */ : utcOffset;
 
-  const result = {
-    name,
+  const result: Timezone = {
+    name: name as StrictTimezoneName,
     countries,
     utcOffset,
     utcOffsetStr: getOffsetStr(utcOffset),
@@ -26,7 +28,7 @@ export default function buildTimezone(data, name) {
   return result;
 }
 
-function getOffsetStr(offset) {
+function getOffsetStr(offset: number): string {
   const hours = Math.floor(Math.abs(offset) / 60);
   const min = offset % 60;
   const sign = offset < 0 ? '-' : '+';
@@ -34,7 +36,7 @@ function getOffsetStr(offset) {
   return `${sign}${getNumStr(hours)}:${getNumStr(min)}`;
 }
 
-function getNumStr(input) {
+function getNumStr(input: number): string {
   const num = Math.abs(input);
   const prefix = num < 10 ? '0' : '';
   return `${prefix}${num}`;

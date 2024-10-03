@@ -6,20 +6,22 @@ const TEST_CASES = {
   'America/Los_Angeles': ['US'],
   'America/North_Dakota/New_Salem': ['US'],
   'Europe/Zurich': ['CH', 'DE', 'LI']
-};
+} as const;
+
+type TestCase = keyof typeof TEST_CASES;
 
 describe('.getCountriesForTimezone', () => {
   Object.keys(TEST_CASES).forEach(testCase => {
     it(`returns correct countries for timezone "${testCase}"`, () => {
       const result = ct.getCountriesForTimezone(testCase);
-      const expectedResult = TEST_CASES[testCase].map(id => ct.getCountry(id));
+      const expectedResult = TEST_CASES[testCase as TestCase].map(id => ct.getCountry(id));
       expect(result).to.be.eql(expectedResult);
     });
 
     it(`includes deprecated timezones on countries for "${testCase}" with deprecated option`, () => {
       const options = { deprecated: true };
       const result = ct.getCountriesForTimezone(testCase, options);
-      const expectedResult = TEST_CASES[testCase].map(id => ct.getCountry(id, options));
+      const expectedResult = TEST_CASES[testCase as TestCase].map(id => ct.getCountry(id, options));
       expect(result).to.be.eql(expectedResult);
     });
   });

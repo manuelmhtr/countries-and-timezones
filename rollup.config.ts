@@ -2,11 +2,17 @@ import babel from '@rollup/plugin-babel';
 import commonjs from '@rollup/plugin-commonjs';
 import json from '@rollup/plugin-json';
 import { terser } from 'rollup-plugin-terser';
-import dts from 'rollup-plugin-dts';
+import typescript from "@rollup/plugin-typescript";
 
 const plugins = [
   commonjs(),
-  json(),
+  typescript({
+    include: ["src/**/*.ts"],
+    declaration: true,
+    declarationDir: "dist",
+    outDir: "dist",
+  }),
+  json({ preferConst: true, compact: true }),
   babel({
     babelHelpers: 'bundled',
     presets: ['@babel/env'],
@@ -15,7 +21,7 @@ const plugins = [
 
 export default [
   {
-    input: 'src/index.js',
+    input: 'src/index.ts',
     output: [
       {
         name: 'ct',
@@ -32,6 +38,12 @@ export default [
         sourcemap: true,
         plugins: [terser()],
       },
+    ],
+    plugins,
+  },
+  {
+    input: 'src/index.ts',
+    output: [
       {
         file: 'esm/index.js',
         format: 'es',
@@ -44,23 +56,19 @@ export default [
         plugins: [terser()],
       },
     ],
-    plugins,
-  },
-  {
-    input: 'types/index.d.ts',
-    output: [
-      {
-        file: 'dist/types.d.ts',
-        format: 'umd',
-      },
-      {
-        file: 'esm/types.d.ts',
-        format: 'es',
-      },
-    ],
     plugins: [
-      dts(),
+      commonjs(),
+      typescript({
+        include: ["src/**/*.ts"],
+        declaration: true,
+        declarationDir: "esm",
+        outDir: "esm",
+      }),
       json({ preferConst: true, compact: true }),
+      babel({
+        babelHelpers: 'bundled',
+        presets: ['@babel/env'],
+      }),
     ],
   },
 ];
