@@ -3,6 +3,7 @@ name: Purge CDN cache
 on:
   push:
     branches:
+      - main
       - master
 
 jobs:

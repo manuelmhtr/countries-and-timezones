@@ -1,5 +1,5 @@
 # countries-and-timezones
-![](https://img.shields.io/github/actions/workflow/status/manuelmhtr/countries-and-timezones/tests.yml?branch=master)
+![](https://img.shields.io/github/actions/workflow/status/manuelmhtr/countries-and-timezones/tests.yml?branch=main)
 ![](https://img.shields.io/npm/dm/countries-and-timezones)
 ![](https://img.shields.io/badge/license-MIT-blue?style=flat)
 
