@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.7.2] - 2024-10-14
+
+### Fixed
+
+- Add script to add missing ESM package.json
+
 ## [3.7.1] - 2024-10-13
 
 ### Changed

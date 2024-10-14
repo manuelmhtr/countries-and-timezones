@@ -1,6 +1,6 @@
 {
   "name": "countries-and-timezones",
-  "version": "3.7.1",
+  "version": "3.7.2",
   "description": "Minimalistic library to work with countries and timezones data.",
   "main": "./dist/index.js",
   "module": "./esm/index.js",
@@ -20,7 +20,7 @@
     "esm"
   ],
   "scripts": {
-    "build": "rollup -c && sh .fixTypes.sh",
+    "build": "rollup -c && sh bin/fixTypes.sh && sh bin/addEsmPackage.sh",
     "lint:js": "xo --fix",
     "lint:json": "prettier --write \"**/*.json\"",
     "lint:md": "markdownlint \"**/*.md\" --fix --dot --ignore-path .gitignore && prettier --write \"**/*.md\"",
