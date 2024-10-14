@@ -4,6 +4,70 @@
   (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.ct = {}));
 })(this, (function (exports) { 'use strict';
 
+  function _arrayLikeToArray(r, a) {
+    (null == a || a > r.length) && (a = r.length);
+    for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e];
+    return n;
+  }
+  function _arrayWithHoles(r) {
+    if (Array.isArray(r)) return r;
+  }
+  function _createForOfIteratorHelper(r, e) {
+    var t = "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"];
+    if (!t) {
+      if (Array.isArray(r) || (t = _unsupportedIterableToArray(r)) || e && r && "number" == typeof r.length) {
+        t && (r = t);
+        var n = 0,
+          F = function () {};
+        return {
+          s: F,
+          n: function () {
+            return n >= r.length ? {
+              done: !0
+            } : {
+              done: !1,
+              value: r[n++]
+            };
+          },
+          e: function (r) {
+            throw r;
+          },
+          f: F
+        };
+      }
+      throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+    }
+    var o,
+      a = !0,
+      u = !1;
+    return {
+      s: function () {
+        t = t.call(r);
+      },
+      n: function () {
+        var r = t.next();
+        return a = r.done, r;
+      },
+      e: function (r) {
+        u = !0, o = r;
+      },
+      f: function () {
+        try {
+          a || null == t.return || t.return();
+        } finally {
+          if (u) throw o;
+        }
+      }
+    };
+  }
+  function _defineProperty(e, r, t) {
+    return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, {
+      value: t,
+      enumerable: !0,
+      configurable: !0,
+      writable: !0
+    }) : e[r] = t, e;
+  }
   function _iterableToArrayLimit(r, l) {
     var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"];
     if (null != t) {
@@ -31,6 +95,9 @@
       return a;
     }
   }
+  function _nonIterableRest() {
+    throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+  }
   function ownKeys(e, r) {
     var t = Object.keys(e);
     if (Object.getOwnPropertySymbols) {
@@ -52,82 +119,49 @@
     }
     return e;
   }
-  function _defineProperty(obj, key, value) {
-    key = _toPropertyKey(key);
-    if (key in obj) {
-      Object.defineProperty(obj, key, {
-        value: value,
-        enumerable: true,
-        configurable: true,
-        writable: true
-      });
-    } else {
-      obj[key] = value;
-    }
-    return obj;
-  }
-  function _objectWithoutPropertiesLoose(source, excluded) {
-    if (source == null) return {};
-    var target = {};
-    var sourceKeys = Object.keys(source);
-    var key, i;
-    for (i = 0; i < sourceKeys.length; i++) {
-      key = sourceKeys[i];
-      if (excluded.indexOf(key) >= 0) continue;
-      target[key] = source[key];
-    }
-    return target;
-  }
-  function _objectWithoutProperties(source, excluded) {
-    if (source == null) return {};
-    var target = _objectWithoutPropertiesLoose(source, excluded);
-    var key, i;
+  function _objectWithoutProperties(e, t) {
+    if (null == e) return {};
+    var o,
+      r,
+      i = _objectWithoutPropertiesLoose(e, t);
     if (Object.getOwnPropertySymbols) {
-      var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
-      for (i = 0; i < sourceSymbolKeys.length; i++) {
-        key = sourceSymbolKeys[i];
-        if (excluded.indexOf(key) >= 0) continue;
-        if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
-        target[key] = source[key];
-      }
+      var s = Object.getOwnPropertySymbols(e);
+      for (r = 0; r < s.length; r++) o = s[r], t.includes(o) || {}.propertyIsEnumerable.call(e, o) && (i[o] = e[o]);
     }
-    return target;
+    return i;
   }
-  function _slicedToArray(arr, i) {
-    return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
+  function _objectWithoutPropertiesLoose(r, e) {
+    if (null == r) return {};
+    var t = {};
+    for (var n in r) if ({}.hasOwnProperty.call(r, n)) {
+      if (e.includes(n)) continue;
+      t[n] = r[n];
+    }
+    return t;
   }
-  function _arrayWithHoles(arr) {
-    if (Array.isArray(arr)) return arr;
+  function _slicedToArray(r, e) {
+    return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest();
   }
-  function _unsupportedIterableToArray(o, minLen) {
-    if (!o) return;
-    if (typeof o === "string") return _arrayLikeToArray(o, minLen);
-    var n = Object.prototype.toString.call(o).slice(8, -1);
-    if (n === "Object" && o.constructor) n = o.constructor.name;
-    if (n === "Map" || n === "Set") return Array.from(o);
-    if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
-  }
-  function _arrayLikeToArray(arr, len) {
-    if (len == null || len > arr.length) len = arr.length;
-    for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i];
-    return arr2;
-  }
-  function _nonIterableRest() {
-    throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-  }
-  function _toPrimitive(input, hint) {
-    if (typeof input !== "object" || input === null) return input;
-    var prim = input[Symbol.toPrimitive];
-    if (prim !== undefined) {
-      var res = prim.call(input, hint || "default");
-      if (typeof res !== "object") return res;
+  function _toPrimitive(t, r) {
+    if ("object" != typeof t || !t) return t;
+    var e = t[Symbol.toPrimitive];
+    if (void 0 !== e) {
+      var i = e.call(t, r || "default");
+      if ("object" != typeof i) return i;
       throw new TypeError("@@toPrimitive must return a primitive value.");
     }
-    return (hint === "string" ? String : Number)(input);
+    return ("string" === r ? String : Number)(t);
   }
-  function _toPropertyKey(arg) {
-    var key = _toPrimitive(arg, "string");
-    return typeof key === "symbol" ? key : String(key);
+  function _toPropertyKey(t) {
+    var i = _toPrimitive(t, "string");
+    return "symbol" == typeof i ? i : i + "";
+  }
+  function _unsupportedIterableToArray(r, a) {
+    if (r) {
+      if ("string" == typeof r) return _arrayLikeToArray(r, a);
+      var t = {}.toString.call(r).slice(8, -1);
+      return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0;
+    }
   }
 
   var countries$1 = {
@@ -3987,7 +4021,7 @@
     };
   }
   function getTimezonesMap(data) {
-    if (!timezonesMap) timezonesMap = buildTimezonesMap(data);
+    timezonesMap || (timezonesMap = buildTimezonesMap(data));
     return timezonesMap;
   }
   function buildTimezonesMap(data) {
@@ -3998,14 +4032,23 @@
       var aliasTz = data.timezones[a] || {};
       var countries = c || aliasTz.c;
       if (!countries) return result;
-      countries.forEach(function (country) {
-        if (!result[country]) Object.assign(result, _defineProperty({}, country, {
-          current: [],
-          all: []
-        }));
-        if (tz.r === undefined) result[country].current.push(id);
-        result[country].all.push(id);
-      });
+      var _iterator = _createForOfIteratorHelper(countries),
+        _step;
+      try {
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
+          var country = _step.value;
+          if (!result[country]) Object.assign(result, _defineProperty({}, country, {
+            current: [],
+            all: []
+          }));
+          if (tz.r === undefined) result[country].current.push(id);
+          result[country].all.push(id);
+        }
+      } catch (err) {
+        _iterator.e(err);
+      } finally {
+        _iterator.f();
+      }
       return result;
     }, {});
   }
@@ -4024,24 +4067,24 @@
       name: name,
       countries: countries,
       utcOffset: utcOffset,
-      utcOffsetStr: getOffsetStr(utcOffset),
+      utcOffsetStr: getOffsetString(utcOffset),
       dstOffset: dstOffset,
-      dstOffsetStr: getOffsetStr(dstOffset),
+      dstOffsetStr: getOffsetString(dstOffset),
       aliasOf: aliasOf
     };
     if (timezone.r) result.deprecated = true;
     return result;
   }
-  function getOffsetStr(offset) {
+  function getOffsetString(offset) {
     var hours = Math.floor(Math.abs(offset) / 60);
     var min = offset % 60;
     var sign = offset < 0 ? '-' : '+';
-    return "".concat(sign).concat(getNumStr(hours), ":").concat(getNumStr(min));
+    return "".concat(sign).concat(getNumberString(hours), ":").concat(getNumberString(min));
   }
-  function getNumStr(input) {
-    var num = Math.abs(input);
-    var prefix = num < 10 ? '0' : '';
-    return "".concat(prefix).concat(num);
+  function getNumberString(input) {
+    var number_ = Math.abs(input);
+    var prefix = number_ < 10 ? '0' : '';
+    return "".concat(prefix).concat(number_);
   }
 
   var _excluded = ["allTimezones"];
@@ -4051,13 +4094,16 @@
   var memoizedTimezones = 0;
   function getAllCountries() {
     var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-    return Object.keys(data.countries).reduce(function (prev, id) {
-      return Object.assign(prev, _defineProperty({}, id, getCountry(id, options)));
+    return Object.keys(data.countries).reduce(function (previous, id) {
+      return Object.assign(previous, _defineProperty({}, id, getCountry(id, options)));
     }, {});
   }
   function getAllTimezones() {
     var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-    if (totalTimezones !== memoizedTimezones) Object.keys(data.timezones).forEach(getTimezone);
+    if (totalTimezones !== memoizedTimezones) for (var _i = 0, _Object$keys = Object.keys(data.timezones); _i < _Object$keys.length; _i++) {
+      var name = _Object$keys[_i];
+      getTimezone(name);
+    }
     return deliverTimezones(timezones, options);
   }
   function getCountry(id) {
@@ -4098,15 +4144,17 @@
     var country = getCountry(countryId, options);
     if (!country) return null;
     var values = country.timezones || [];
-    return values.map(getTimezone);
+    return values.map(function (timezone) {
+      return getTimezone(timezone);
+    });
   }
   function deliverTimezones(tzs, options) {
     var _ref = options || {},
       deprecated = _ref.deprecated;
     if (deprecated === true) return tzs;
-    return Object.keys(tzs).reduce(function (prev, key) {
-      if (!tzs[key].deprecated) Object.assign(prev, _defineProperty({}, key, tzs[key]));
-      return prev;
+    return Object.keys(tzs).reduce(function (previous, key) {
+      if (!tzs[key].deprecated) Object.assign(previous, _defineProperty({}, key, tzs[key]));
+      return previous;
     }, {});
   }
   function deliverCountry(country, options) {
@@ -4120,7 +4168,7 @@
       timezones: tz
     });
   }
-  var index = {
+  var utils = {
     getCountry: getCountry,
     getTimezone: getTimezone,
     getAllCountries: getAllCountries,
@@ -4130,7 +4178,7 @@
     getCountryForTimezone: getCountryForTimezone
   };
 
-  exports["default"] = index;
+  exports["default"] = utils;
   exports.getAllCountries = getAllCountries;
   exports.getAllTimezones = getAllTimezones;
   exports.getCountriesForTimezone = getCountriesForTimezone;

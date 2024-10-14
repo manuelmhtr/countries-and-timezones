@@ -29,7 +29,7 @@ Add the following script to your project (only ~9kb):
 
 <!-- Or specify a version -->
 <script
-  src="https://cdn.jsdelivr.net/gh/manuelmhtr/countries-and-timezones@v3.7.0/dist/index.min.js"
+  src="https://cdn.jsdelivr.net/gh/manuelmhtr/countries-and-timezones@v3.7.1/dist/index.min.js"
   type="text/javascript"
 ></script>
 
@@ -48,7 +48,7 @@ Returns a country referenced by its `id`.
 
 Accepts a parameter with [`options`](#options).
 
-**Example**
+#### Example
 
 ```javascript
 const ct = require("countries-and-timezones");
@@ -72,7 +72,7 @@ Prints:
 
 Returns a timezone referenced by its `name`.
 
-**Example**
+#### Example
 
 ```javascript
 const ct = require("countries-and-timezones");
@@ -102,7 +102,7 @@ Returns an object with the data of all countries.
 
 Accepts a parameter with [`options`](#options).
 
-**Example**
+#### Example
 
 ```javascript
 const ct = require("countries-and-timezones");
@@ -146,7 +146,7 @@ Returns an object with the data of all timezones.
 
 Accepts a parameter with [`options`](#options).
 
-**Example**
+#### Example
 
 ```javascript
 const ct = require("countries-and-timezones");
@@ -206,7 +206,7 @@ Returns an array with all the timezones of a country given its `id`.
 
 Accepts a parameter with [`options`](#options).
 
-**Example**
+#### Example
 
 ```javascript
 const ct = require("countries-and-timezones");
@@ -257,7 +257,7 @@ Returns a list of the countries that uses a timezone given its `name`. When a ti
 
 Accepts a parameter with [`options`](#options).
 
-**Example**
+#### Example
 
 ```javascript
 const ct = require("countries-and-timezones");
@@ -302,7 +302,7 @@ Returns a the most relevant country (due to its geographical location) that uses
 
 Accepts a parameter with [`options`](#options).
 
-**Example**
+#### Example
 
 ```javascript
 const ct = require("countries-and-timezones");
@@ -404,6 +404,7 @@ Consider [sponsoring this project](https://github.com/sponsors/manuelmhtr).
 ## Working on something more complex?
 
 Meet [Spott](https://spott.dev):
+
 - **Search any city, country or administrative division** in the world. By full strings or autocompletion.
 - Find a place by an IP address.
 - Access to more than 240,000 geographical places. In more than 20 languages.

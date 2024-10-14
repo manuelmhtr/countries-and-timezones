@@ -95,9 +95,6 @@ const DEPRECATED = {
     'US/Mountain',
     'US/Pacific',
   ],
-  KR: [
-    'ROK',
-  ],
   KR: ['ROK'],
 };
 

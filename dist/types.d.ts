@@ -3,45 +3,70 @@ const countries={AD:"Andorra",AE:"United Arab Emirates",AF:"Afghanistan",AG:"Ant
 type CountryCode = keyof typeof countries;
 type TimezoneName = keyof typeof timezones;
 
-interface Country {
+type Country = {
   id: CountryCode;
   name: string;
   timezones: TimezoneName[];
-}
+};
 
-interface Timezone {
+type Timezone = {
   name: string;
   countries: CountryCode[];
   utcOffset: number;
   utcOffsetStr: string;
   dstOffset: number;
   dstOffsetStr: string;
-  aliasOf: string | null;
+  aliasOf: string | undefined;
   deprecated: boolean | undefined;
-}
+};
 
-interface Options {
+type Options = {
   deprecated: boolean;
-}
+};
 
 declare function getCountry(id: CountryCode, options?: Options): Country;
-declare function getCountry(id: string, options?: Options): Country | null;
+declare function getCountry(id: string, options?: Options): Country | undefined;
 
 declare function getTimezone(name: TimezoneName): Timezone;
-declare function getTimezone(name: string): Timezone | null;
+declare function getTimezone(name: string): Timezone | undefined;
 
-declare function getAllCountries(options?: Options): Record<CountryCode, Country>;
+declare function getAllCountries(
+  options?: Options,
+): Record<CountryCode, Country>;
 
-declare function getAllTimezones(options?: Options): Record<TimezoneName, Timezone>;
+declare function getAllTimezones(
+  options?: Options,
+): Record<TimezoneName, Timezone>;
 
-declare function getTimezonesForCountry(id: CountryCode, options?: Options): Timezone[];
-declare function getTimezonesForCountry(id: string, options?: Options): Timezone[] | null;
+declare function getTimezonesForCountry(
+  id: CountryCode,
+  options?: Options,
+): Timezone[];
+declare function getTimezonesForCountry(
+  id: string,
+  options?: Options,
+): Timezone[] | undefined;
 
-declare function getCountriesForTimezone(name: TimezoneName, options?: Options): Country[];
-declare function getCountriesForTimezone(name: string, options?: Options): Country[];
-declare function getCountriesForTimezone(name: string, options?: Options): Country[] | null;
+declare function getCountriesForTimezone(
+  name: TimezoneName,
+  options?: Options,
+): Country[];
+declare function getCountriesForTimezone(
+  name: string,
+  options?: Options,
+): Country[];
+declare function getCountriesForTimezone(
+  name: string,
+  options?: Options,
+): Country[] | undefined;
 
-declare function getCountryForTimezone(name: TimezoneName, options?: Options): Country;
-declare function getCountryForTimezone(name: string, options?: Options): Country | null;
+declare function getCountryForTimezone(
+  name: TimezoneName,
+  options?: Options,
+): Country;
+declare function getCountryForTimezone(
+  name: string,
+  options?: Options,
+): Country | undefined;
 
 export { Country, CountryCode, Options, Timezone, TimezoneName, getAllCountries, getAllTimezones, getCountriesForTimezone, getCountry, getCountryForTimezone, getTimezone, getTimezonesForCountry };

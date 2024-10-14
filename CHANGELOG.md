@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.7.1] - 2024-10-13
+
+### Changed
+
+- Set up linting (by [JC Franco](https://github.com/jcfranco))
+- Remove build output from source control (by [JC Franco](https://github.com/jcfranco))
+- Add releasing script (by [JC Franco](https://github.com/jcfranco))
+- Update test action to run on node versions 8 - 20 (by [JC Franco](https://github.com/jcfranco))
+- Set up conventional commits PR check (by [JC Franco](https://github.com/jcfranco))
+- Fix dependabot config (by [JC Franco](https://github.com/jcfranco))
+
 ## [3.7.0] - 2024-09-30
 
 ### Changed
