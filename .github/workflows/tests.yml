@@ -6,8 +6,6 @@ on:
       - main
       - dev
   pull_request:
-      - main
-      - dev
     types: [ opened, synchronize, reopened ]
 
 jobs:
