@@ -29,7 +29,7 @@ Add the following script to your project (only ~9kb):
 
 <!-- Or specify a version -->
 <script
-  src="https://cdn.jsdelivr.net/gh/manuelmhtr/countries-and-timezones@v3.7.1/dist/index.min.js"
+  src="https://cdn.jsdelivr.net/gh/manuelmhtr/countries-and-timezones@v3.8.0/dist/index.min.js"
   type="text/javascript"
 ></script>
 

@@ -1,6 +1,6 @@
 {
   "name": "countries-and-timezones",
-  "version": "3.7.2",
+  "version": "3.8.0",
   "description": "Minimalistic library to work with countries and timezones data.",
   "main": "./dist/index.js",
   "module": "./esm/index.js",

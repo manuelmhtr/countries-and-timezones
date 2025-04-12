@@ -933,8 +933,7 @@
   		r: 1
   	},
   	"America/Asuncion": {
-  		u: -240,
-  		d: -180,
+  		u: -180,
   		c: [
   			"PY"
   		]
@@ -1087,6 +1086,12 @@
   		u: -360,
   		c: [
   			"CR"
+  		]
+  	},
+  	"America/Coyhaique": {
+  		u: -180,
+  		c: [
+  			"CL"
   		]
   	},
   	"America/Creston": {
@@ -2442,6 +2447,7 @@
   		u: 480,
   		c: [
   			"SG",
+  			"AQ",
   			"MY"
   		]
   	},
@@ -2492,7 +2498,8 @@
   	"Asia/Tokyo": {
   		u: 540,
   		c: [
-  			"JP"
+  			"JP",
+  			"AU"
   		]
   	},
   	"Asia/Tomsk": {
@@ -3551,6 +3558,9 @@
   	},
   	Japan: {
   		a: "Asia/Tokyo",
+  		c: [
+  			"JP"
+  		],
   		r: 1
   	},
   	Kwajalein: {
