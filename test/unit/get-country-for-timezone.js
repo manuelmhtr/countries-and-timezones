@@ -1,3 +1,4 @@
+import {describe, it, expect} from 'vitest';
 import * as ct from '../../src';
 
 const TEST_CASES = {

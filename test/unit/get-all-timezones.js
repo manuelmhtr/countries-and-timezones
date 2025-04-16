@@ -1,3 +1,4 @@
+import {describe, it, expect} from 'vitest';
 import * as ct from '../../src';
 import data from '../../src/data.json';
 import {countDeprecatedTimezones} from '../utils';

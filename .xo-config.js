@@ -2,16 +2,6 @@ module.exports = {
   nodeVersion: ">=18",
   prettier: true,
   space: true,
-  globals: [
-    // chai/mocha
-    "after",
-    "afterEach",
-    "before",
-    "beforeEach",
-    "describe",
-    "expect",
-    "it",
-  ],
   rules: {
     "@typescript-eslint/unified-signatures": "off",
     "import/extensions": "off",
