@@ -1,4 +1,4 @@
-# sh
+#!/usr/bin/env bash
 
 # Add missing package.json to ./esm folder to enable ESM import
 if [[ ! -e ./esm/package.json ]]; then

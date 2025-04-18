@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import * as ct from '../../src/index.js';
+import * as ct from '../../src';
 
 const TEST_CASES = {
   KR: [
@@ -106,10 +106,12 @@ const DEPRECATED = {
       deprecated: true,
     },
   ],
-};
+} as const;
 
 describe('.getTimezonesForCountry', () => {
-  for (const testCase of Object.keys(TEST_CASES)) {
+  for (const testCase of Object.keys(TEST_CASES) as Array<
+    keyof typeof TEST_CASES
+  >) {
     it(`should return correct timezones for country "${testCase}"`, () => {
       const result = ct.getTimezonesForCountry(testCase);
       const expectedResult = TEST_CASES[testCase];
