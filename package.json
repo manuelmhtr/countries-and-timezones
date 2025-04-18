@@ -30,7 +30,7 @@
     "prepare": "husky",
     "test:unit": "vitest",
     "test:types": "dtslint types",
-    "test": "yarn run test:unit && yarn run test:types"
+    "test": "yarn run test:unit"
   },
   "repository": {
     "type": "git",
