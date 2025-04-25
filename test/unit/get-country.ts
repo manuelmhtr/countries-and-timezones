@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import * as ct from '../../src/index.js';
+import * as ct from '../../src';
 
 const TEST_CASES = {
   MX: {
@@ -60,7 +60,7 @@ const TEST_CASES = {
     name: 'South Korea',
     timezones: ['Asia/Seoul'],
   },
-};
+} as const;
 
 const DEPRECATED = {
   MX: [
@@ -100,7 +100,9 @@ const DEPRECATED = {
 };
 
 describe('.getCountry', () => {
-  for (const testCase of Object.keys(TEST_CASES)) {
+  for (const testCase of Object.keys(TEST_CASES) as Array<
+    keyof typeof TEST_CASES
+  >) {
     it(`should return correct data for country "${testCase}"`, () => {
       const result = ct.getCountry(testCase);
       const expectedResult = TEST_CASES[testCase];
@@ -109,11 +111,11 @@ describe('.getCountry', () => {
 
     it(`should return correct data for country "${testCase}" with deprecated option`, () => {
       const result = ct.getCountry(testCase, {deprecated: true});
-      const expectedResult = TEST_CASES[testCase];
-      expectedResult.timezones = [
-        ...expectedResult.timezones,
-        ...DEPRECATED[testCase],
-      ].sort();
+      const testCaseData = TEST_CASES[testCase];
+      const expectedResult = {
+        ...testCaseData,
+        timezones: [...testCaseData.timezones, ...DEPRECATED[testCase]].sort(),
+      };
       expect(result).to.be.eql(expectedResult);
     });
   }

@@ -1,5 +1,5 @@
 import {afterEach, beforeEach, describe, it, expect, vi} from 'vitest';
-import buildTimezone from '../../src/build-timezone.js';
+import buildTimezone from '../../src/build-timezone';
 import {timezones} from '../../src/data.json';
 
 vi.mock('../../src/build-timezone.js', {spy: true});
@@ -7,10 +7,10 @@ vi.mock('../../src/build-timezone.js', {spy: true});
 const totalTimezones = Object.keys(timezones).length;
 
 describe('Timezones cache', () => {
-  let ct;
+  let ct: typeof import('../../src');
 
   beforeEach(async () => {
-    ct = await import('../../src/index.js');
+    ct = await import('../../src');
   });
 
   afterEach(() => {

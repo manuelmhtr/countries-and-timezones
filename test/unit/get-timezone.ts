@@ -1,5 +1,5 @@
 import {describe, it, expect} from 'vitest';
-import * as ct from '../../src/index.js';
+import * as ct from '../../src';
 
 const TEST_CASES = {
   'America/Mexico_City': {
@@ -40,10 +40,12 @@ const TEST_CASES = {
     dstOffsetStr: '+03:00',
     aliasOf: null,
   },
-};
+} as const;
 
 describe('.getTimezone', () => {
-  for (const testCase of Object.keys(TEST_CASES)) {
+  for (const testCase of Object.keys(TEST_CASES) as Array<
+    keyof typeof TEST_CASES
+  >) {
     it(`should return correct data for timezone "${testCase}"`, () => {
       const result = ct.getTimezone(testCase);
       const expectedResult = TEST_CASES[testCase];
