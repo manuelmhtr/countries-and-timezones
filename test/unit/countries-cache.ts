@@ -1,5 +1,5 @@
 import {afterEach, beforeEach, describe, it, expect, vi} from 'vitest';
-import buildCountry from '../../src/build-country.js';
+import buildCountry from '../../src/build-country';
 import {countries} from '../../src/data.json';
 
 vi.mock('../../src/build-country.js', {spy: true});
@@ -7,10 +7,10 @@ vi.mock('../../src/build-country.js', {spy: true});
 const totalCountries = Object.keys(countries).length;
 
 describe('Countries cache', () => {
-  let ct;
+  let ct: typeof import('../../src');
 
   beforeEach(async () => {
-    ct = await import('../../src/index.js');
+    ct = await import('../../src');
   });
 
   afterEach(async () => {

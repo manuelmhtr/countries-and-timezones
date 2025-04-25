@@ -2,8 +2,11 @@ import {describe, it, expect} from 'vitest';
 import * as ct from '../../src';
 import data from '../../src/data.json';
 import {getDeprecatedTimezones} from '../utils';
+import type {Country, CountryCode, TimezonesData} from '../../src';
 
-const DEPRECATED_TIMEZONES = getDeprecatedTimezones(data.timezones);
+const DEPRECATED_TIMEZONES = getDeprecatedTimezones(
+  data.timezones as TimezonesData,
+);
 
 describe('.getAllCountries', () => {
   it('returns an object containing full countries data', () => {
@@ -28,7 +31,7 @@ describe('.getAllCountries', () => {
   });
 });
 
-function expectCountry(country) {
+function expectCountry(country: Country): void {
   expect(country.id).to.be.a('string');
   expect(country.name).to.be.a('string');
   expect(country.timezones).to.be.an('array');
@@ -36,7 +39,7 @@ function expectCountry(country) {
   expect(country.name.length > 0).to.be.equal(true);
 }
 
-function hasDeprecatedTimezones(countries) {
+function hasDeprecatedTimezones(countries: Record<CountryCode, Country>) {
   return Object.values(countries).some(({timezones}) => {
     return timezones.some((tz) => DEPRECATED_TIMEZONES[tz]);
   });

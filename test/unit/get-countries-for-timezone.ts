@@ -7,10 +7,12 @@ const TEST_CASES = {
   'America/Los_Angeles': ['US'],
   'America/North_Dakota/New_Salem': ['US'],
   'Europe/Zurich': ['CH', 'DE', 'LI'],
-};
+} as const;
 
 describe('.getCountriesForTimezone', () => {
-  for (const testCase of Object.keys(TEST_CASES)) {
+  for (const testCase of Object.keys(TEST_CASES) as Array<
+    keyof typeof TEST_CASES
+  >) {
     it(`returns correct countries for timezone "${testCase}"`, () => {
       const result = ct.getCountriesForTimezone(testCase);
       const expectedResult = TEST_CASES[testCase].map((id) =>
