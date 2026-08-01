@@ -1,9 +1,5 @@
-import dataset from './data';
-import {
-  createCountriesAndTimezones,
-  type CountriesAndTimezonesDataset,
-  type CountriesAndTimezonesInstance,
-} from './create-countries-and-timezones';
+import dataset from './data.js';
+import {createCountriesAndTimezones} from './create-countries-and-timezones';
 
 export type {
   Country,
@@ -13,21 +9,19 @@ export type {
   Timezone,
   TimezoneName,
 } from './types';
-export {createCountriesAndTimezones};
-export type {CountriesAndTimezonesDataset, CountriesAndTimezonesInstance};
 
 const utilities = createCountriesAndTimezones(dataset);
 
-export const getCountry = utilities.getCountry;
-export const getTimezone = utilities.getTimezone;
-export const getAllCountries = utilities.getAllCountries;
-export const getAllTimezones = utilities.getAllTimezones;
-export const getTimezonesForCountry = utilities.getTimezonesForCountry;
-export const getCountriesForTimezone = utilities.getCountriesForTimezone;
-export const getCountryForTimezone = utilities.getCountryForTimezone;
-export const getMetadata = utilities.getMetadata;
+export const {getCountry} = utilities;
+export const {getTimezone} = utilities;
+export const {getAllCountries} = utilities;
+export const {getAllTimezones} = utilities;
+export const {getTimezonesForCountry} = utilities;
+export const {getCountriesForTimezone} = utilities;
+export const {getCountryForTimezone} = utilities;
+export const {getMetadata} = utilities;
 
-export default {
+const defaultExport = {
   getCountry,
   getTimezone,
   getAllCountries,
@@ -37,3 +31,11 @@ export default {
   getCountryForTimezone,
   getMetadata,
 };
+
+export {
+  type CountriesAndTimezonesDataset,
+  createCountriesAndTimezones,
+  type CountriesAndTimezonesInstance,
+} from './create-countries-and-timezones';
+
+export default defaultExport;

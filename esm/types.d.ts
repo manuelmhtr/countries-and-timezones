@@ -1,7 +1,4 @@
-import { createCountriesAndTimezones, CountriesAndTimezonesDataset, CountriesAndTimezonesInstance } from './create-countries-and-timezones';
 export type { Country, CountryCode, DatasetMetadata, Options, Timezone, TimezoneName, } from './types';
-export { createCountriesAndTimezones };
-export type { CountriesAndTimezonesDataset, CountriesAndTimezonesInstance };
 export declare const getCountry: {
     (id: import('./types').CountryCode, options?: import('./types').Options): import('./types').Country;
     (id: string, options?: import('./types').Options): import('./types').Country | null;
@@ -22,7 +19,7 @@ export declare const getCountryForTimezone: {
     (tzName: string, options?: import('./types').Options): import('./types').Country | null;
 };
 export declare const getMetadata: () => import('./types').DatasetMetadata | null;
-declare const _default: {
+declare const defaultExport: {
     getCountry: {
         (id: import('./types').CountryCode, options?: import('./types').Options): import('./types').Country;
         (id: string, options?: import('./types').Options): import('./types').Country | null;
@@ -44,4 +41,5 @@ declare const _default: {
     };
     getMetadata: () => import('./types').DatasetMetadata | null;
 };
-export default _default;
+export { type CountriesAndTimezonesDataset, createCountriesAndTimezones, type CountriesAndTimezonesInstance, } from './create-countries-and-timezones';
+export default defaultExport;

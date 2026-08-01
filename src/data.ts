@@ -1,9 +1,8 @@
+import type {CountriesAndTimezonesData} from '../types/internal';
 import rawData from './data.json';
 import metadata from './metadata.json';
-import type {CountriesAndTimezonesData} from '../types/internal';
 
 export const data = rawData as CountriesAndTimezonesData;
-export {metadata};
 
 const dataset = {
   data,
@@ -11,3 +10,5 @@ const dataset = {
 };
 
 export default dataset;
+
+export {default as metadata} from './metadata.json';

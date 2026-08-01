@@ -15,7 +15,7 @@ import {
   createDynamicCountriesAndTimezones,
   loadCountriesAndTimezones,
 } from '../src/dynamic';
-import dataset from '../src/data';
+import dataset from '../src/data.js';
 
 declare const unknownString: string;
 declare const maybeNull: string | undefined;
@@ -68,7 +68,15 @@ expectType<DatasetMetadata | null>(getMetadata());
 expectType<Country>(createCountriesAndTimezones(dataset).getCountry('GB'));
 
 // Dynamic API tests
-expectType<Promise<Country | null>>(createDynamicCountriesAndTimezones().getCountry(unknownString));
-expectType<Promise<Timezone | null>>(createDynamicCountriesAndTimezones().getTimezone(unknownString));
-expectType<Promise<DatasetMetadata | null>>(createDynamicCountriesAndTimezones().getMetadata());
-expectType<Promise<Country>>(loadCountriesAndTimezones().then((instance) => instance.getCountry('GB')));
+expectType<Promise<Country | null>>(
+  createDynamicCountriesAndTimezones().getCountry(unknownString),
+);
+expectType<Promise<Timezone | null>>(
+  createDynamicCountriesAndTimezones().getTimezone(unknownString),
+);
+expectType<Promise<DatasetMetadata | null>>(
+  createDynamicCountriesAndTimezones().getMetadata(),
+);
+expectType<Promise<Country>>(
+  loadCountriesAndTimezones().then((instance) => instance.getCountry('GB')),
+);

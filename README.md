@@ -51,7 +51,8 @@ The bundled dataset metadata is available through `getMetadata()` and includes t
 Use the `countries-and-timezones/dynamic` export when you want to lazy-load the bundled dataset or provide your own loader.
 
 ```javascript
-const {loadCountriesAndTimezones} = await import("countries-and-timezones/dynamic");
+const { loadCountriesAndTimezones } =
+  await import("countries-and-timezones/dynamic");
 
 const ct = await loadCountriesAndTimezones();
 const country = ct.getCountry("MX");

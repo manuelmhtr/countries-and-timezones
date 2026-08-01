@@ -38,7 +38,8 @@ await mkdir(path.dirname(dataTarget), {recursive: true});
 await cp(outputFile, dataTarget);
 
 const metadata = JSON.parse(currentMetadata);
-metadata.tzdbVersion = process.env.TZDB_VERSION || tzdbVersion || metadata.tzdbVersion;
+metadata.tzdbVersion =
+  process.env.TZDB_VERSION || tzdbVersion || metadata.tzdbVersion;
 metadata.generatedAt = new Date().toISOString();
 metadata.generator = {
   repository: 'manuelmhtr/countries-and-timezones-generator',
@@ -53,6 +54,6 @@ async function getLatestTzdbVersion() {
   const response = await fetch('https://data.iana.org/time-zones/tzdb/NEWS');
   if (!response.ok) return undefined;
   const news = await response.text();
-  const match = news.match(/Release\s+([0-9]{4}[a-z])/);
+  const match = news.match(/Release\s+(\d{4}[a-z])/);
   return match?.[1];
 }

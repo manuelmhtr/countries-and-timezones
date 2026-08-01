@@ -1,10 +1,10 @@
 import {afterEach, beforeEach, describe, it, expect, vi} from 'vitest';
 import buildCountry from '../../src/build-country';
-import {countries} from '../../src/data.json';
+import {data} from '../../src/data.js';
 
 vi.mock('../../src/build-country.js', {spy: true});
 
-const totalCountries = Object.keys(countries).length;
+const totalCountries = Object.keys(data.countries).length;
 
 describe('Countries cache', () => {
   let ct: typeof import('../../src');

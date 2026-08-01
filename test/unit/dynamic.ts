@@ -1,6 +1,6 @@
 import {describe, expect, it, vi} from 'vitest';
 import * as ct from '../../src';
-import dataset, {metadata} from '../../src/data';
+import dataset, {metadata} from '../../src/data.js';
 import {
   createDynamicCountriesAndTimezones,
   loadCountriesAndTimezones,

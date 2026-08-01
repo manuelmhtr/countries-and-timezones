@@ -1,6 +1,6 @@
 import {describe, expect, it} from 'vitest';
 import {createCountriesAndTimezones, getCountry} from '../../src';
-import dataset from '../../src/data';
+import dataset from '../../src/data.js';
 
 describe('createCountriesAndTimezones', () => {
   it('creates isolated instances from a provided dataset', () => {

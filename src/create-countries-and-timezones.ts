@@ -26,8 +26,14 @@ export type CountriesAndTimezonesInstance = {
   getAllCountries(options?: Options): Record<CountryCode, Country>;
   getAllTimezones(options?: Options): Record<TimezoneName, Timezone>;
   getTimezonesForCountry(countryId: CountryCode, options?: Options): Timezone[];
-  getTimezonesForCountry(countryId: string, options?: Options): Timezone[] | null;
-  getCountriesForTimezone(tzName: TimezoneName | string, options?: Options): Country[];
+  getTimezonesForCountry(
+    countryId: string,
+    options?: Options,
+  ): Timezone[] | null;
+  getCountriesForTimezone(
+    tzName: TimezoneName | string,
+    options?: Options,
+  ): Country[];
   getCountryForTimezone(tzName: TimezoneName, options?: Options): Country;
   getCountryForTimezone(tzName: string, options?: Options): Country | null;
   getMetadata(): DatasetMetadata | null;
