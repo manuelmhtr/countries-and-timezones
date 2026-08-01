@@ -33,7 +33,7 @@ export default defineConfig({
     dts({
       include: ['src/index.ts', 'src/dynamic.ts', 'src/data.ts'],
       entryRoot: 'src',
-      rollupTypes: true,
+      rollupTypes: false,
       beforeWriteFile(filePath, content) {
         return {
           filePath: filePath.replace('index.d.ts', 'types.d.ts'),
