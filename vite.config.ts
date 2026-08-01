@@ -2,7 +2,6 @@
 import {resolve} from 'node:path';
 import {defineConfig} from 'vite';
 import terser from '@rollup/plugin-terser';
-import dts from 'vite-plugin-dts';
 
 export default defineConfig({
   test: {
@@ -49,18 +48,4 @@ export default defineConfig({
     minify: false,
     sourcemap: true,
   },
-  plugins: [
-    dts({
-      include: ['src/index.ts', 'src/data.json'],
-      entryRoot: 'src',
-      rollupTypes: true,
-      beforeWriteFile(filePath, content) {
-        return {
-          filePath: filePath.replace('index.d.ts', 'types.d.ts'),
-          content,
-        };
-      },
-      outDir: ['esm'],
-    }),
-  ],
 });

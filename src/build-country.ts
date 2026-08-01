@@ -2,9 +2,12 @@ import type {
   CountriesAndTimezonesData,
   InternalCountry,
 } from '../types/internal';
-import type {Country, CountryCode, TimezoneName} from '.';
+import type {Country, CountryCode, TimezoneName} from './types';
 
-let timezonesMap;
+let timezonesMap: Record<
+  CountryCode,
+  Country & {current: TimezoneName[]; all: TimezoneName[]}
+>;
 
 export default function buildCountry(
   data: CountriesAndTimezonesData,
@@ -50,8 +53,10 @@ function buildTimezonesMap(data: CountriesAndTimezonesData): Record<
       if (!countries) return result;
 
       for (const country of countries) {
-        if (!result[country])
+        if (!result[country]) {
           Object.assign(result, {[country]: {current: [], all: []}});
+        }
+
         if (tz.r === undefined) result[country].current.push(id);
         result[country].all.push(id);
       }

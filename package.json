@@ -6,13 +6,35 @@
   "module": "./esm/index.js",
   "types": "./esm/types.d.ts",
   "exports": {
-    "import": {
-      "types": "./esm/types.d.ts",
-      "default": "./esm/index.js"
+    ".": {
+      "import": {
+        "types": "./esm/types.d.ts",
+        "default": "./esm/index.js"
+      },
+      "require": {
+        "types": "./esm/types.d.ts",
+        "default": "./dist/index.js"
+      }
     },
-    "require": {
-      "types": "./esm/types.d.ts",
-      "default": "./dist/index.js"
+    "./dynamic": {
+      "import": {
+        "types": "./esm/dynamic.d.ts",
+        "default": "./esm/dynamic.js"
+      },
+      "require": {
+        "types": "./esm/dynamic.d.ts",
+        "default": "./dist/dynamic.js"
+      }
+    },
+    "./data": {
+      "import": {
+        "types": "./esm/data.d.ts",
+        "default": "./esm/data.js"
+      },
+      "require": {
+        "types": "./esm/data.d.ts",
+        "default": "./dist/data.js"
+      }
     }
   },
   "files": [
@@ -20,7 +42,7 @@
     "esm"
   ],
   "scripts": {
-    "build": "vite build && ./bin/addEsmPackage.sh",
+    "build": "npm run build:main && npm run build:subpaths && ./bin/addEsmPackage.sh",
     "lint:ts": "xo --fix",
     "lint:json": "prettier --write \"**/*.json\"",
     "lint:md": "markdownlint \"**/*.md\" --fix --dot --ignore-path .gitignore && prettier --write \"**/*.md\"",
@@ -29,7 +51,10 @@
     "release": "release-it",
     "test:unit": "vitest",
     "test:types": "tsd --files types/index.test-d.ts",
-    "test": "npm run test:unit"
+    "test": "npm run test:unit && npm run test:types",
+    "build:main": "vite build",
+    "build:subpaths": "vite build --config vite.subpaths.config.ts",
+    "generate:data": "node ./scripts/update-data-from-generator.mjs"
   },
   "repository": {
     "type": "git",

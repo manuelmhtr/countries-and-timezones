@@ -1,0 +1,58 @@
+name: Update tzdb data
+
+on:
+  schedule:
+    - cron: '0 9 * * 1'
+  workflow_dispatch:
+
+jobs:
+  update-tzdb:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check out generator repository
+        uses: actions/checkout@v4
+        with:
+          repository: manuelmhtr/countries-and-timezones-generator
+          ref: master
+          path: generator
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install library dependencies
+        run: npm ci
+
+      - name: Install generator dependencies
+        run: npm ci
+        working-directory: generator
+
+      - name: Update generated data
+        run: node ./scripts/update-data-from-generator.mjs "$GITHUB_WORKSPACE/generator"
+
+      - name: Run tests
+        run: npm test
+
+      - name: Run build
+        run: npm run build
+
+      - name: Read tzdb version
+        id: version
+        run: echo "value=$(node -p \"require('./src/metadata.json').tzdbVersion\")" >> "$GITHUB_OUTPUT"
+
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: chore/update-tzdb-${{ steps.version.outputs.value }}
+          commit-message: 'chore: update tzdb to ${{ steps.version.outputs.value }}'
+          title: 'chore: update tzdb to ${{ steps.version.outputs.value }}'
+          body: |
+            ## Summary
+            - regenerate `src/data.json` with `manuelmhtr/countries-and-timezones-generator`
+            - update bundled dataset metadata to `${{ steps.version.outputs.value }}`
+            - run tests and build

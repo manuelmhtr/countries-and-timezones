@@ -1,5 +1,5 @@
 import type {CountriesAndTimezonesData} from '../types/internal';
-import type {Timezone, TimezoneName} from '.';
+import type {Timezone, TimezoneName} from './types';
 
 export default function buildTimezone(
   data: CountriesAndTimezonesData,

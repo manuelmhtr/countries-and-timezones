@@ -1,13 +1,21 @@
 import {expectType, expectError} from 'tsd';
 import {
   type Country,
+  type DatasetMetadata,
   type Timezone,
+  createCountriesAndTimezones,
   getCountriesForTimezone,
   getCountry,
   getCountryForTimezone,
+  getMetadata,
   getTimezone,
   getTimezonesForCountry,
 } from '../src';
+import {
+  createDynamicCountriesAndTimezones,
+  loadCountriesAndTimezones,
+} from '../src/dynamic';
+import dataset from '../src/data';
 
 declare const unknownString: string;
 declare const maybeNull: string | undefined;
@@ -54,3 +62,13 @@ expectType<Country | null>(getCountryForTimezone(unknownString));
 expectError(getCountryForTimezone(undefined));
 expectError(getCountryForTimezone(maybeNull));
 expectError(getCountryForTimezone(getCountryForTimezone));
+
+// Metadata and factory tests
+expectType<DatasetMetadata | null>(getMetadata());
+expectType<Country>(createCountriesAndTimezones(dataset).getCountry('GB'));
+
+// Dynamic API tests
+expectType<Promise<Country | null>>(createDynamicCountriesAndTimezones().getCountry(unknownString));
+expectType<Promise<Timezone | null>>(createDynamicCountriesAndTimezones().getTimezone(unknownString));
+expectType<Promise<DatasetMetadata | null>>(createDynamicCountriesAndTimezones().getMetadata());
+expectType<Promise<Country>>(loadCountriesAndTimezones().then((instance) => instance.getCountry('GB')));

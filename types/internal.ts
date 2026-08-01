@@ -1,9 +1,9 @@
-import {
-  type Country,
-  type CountryCode,
-  type Timezone,
-  type TimezoneName,
-} from '../src';
+import type {
+  Country,
+  CountryCode,
+  Timezone,
+  TimezoneName,
+} from '../src/types';
 
 export type CountriesAndTimezonesData = {
   countries: CountriesData;
