@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+### [3.10.0] - 2026-08-02
+
+### Changed
+
+- Updated with 2026c IANA Time Zone Database.
+
 ## [3.9.0] - 2026-04-12
 
 ### Changed
