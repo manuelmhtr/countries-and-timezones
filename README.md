@@ -366,6 +366,9 @@ A country is defined by the following parameters:
 
 ### Timezone
 
+Offsets are static summaries, not date-specific values. This library does not
+provide historical transitions or calculate the offset for a particular date.
+
 A timezone is defined by the following parameters:
 
 | Parameter      | Type     | Description                                                                                                                                                                                                                                                                                                                     |

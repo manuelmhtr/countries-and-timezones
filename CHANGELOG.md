@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+### [3.11.0] - 2026-10-07
+
+### Changed
+
+- Updated with 2026e IANA Time Zone Database, including changes from 2026d.
+- Updated `America/Inuvik` to permanent UTC-06 and `America/Winnipeg` (including its aliases) to permanent UTC-05.
+- Converted `CST6CDT`, `EST5EDT`, `MST7MDT`, and `PST8PDT` from geographic aliases to standalone deprecated zones without country associations, following tzdb 2026d. They remain available through `getTimezone()` and `getAllTimezones({deprecated: true})`, but are excluded from country timezone lists even with `deprecated: true`. Use geographic names such as `America/New_York` for new applications.
+- Refreshed Morocco and Western Sahara offsets to permanent UTC, reflecting the 2026c change.
+- Updated the country name for `NR` from Nauru to Naoero.
+
 ### [3.10.0] - 2026-08-02
 
 ### Changed
