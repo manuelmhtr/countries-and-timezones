@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-### [3.11.0] - 2026-10-07
+### [3.11.0](https://github.com/jcfranco/countries-and-timezones/compare/v3.10.0...v3.11.0) (2026-10-16)
 
 ### Changed
 
